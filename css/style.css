@@ -301,7 +301,7 @@
     height: 100%;
     top: 0;
     left: 0;
-    background: #FFFFFF;
+    background: #ffffff;
     transition: .5s ease-out;
     z-index: 2;
 }
@@ -318,7 +318,7 @@
     padding: 15px;
     margin-top: -70px;
     margin-bottom: 40px;
-    background: #FFFFFF;
+    background: #5B8C51;
     border-radius: 140px;
     overflow: hidden;
     box-shadow: 0 0 60px rgba(0, 0, 0, .1);
