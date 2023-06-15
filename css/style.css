@@ -82,7 +82,10 @@
     justify-content: center;
     font-weight: normal;
 }
-
+/* #boton-tienda{
+    width: 150px;
+    height: 40px;
+} */
 
 /*** Navbar ***/
 .navbar.sticky-top {
