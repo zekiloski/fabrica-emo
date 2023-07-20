@@ -357,6 +357,12 @@
     box-shadow: 0 0 45px rgba(0, 0, 0, .07);
 }
 
+#canvas-container{
+    /* background-color: #404A3D; */
+    background: #404A3D;
+   
+}
+
 .product-item .product-overlay {
     position: absolute;
     width: 100%;
