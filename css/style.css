@@ -357,6 +357,14 @@
     box-shadow: 0 0 45px rgba(0, 0, 0, .07);
 }
 
+/*** Tabla de Medidas Pulgadas y espesores ***/
+tr:hover {
+    background-color: #c2c2c225;
+}
+td{
+    color: #404A3D;
+}
+
 #canvas-container{
     /* background-color: #404A3D; */
     background: #404A3D;
