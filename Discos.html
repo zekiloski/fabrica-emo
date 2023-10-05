@@ -427,6 +427,15 @@
                         <tr>
                             <td><div><img src="img/Centros/redondo.png" alt=""></div>43 - 53 - 61 - 46 mm</td>
                         </tr>
+                        <tr>
+                            <td><div><img src="img/Centros/Chabetero.png" alt=""></div>65 - 73 mm</td>
+                        </tr>
+                        <tr>
+                            <td><div><img src="img/Centros/Cuadrado Dual.jpg" alt=""></div>93 mm</td>
+                        </tr>
+                        <tr>
+                            <td><div><img src="img/Centros/Redondo Cuadrado.png" alt=""></div>93 mm</td>
+                        </tr>
                       
                     </thead>
                  </table>
@@ -436,7 +445,7 @@
             <div class="accordion-item">
               <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  Accordion Item #2
+                  Filos de Disco Concavos
                 </button>
               </h2>
               <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
@@ -448,7 +457,7 @@
             <div class="accordion-item">
               <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                  Accordion Item #3
+                  Muescado de Disco Concavos
                 </button>
               </h2>
               <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
@@ -643,7 +652,7 @@
 
         // Crea la geometría de la imagen
         const geometry = new THREE.BoxGeometry();
-        const texture = new THREE.TextureLoader().load('img/Disco Grande/ONDD.jpg');
+        const texture = new THREE.TextureLoader().load('img/DD-30-100.jpg');
         const material = new THREE.MeshBasicMaterial({ map: texture });
         const cube = new THREE.Mesh(geometry, material);
         scene.add(cube);
