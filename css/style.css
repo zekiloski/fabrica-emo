@@ -82,6 +82,36 @@
     justify-content: center;
     font-weight: normal;
 }
+
+/* Estilos generales de la página */
+body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Estilos del botón flotante de WhatsApp */
+  .whatsapp-btn-container {
+    position: fixed;
+    bottom: 43px;
+    left: 25px;
+  }
+  
+  .whatsapp-btn {
+    display: inline-block;
+    background-color: #25d366; /* Color de WhatsApp */
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+  }
+  
+  .whatsapp-btn:hover {
+    background-color: #5B8C51;
+    color: #161716; /* Color de WhatsApp al pasar el mouse */
+  }
+  
 /* #boton-tienda{
     width: 150px;
     height: 40px;
