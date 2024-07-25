@@ -289,11 +289,13 @@ body {
 
 
 /*** Service ***/
+/* Color de la sombra del card */
 .service-item {
     position: relative;
     border-radius: 8px;
-    box-shadow: 0 0 45px rgba(0, 0, 0, .07);
+    box-shadow: 0 0 45px #3a3d3a43;
 }
+/* Color de la sombra del card */
 
 .service-item .service-img {
     position: absolute;
@@ -315,6 +317,7 @@ body {
     border-radius: 10px;
 }
 
+
 .service-item .service-img::before {
     position: absolute;
     content: "";
@@ -327,6 +330,8 @@ body {
     z-index: 1;
 }
 
+
+/* Tarjetas de Presentacion */
 .service-item .service-img::after {
     position: absolute;
     content: "";
@@ -338,6 +343,7 @@ body {
     transition: .5s ease-out;
     z-index: 2;
 }
+/* Tarjetas de Presentacion */
 
 .service-item:hover .service-img::after {
     width: 0;
@@ -367,11 +373,13 @@ body {
     color: #FFFFFF;
 }
 
+/* Boton de Descarga PDF */
 .service-item .service-text .btn {
-    color: var(--secondary);
+    color: #2c2827d0;
     background: #FFFFFF;
     box-shadow: 0 0 45px rgba(0, 0, 0, .25);
 }
+/* Boton de Descarga PDF */
 
 .service-item .service-text .btn:hover {
     color: var(--dark);
