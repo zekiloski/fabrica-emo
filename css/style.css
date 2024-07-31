@@ -222,6 +222,11 @@ body {
     background-size: cover;
 }
 
+.page1-header {
+    background: url(../img/banner-3.jpg) center center no-repeat;
+    background-size: cover;
+}
+
 .page-header .breadcrumb-item+.breadcrumb-item::before {
     color: var(--light);
 }
