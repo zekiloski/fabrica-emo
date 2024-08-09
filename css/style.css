@@ -434,6 +434,73 @@ td{
     padding-top: 0;
 }
 
+/* .service-item {
+    position: relative;
+    box-shadow: 0 0 45px rgba(0, 0, 0, .08);
+} */
+
+.service-item::after {
+    /* content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 0;
+    bottom: 0;*/
+    border-radius: 10px; 
+    background: var(--bs-primary);
+    transition: 0.5s;
+    z-index: 1;
+}
+
+.service-item:hover::after {
+    width: 100%;
+    height: 100%;
+}
+
+.service-item:hover .service-content,
+.service-item:hover .service-btn {
+    position: relative;
+    z-index: 2;
+}
+
+.service-item .service-content a,
+.service-item .service-content p {
+    transition: 0.5s;
+}
+
+.service-item:hover .service-content a:hover {
+    color: var(--primary);
+}
+
+.service-item:hover .service-content p {
+    color: var(--bs-primary);
+} 
+
+.service-item .service-btn {
+    width: 80px;
+    height: 80px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bs-primary);
+    transition: 0.5s;
+}
+
+.service-item .service-btn i {
+    transition: 0.5s;
+}
+
+.service-item:hover .service-btn {
+    background: var(--dark);
+}
+
+.service-item:hover .service-btn i {
+    transform: rotate(360deg);
+    color: var(--bs-primary) !important;
+}
+/*** Service End ***/
+
 
 /*** Team ***/
 .team-item {
