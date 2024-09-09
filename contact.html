@@ -145,23 +145,25 @@
                     <p class="mb-4">The contact form is currently inactive. Get a functional and working contact form
                         with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're
                         done. <a href="https://htmlcodex.com/contact-form">Download Now</a>.</p>
-                    <form>
+                    <form id="contactForm" novalidate="novalidate">
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="name" placeholder="Su nombre">
+                                    <input type="text" class="form-control" id="name" placeholder="Su nombre" required="required" data-validation-required-message="Por favor ingrese el name">
+                                    <p class="help-block text-danger"></p>
                                     <label for="name">Su nombre</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="email" class="form-control" id="email" placeholder="Su email">
+                                    <input type="email" class="form-control" id="email" placeholder="Su email" required="required" data-validation-required-message="Por favor ingrese email" />
+                                    <p class="help-block text-danger"></p>
                                     <label for="email">Su email</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="subject" placeholder="Asunto">
+                                    <input type="text" class="form-control" id="subject" placeholder="Asunto" required="required" data-validation-required-message="Por favor ingrese asunto">
                                     <label for="subject">Asunto</label>
                                 </div>
                             </div>
@@ -173,8 +175,10 @@
                                 </div>
                             </div>
                             <div class="col-12">
-                                <button class="btn btn-secondary rounded-pill py-3 px-5" type="submit">Enviar
-                                    Mensaje</button>
+                                <button class="btn btn-secondary rounded-pill py-3 px-5" type="submit" id="sendMessageButton">Enviar
+                                    Mensaje
+                                    <div class="d-none spinner-border spinner-border-sm text-light ms-3" role="status"></div>
+                                </button>
                             </div>
                         </div>
                     </form>
@@ -327,6 +331,10 @@
     <script src="https://mediafiles.botpress.cloud/08637c89-9df0-4726-b82e-7eb951e71544/webchat/config.js"
         defer></script> -->
     <!-- Fin chat bottpres -->
+
+    <!-- Contact Form Javascript -->
+    <script src="mailer/validation.form.js"></script>
+    <script src="mailer/contact.form.js"></script>
 </body>
 
 </html>
