@@ -90,22 +90,22 @@ body {
   }
   
   /* Estilos del botón flotante de WhatsApp */
-  .whatsapp-btn-container {
+  /* .whatsapp-btn-container {
     position: fixed;
     bottom: 40px;
     right: 40px;
-  }
+  } */
   
   /* .whatsapp-icon {
     margin-top:13px;
   } */
 
   .whatsapp-btn {
-    /* position:fixed; */
+    position:fixed;
     width:60px;
     height:60px;
-    /* bottom: 40px; */
-    /* right:40px; */
+    bottom: 40px; 
+    right:40px;
     /* background-color:#25d365e8; */
     color: #25d365e8;
     border-radius:50px;
