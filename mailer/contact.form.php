@@ -50,7 +50,7 @@ if ($useSMTP) {
     $mail->Username = 'contactos@oncaweb.com.ar';
     $mail->Password = '#Zekiloski1984';
     $mail->SMTPSecure = 'tls';
-    $mail->Port = 587;
+    $mail->Port = 465;
 } else {
     // Server settings for PHP's mail()
     $mail->isMail();
