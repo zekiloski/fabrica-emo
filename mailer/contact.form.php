@@ -25,7 +25,7 @@ $plainTextBody .= $message;
 $recipientName = "Oncativosa";
 
 // Recipient email. Change this email to your
-$recipientEmail = "contactos@oncaweb.com.ar";
+$recipientEmail = "melli_ezequiel@hotmail.com";
 
 // Initiate PHPMailer
 use PHPMailer\PHPMailer\PHPMailer;
@@ -40,7 +40,7 @@ $mail = new PHPMailer(true);
 
 // Set mailer to use SMTP or PHP's mail() function
 // If you use SMTP, it will be "true". Otherwise, it will be "false"
-$useSMTP = true;
+$useSMTP = false;
 
 if ($useSMTP) {
     // Server settings for SMTP
