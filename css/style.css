@@ -90,21 +90,28 @@ body {
   }
   
   /* Estilos del botón flotante de WhatsApp */
-  .whatsapp-btn-container {
+  /* .whatsapp-btn-container {
     position: fixed;
     bottom: 43px;
-    left: 25px;
-  }
+    right: 25px;
+  } */
   
+  .whatsapp-icon {
+    margin-top:13px;
+  }
+
   .whatsapp-btn {
-    display: inline-block;
-    background-color: #25d366; /* Color de WhatsApp */
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 50px;
-    text-decoration: none;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease;
+    position:fixed;
+    width:60px;
+    height:60px;
+    bottom: 40px;
+    right:40px;
+    background-color:#25d365e8;
+    color: #FFFFFF;
+    border-radius:50px;
+    text-align:center;
+    font-size:40px;
+    z-index:100;
   }
   
   .whatsapp-btn:hover {
