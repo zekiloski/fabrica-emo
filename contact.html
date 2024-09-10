@@ -32,6 +32,14 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+    <style type="text/css">
+        #contactForm .help-block ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -145,7 +153,8 @@
                     <p class="mb-4">The contact form is currently inactive. Get a functional and working contact form
                         with Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're
                         done. <a href="https://htmlcodex.com/contact-form">Download Now</a>.</p>
-                    <form id="contactForm" novalidate="novalidate">
+
+                    <!-- <form id="contactForm" novalidate="novalidate">
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="form-floating">
@@ -169,7 +178,7 @@
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <textarea class="form-control" placeholder="Leave a message here" id="message"
+                                    <textarea class="form-control" placeholder="Por favor deja un mensaje aqui" id="message"
                                         style="height: 250px"></textarea>
                                     <label for="message">Mensaje</label>
                                 </div>
@@ -181,7 +190,38 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    </form> -->
+
+                    <div class="contact-form">
+                        <div id="alertMessage"></div>
+                        <form id="contactForm" novalidate="novalidate">
+                            <div class="row">
+                                <div class="col-sm-6 control-group">
+                                    <input type="text" class="form-control py-2" id="name" placeholder="Your Name" required="required" data-validation-required-message="Please enter your name" />
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="col-sm-6 control-group">
+                                    <input type="email" class="form-control py-2" id="email" placeholder="Your Email" required="required" data-validation-required-message="Please enter your email" />
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                
+                                <div class="col-sm-6 control-group">
+                                    <input type="text" class="form-control py-2" id="subject" placeholder="Subject" required="required" data-validation-required-message="Please enter a subject" />
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="col-12 control-group">
+                                    <textarea class="form-control" rows="4" id="message" placeholder="Message" required="required" data-validation-required-message="Please enter your message"></textarea>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100 py-2" type="submit" id="sendMessageButton">
+                                        <span>Send Message</span>
+                                        <div class="d-none spinner-border spinner-border-sm text-light ms-3" role="status"></div>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                     <h3 class="mb-4">Detalle de contacto</h3>

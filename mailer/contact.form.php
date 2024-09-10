@@ -3,21 +3,21 @@
 // Mailer form data
 $name = $_POST['name'];
 $email = $_POST['email'];
-$mobile = $_POST['mobile'];
+// $mobile = $_POST['mobile'];
 $subject = $_POST['subject'];
 $message = $_POST['message'];
 
 // HTML email body
 $htmlBody = "<p>Name: $name</p>";
 $htmlBody .= "<p>Email: $email</p>";
-($mobile !== "noMobile") ? $htmlBody .= "<p>Mobile: $mobile</p>" : "";
+// ($mobile !== "noMobile") ? $htmlBody .= "<p>Mobile: $mobile</p>" : "";
 $htmlBody .= "<p>Subject: $subject</p>";
 $htmlBody .= "<p>Message: $message</p>";
 
 // Plain text email body
 $plainTextBody = "Name: $name\n";
 $plainTextBody .= "Email: $email\n";
-($mobile !== "noMobile") ? $plainTextBody .= "Mobile: $mobile\n" : "";
+// ($mobile !== "noMobile") ? $plainTextBody .= "Mobile: $mobile\n" : "";
 $plainTextBody .= "Subject: $subject\n";
 $plainTextBody .= $message;
 
