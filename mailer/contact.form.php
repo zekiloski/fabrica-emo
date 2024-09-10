@@ -25,7 +25,7 @@ $plainTextBody .= $message;
 $recipientName = "Oncativosa";
 
 // Recipient email. Change this email to your
-$recipientEmail = "melli_ezequiel@hotmail.com";
+$recipientEmail = "nuevosdesarrollos@oncativosa.com.ar";
 
 // Initiate PHPMailer
 use PHPMailer\PHPMailer\PHPMailer;
