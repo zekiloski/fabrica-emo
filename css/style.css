@@ -353,7 +353,7 @@ body {
 
 
 /* Leyenda dentro del card Nuevo Producto */
-.etiqueta {
+.etiquetaNuevo {
     position: absolute;
     top: 10px;
     left: 10px;
