@@ -353,7 +353,7 @@ body {
 
 
 /* Leyenda dentro del card Nuevo Producto */
-.etiquetaNuevo {
+/* .etiquetaNuevo {
     position: absolute;
     top: 10px;
     left: 10px;
@@ -363,7 +363,7 @@ body {
     font-size: 14px;
     font-weight: bold;
     border-radius: 5px;
-}
+} */
 
 /* Tarjetas de Presentacion */
 .service-item .service-img::after {
