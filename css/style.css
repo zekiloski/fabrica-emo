@@ -162,6 +162,173 @@ body {
     margin-left: 8px;
 }
 
+
+.dropdown-submenu {
+    position: relative;
+}
+.dropdown-submenu > .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-left: 24px; /* Espacio extra a la derecha */
+    min-width: 300px;  /* Más ancho para destacar */
+    display: none;
+    position: absolute;
+    background: #5B8C51; /* Verde principal destacado */
+    color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    z-index: 1000;
+    border: none;
+    text-align: left;
+}
+.dropdown-submenu.open > .dropdown-menu {
+    display: block;
+}
+.submenu-toggle {
+    font-size: 1em;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+/* Menú principal: color personalizado y sombra */
+.navbar .dropdown-menu {
+    background: #f8f9fa; /* Color claro combinado */
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    min-width: 220px;
+    border: none;
+}
+
+/* Submenú: despliegue hacia la derecha y color */
+.dropdown-submenu {
+    position: relative;
+}
+.dropdown-submenu > .dropdown-menu {
+    top: 0;
+    left: 140%; /* Más separado hacia la derecha */
+    margin-top: 0;
+    min-width: 220px;
+    display: none;
+    position: absolute;
+    background: #e2e3e5;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    z-index: 1000;
+    border: none;
+}
+
+/* Submenú: más separado hacia la derecha y animación */
+@media (min-width: 992px) {
+    .dropdown-submenu > .dropdown-menu {
+        top: 0;
+        left: 180%; /* Más separado del menú principal */
+        min-width: 220px;
+        opacity: 0;
+        transform: translateX(40px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        display: none;
+        position: absolute;
+        background: #e2e3e5;
+        border-radius: 8px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+        z-index: 1000;
+        border: none;
+    }
+    .dropdown-submenu:hover > .dropdown-menu {
+        display: block;
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Animación para el submenú */
+.dropdown-submenu > .dropdown-menu {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Animación y despliegue del submenú */
+.dropdown-submenu > .dropdown-menu {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    left: 150%; /* Separado hacia la derecha */
+    top: 0;
+    min-width: 220px;
+    display: none;
+    position: absolute;
+    background: #e2e3e5;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+    z-index: 1000;
+    border: none;
+}
+
+/* Mostrar submenú por hover en escritorio */
+@media (min-width: 992px) {
+    .dropdown-submenu:hover > .dropdown-menu {
+        display: block;
+        opacity: 1;
+        transform: translateX(0);
+    }
+    .nav-item.dropdown:hover > .dropdown-menu {
+        display: block;
+    }
+}
+
+/* Mostrar submenú por clic en móviles */
+@media (max-width: 991.98px) {
+    .dropdown-submenu.open > .dropdown-menu {
+        display: block;
+        opacity: 1;
+        transform: translateX(0);
+        position: static;
+        left: 0;
+        box-shadow: none;
+        background: #e2e3e5;
+    }
+    .navbar .dropdown-menu {
+        position: static;
+        min-width: 100%;
+        box-shadow: none;
+        background: #f8f9fa;
+    }
+}
+
+@media (min-width: 992px) {
+    .dropdown-submenu:hover > .dropdown-menu {
+        opacity: 1;
+        transform: translateX(0);
+        display: block;
+    }
+}
+/* Mostrar submenú al pasar el mouse en escritorio */
+@media (min-width: 992px) {
+    .dropdown-submenu:hover > .dropdown-menu {
+        display: block;
+    }
+    /* Menú principal también por hover */
+    .nav-item.dropdown:hover > .dropdown-menu {
+        display: block;
+    }
+}
+
+/* Flecha del submenú */
+.submenu-toggle span {
+    font-size: 1em;
+    margin-left: 8px;
+    color: #5B8C51; /* Verde del logo */
+}
+
+/* Opcional: resaltar item activo */
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu .dropdown-item:focus {
+    background: #88a981; /* Verde claro combinado */
+    color: #212529;
+}
+
+
 @media (max-width: 991.98px) {
     .navbar .navbar-nav .nav-link  {
         margin-right: 0;
@@ -175,21 +342,24 @@ body {
 
 @media (min-width: 992px) {
     .navbar .nav-item .dropdown-menu {
-        display: block;
-        border: none;
-        margin-top: 0;
-        top: 150%;
-        opacity: 0;
-        visibility: hidden;
-        transition: .5s;
-    }
-
-    .navbar .nav-item:hover .dropdown-menu {
-        top: 100%;
-        visibility: visible;
-        transition: .5s;
+        display: none;
         opacity: 1;
+        visibility: visible;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        margin-top: 0;
+        border: none;
+        transition: none;
     }
+    .navbar .nav-item .dropdown-menu.show {
+        display: block;
+    }
+}
+@media (min-width: 992px) {
+  .dropdown-submenu:hover > .dropdown-menu {
+    display: block;
+  }
 }
 
 
