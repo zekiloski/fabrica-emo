@@ -105,8 +105,9 @@
                                 Discos <span>&#9654;</span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="Discos.html">Rastras y Arado</a></li>
-                                <li><a class="dropdown-item" href="DiscoChico.html">Sembradoras</a></li>
+                                <li><a class="dropdown-item" href="Discos.html">Discos Concavos Lisos y Dentados</a></li>
+                                <li><a class="dropdown-item" href="PlanoLiso.html">Discos Planos Lisos y Dentados</a></li>
+                                <li><a class="dropdown-item" href="DiscoChico.html">Discos Ondulados</a></li>
                                 <li><a class="dropdown-item" href="DiscoMarcadores.html">Plantadores y Marcadores</a>
                                 </li>
                             </ul>
@@ -162,543 +163,268 @@
                 <p class="section-title bg-white text-center text-primary px-3">Nuestros Productos</p>
                 <h1 class="mb-5">Cuchilla Mixer</h1>
             </div>
-            <div class="row gx-4">
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="product-item">
-                        <div class="position-relative">
-                            <img class="img-fluid" src="img/02. NO REDONDOS/Mixer/5015 Transparente.png" alt="">
+
+            <!-- FILTRO: combo por código/nombre de producto -->
+            <div class="row mb-4">
+                <div class="col-12 d-flex justify-content-center">
+                    <div class="input-group filter-panel" style="max-width:420px; width:100%;">
+                        <span class="input-group-text" id="filter-label">Mixer</span>
+
+                        <select id="filter-mixer" class="form-select" aria-label="Filtrar por codigo o nombre">
+                            <option value="all" selected>Mostrar todos</option>
+                            <option value="ONM5015">ONM5015</option>
+                            <option value="ONM5016">ONM5016</option>
+                            <option value="ONM5017">ONM5017</option>
+                            <option value="ONM5020">ONM5020</option>
+                            <option value="ONM5022C">ONM5022C</option>
+                            <option value="ONM5022T">ONM5022T</option>
+                            <option value="ONM5025C">ONM5025C</option>
+                            <option value="ONM5025T">ONM5025T</option>
+                            <option value="ONM5023">ONM5023</option>
+                            <option value="ONM5024">ONM5024</option>
+                            <option value="ONM5026">ONM5026</option>
+                            <option value="ONM5027">ONM5027</option>
+                        </select>
+
+                        <button id="clear-filter-mixer" class="btn btn--clear" type="button" title="Limpiar filtro">
+                            <i class="fas fa-eraser"></i>
+                        </button>
+
+                        <!-- <div id="filter-count" class="input-group-text filter-count">Mostrar: <span class="badge bg-primary ms-2">0</span></div> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="row gx-4 gy-4" id="mixer-row">
+                <!-- ONM5015 -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.1s" data-code="ONM5015" data-title="ONM5015 Cuchilla Mixer">
+                    <div class="product-item h-100" data-images="img/02. NO REDONDOS/Mixer/5015 Transparente.png|img/02. NO REDONDOS/Mixer/5015_alt1.png">
+                        <div class="position-relative product-gallery">
+                            <img class="img-fluid product-main" src="img/02. NO REDONDOS/Mixer/5015 Transparente.png" alt="ONM5015">
                             <div class="product-overlay">
-                                <a class="btn btn-warning" href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank"
-                                    role="button">Descargar Lista PDF</a>
-                                <!-- <a class="btn btn-square btn-secondary rounded-circle m-1"
-                                    href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-filetype-pdf" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5zM1.6 11.85H0v3.999h.791v-1.342h.803q.43 0 .732-.173.305-.175.463-.474a1.4 1.4 0 0 0 .161-.677q0-.375-.158-.677a1.2 1.2 0 0 0-.46-.477q-.3-.18-.732-.179m.545 1.333a.8.8 0 0 1-.085.38.57.57 0 0 1-.238.241.8.8 0 0 1-.375.082H.788V12.48h.66q.327 0 .512.181.185.183.185.522m1.217-1.333v3.999h1.46q.602 0 .998-.237a1.45 1.45 0 0 0 .595-.689q.196-.45.196-1.084 0-.63-.196-1.075a1.43 1.43 0 0 0-.589-.68q-.396-.234-1.005-.234zm.791.645h.563q.371 0 .609.152a.9.9 0 0 1 .354.454q.118.302.118.753a2.3 2.3 0 0 1-.068.592 1.1 1.1 0 0 1-.196.422.8.8 0 0 1-.334.252 1.3 1.3 0 0 1-.483.082h-.563zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638z" />
-                                    </svg></a>
-                                <a class="btn btn-square btn-secondary rounded-circle m-1"
-                                    href="https://wa.me/3572619825" target="_blank">
-                                    <i class="bi bi-whatsapp"></i>
-                                </a> -->
-
-
+                                <a class="btn btn-warning" href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank" role="button">Descargar Lista PDF</a>
+                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/2</div>
                             </div>
                         </div>
                         <div class="text-center p-4">
                             <a class="d-block h5" href="">ONM5015 Cuchilla Mixer</a>
-                            <span class="text-primary me-1">Espesores
-                            </span>
-                            <br>
-                            <span class="text-decoration-underline">6,35mm</span>
-                            <br>
+                            <span class="text-primary me-1">Espesores</span><br>
+                            <span class="text-decoration-underline">6,35mm</span><br>
                             <span class="text-decoration-underline">497x122 / 4 ■ de 13mm</span>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="product-item">
-                        <div class="position-relative">
-                            <img class="img-fluid" src="img/02. NO REDONDOS/Mixer/ONM5016 Transparente.png" alt="">
+
+                <!-- ONM5016 -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.3s" data-code="ONM5016" data-title="ONM5016 Cuchilla Mixer">
+                    <div class="product-item h-100" data-images="img/02. NO REDONDOS/Mixer/ONM5016 Transparente.png">
+                        <div class="position-relative product-gallery">
+                            <img class="img-fluid product-main" src="img/02. NO REDONDOS/Mixer/ONM5016 Transparente.png" alt="ONM5016">
                             <div class="product-overlay">
-                                <a class="btn btn-warning" href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank"
-                                    role="button">Descargar Lista PDF</a>
-                                <!-- <a class="btn btn-square btn-secondary rounded-circle m-1"
-                                    href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-filetype-pdf" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5zM1.6 11.85H0v3.999h.791v-1.342h.803q.43 0 .732-.173.305-.175.463-.474a1.4 1.4 0 0 0 .161-.677q0-.375-.158-.677a1.2 1.2 0 0 0-.46-.477q-.3-.18-.732-.179m.545 1.333a.8.8 0 0 1-.085.38.57.57 0 0 1-.238.241.8.8 0 0 1-.375.082H.788V12.48h.66q.327 0 .512.181.185.183.185.522m1.217-1.333v3.999h1.46q.602 0 .998-.237a1.45 1.45 0 0 0 .595-.689q.196-.45.196-1.084 0-.63-.196-1.075a1.43 1.43 0 0 0-.589-.68q-.396-.234-1.005-.234zm.791.645h.563q.371 0 .609.152a.9.9 0 0 1 .354.454q.118.302.118.753a2.3 2.3 0 0 1-.068.592 1.1 1.1 0 0 1-.196.422.8.8 0 0 1-.334.252 1.3 1.3 0 0 1-.483.082h-.563zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638z" />
-                                    </svg></a>
-                                <a class="btn btn-square btn-secondary rounded-circle m-1"
-                                    href="https://wa.me/3572619825" target="_blank">
-                                    <i class="bi bi-whatsapp"></i>
-                                </a> -->
-
-
+                                <a class="btn btn-warning" href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank" role="button">Descargar Lista PDF</a>
+                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
                             </div>
                         </div>
                         <div class="text-center p-4">
                             <a class="d-block h5" href="">ONM5016 Cuchilla Mixer</a>
-                            <span class="text-primary me-1">Espesores
-                            </span>
-                            <br>
-                            <span class="text-decoration-underline">6,35mm</span>
-                            <br>
+                            <span class="text-primary me-1">Espesores</span><br>
+                            <span class="text-decoration-underline">6,35mm</span><br>
                             <span class="text-decoration-underline">474x125 / 4 ■ de 13,5mm</span>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="product-item">
-                        <div class="position-relative">
-                            <img class="img-fluid" src="img/02. NO REDONDOS/Mixer/ONM5017 Transparente.png" alt="">
+
+                <!-- ONM5017 -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.5s" data-code="ONM5017" data-title="ONM5017 Cuchilla Mixer">
+                    <div class="product-item h-100" data-images="img/02. NO REDONDOS/Mixer/ONM5017 Transparente.png |img/02. NO REDONDOS/MIXER/ONM5017 Render.png">
+                        <div class="position-relative product-gallery">
+                            <img class="img-fluid product-main" src="img/02. NO REDONDOS/Mixer/ONM5017 Transparente.png" alt="ONM5017">
                             <div class="product-overlay">
-                                <a class="btn btn-warning" href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank"
-                                    role="button">Descargar Lista PDF</a>
-                                <!-- <a class="btn btn-square btn-secondary rounded-circle m-1"
-                                    href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-filetype-pdf" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5zM1.6 11.85H0v3.999h.791v-1.342h.803q.43 0 .732-.173.305-.175.463-.474a1.4 1.4 0 0 0 .161-.677q0-.375-.158-.677a1.2 1.2 0 0 0-.46-.477q-.3-.18-.732-.179m.545 1.333a.8.8 0 0 1-.085.38.57.57 0 0 1-.238.241.8.8 0 0 1-.375.082H.788V12.48h.66q.327 0 .512.181.185.183.185.522m1.217-1.333v3.999h1.46q.602 0 .998-.237a1.45 1.45 0 0 0 .595-.689q.196-.45.196-1.084 0-.63-.196-1.075a1.43 1.43 0 0 0-.589-.68q-.396-.234-1.005-.234zm.791.645h.563q.371 0 .609.152a.9.9 0 0 1 .354.454q.118.302.118.753a2.3 2.3 0 0 1-.068.592 1.1 1.1 0 0 1-.196.422.8.8 0 0 1-.334.252 1.3 1.3 0 0 1-.483.082h-.563zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638z" />
-                                    </svg></a>
-                                <a class="btn btn-square btn-secondary rounded-circle m-1"
-                                    href="https://wa.me/3572619825" target="_blank">
-                                    <i class="bi bi-whatsapp"></i>
-                                </a> -->
-
-
+                                <a class="btn btn-warning" href="img/pdf/Mixer/Lista Nueva de Aplicaciones.pdf" target="_blank" role="button">Descargar Lista PDF</a>
+                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
                             </div>
                         </div>
                         <div class="text-center p-4">
                             <a class="d-block h5" href="">ONM5017 Cuchilla Mixer</a>
-                            <span class="text-primary me-1">Espesores
-                            </span>
-                            <br>
-                            <span class="text-decoration-underline">6,35mm</span>
-                            <br>
+                            <span class="text-primary me-1">Espesores</span><br>
+                            <span class="text-decoration-underline">6,35mm</span><br>
                             <span class="text-decoration-underline">536x131 / 4 ■ de 13,5mm</span>
                         </div>
                     </div>
                 </div>
 
-
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="product-item">
-                        <div class="position-relative">
-                            <img class="img-fluid" src="img/02. NO REDONDOS/Mixer/ONM5020 Transparente.png" alt="">
+                <!-- ONM5020 -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s" data-code="ONM5020" data-title="ONM5020 Cuchilla Mixer">
+                    <div class="product-item h-100" data-images="img/02. NO REDONDOS/Mixer/ONM5020 Transparente.png">
+                        <div class="position-relative product-gallery">
+                            <img class="img-fluid product-main" src="img/02. NO REDONDOS/Mixer/ONM5020 Transparente.png" alt="ONM5020">
                             <div class="product-overlay">
-                                <a class="btn btn-warning" href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank"
-                                    role="button">Descargar Lista PDF</a>
-
-                                <!-- <a class="btn btn-square btn-secondary rounded-circle m-1"
-                                    href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-filetype-pdf" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5zM1.6 11.85H0v3.999h.791v-1.342h.803q.43 0 .732-.173.305-.175.463-.474a1.4 1.4 0 0 0 .161-.677q0-.375-.158-.677a1.2 1.2 0 0 0-.46-.477q-.3-.18-.732-.179m.545 1.333a.8.8 0 0 1-.085.38.57.57 0 0 1-.238.241.8.8 0 0 1-.375.082H.788V12.48h.66q.327 0 .512.181.185.183.185.522m1.217-1.333v3.999h1.46q.602 0 .998-.237a1.45 1.45 0 0 0 .595-.689q.196-.45.196-1.084 0-.63-.196-1.075a1.43 1.43 0 0 0-.589-.68q-.396-.234-1.005-.234zm.791.645h.563q.371 0 .609.152a.9.9 0 0 1 .354.454q.118.302.118.753a2.3 2.3 0 0 1-.068.592 1.1 1.1 0 0 1-.196.422.8.8 0 0 1-.334.252 1.3 1.3 0 0 1-.483.082h-.563zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638z" />
-                                    </svg></a>
-                                <a class="btn btn-square btn-secondary rounded-circle m-1"
-                                    href="https://wa.me/3572619825" target="_blank">
-                                    <i class="bi bi-whatsapp"></i>
-                                </a> -->
+                                <a class="btn btn-warning" href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank" role="button">Descargar Lista PDF</a>
+                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
                             </div>
                         </div>
                         <div class="text-center p-4">
                             <a class="d-block h5" href="">ONM5020 Cuchilla Mixer Filo Circular</a>
-                            <span class="text-primary me-1">Espesores
-                            </span>
-                            <br>
-                            <span class="text-decoration-underline">6,35mm</span>
-                            <br>
+                            <span class="text-primary me-1">Espesores</span><br>
+                            <span class="text-decoration-underline">6,35mm</span><br>
                             <span class="text-decoration-underline">555 / 3 Ø de 21mm - 1 Ovalo de 22x10,5</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Mixer 5022C -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="product-item">
-                        <div class="position-relative">
-                            <img class="img-fluid" src="img/02. NO REDONDOS/Mixer/ONM5022C Sin Fondo.png" alt="">
+                <!-- ONM5022C -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s" data-code="ONM5022C" data-title="ONM5022C Cuchilla Mixer">
+                    <div class="product-item h-100" data-images="img/02. NO REDONDOS/Mixer/ONM5022C Sin Fondo.png">
+                        <div class="position-relative product-gallery">
+                            <img class="img-fluid product-main" src="img/02. NO REDONDOS/Mixer/ONM5022C Sin Fondo.png" alt="ONM5022C">
                             <div class="product-overlay">
-                                <a class="btn btn-warning" href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank"
-                                    role="button">Descargar Lista PDF</a>
-
-                                <!-- <a class="btn btn-square btn-secondary rounded-circle m-1"
-                                    href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-filetype-pdf" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5zM1.6 11.85H0v3.999h.791v-1.342h.803q.43 0 .732-.173.305-.175.463-.474a1.4 1.4 0 0 0 .161-.677q0-.375-.158-.677a1.2 1.2 0 0 0-.46-.477q-.3-.18-.732-.179m.545 1.333a.8.8 0 0 1-.085.38.57.57 0 0 1-.238.241.8.8 0 0 1-.375.082H.788V12.48h.66q.327 0 .512.181.185.183.185.522m1.217-1.333v3.999h1.46q.602 0 .998-.237a1.45 1.45 0 0 0 .595-.689q.196-.45.196-1.084 0-.63-.196-1.075a1.43 1.43 0 0 0-.589-.68q-.396-.234-1.005-.234zm.791.645h.563q.371 0 .609.152a.9.9 0 0 1 .354.454q.118.302.118.753a2.3 2.3 0 0 1-.068.592 1.1 1.1 0 0 1-.196.422.8.8 0 0 1-.334.252 1.3 1.3 0 0 1-.483.082h-.563zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638z" />
-                                    </svg></a>
-                                <a class="btn btn-square btn-secondary rounded-circle m-1"
-                                    href="https://wa.me/3572619825" target="_blank">
-                                    <i class="bi bi-whatsapp"></i>
-                                </a> -->
+                                <a class="btn btn-warning" href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank" role="button">Descargar Lista PDF</a>
+                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
                             </div>
                         </div>
                         <div class="text-center p-4">
                             <a class="d-block h5" href="">ONM5022C Cuchilla Mixer Filo Circular</a>
-                            <span class="text-primary me-1">Espesores
-                            </span>
-                            <br>
-                            <span class="text-decoration-underline">6,35mm</span>
-                            <br>
+                            <span class="text-primary me-1">Espesores</span><br>
+                            <span class="text-decoration-underline">6,35mm</span><br>
                             <span class="text-decoration-underline">542X183 / 3 Ø de 16mm - 1 ■ de 15x15</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Mixer 5022 T -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="product-item">
-                        <div class="position-relative">
-                            <img class="img-fluid" src="img/02. NO REDONDOS/Mixer/ONM5022T Sin Fondo.png" alt="">
+                <!-- ONM5022T -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s" data-code="ONM5022T" data-title="ONM5022T Cuchilla Mixer">
+                    <div class="product-item h-100" data-images="img/02. NO REDONDOS/Mixer/ONM5022T Sin Fondo.png">
+                        <div class="position-relative product-gallery">
+                            <img class="img-fluid product-main" src="img/02. NO REDONDOS/Mixer/ONM5022T Sin Fondo.png" alt="ONM5022T">
                             <div class="product-overlay">
-                                <a class="btn btn-warning" href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank"
-                                    role="button">Descargar Lista PDF</a>
-
-                                <!-- <a class="btn btn-square btn-secondary rounded-circle m-1"
-                                    href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-filetype-pdf" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5zM1.6 11.85H0v3.999h.791v-1.342h.803q.43 0 .732-.173.305-.175.463-.474a1.4 1.4 0 0 0 .161-.677q0-.375-.158-.677a1.2 1.2 0 0 0-.46-.477q-.3-.18-.732-.179m.545 1.333a.8.8 0 0 1-.085.38.57.57 0 0 1-.238.241.8.8 0 0 1-.375.082H.788V12.48h.66q.327 0 .512.181.185.183.185.522m1.217-1.333v3.999h1.46q.602 0 .998-.237a1.45 1.45 0 0 0 .595-.689q.196-.45.196-1.084 0-.63-.196-1.075a1.43 1.43 0 0 0-.589-.68q-.396-.234-1.005-.234zm.791.645h.563q.371 0 .609.152a.9.9 0 0 1 .354.454q.118.302.118.753a2.3 2.3 0 0 1-.068.592 1.1 1.1 0 0 1-.196.422.8.8 0 0 1-.334.252 1.3 1.3 0 0 1-.483.082h-.563zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638z" />
-                                    </svg></a>
-                                <a class="btn btn-square btn-secondary rounded-circle m-1"
-                                    href="https://wa.me/3572619825" target="_blank">
-                                    <i class="bi bi-whatsapp"></i>
-                                </a> -->
+                                <a class="btn btn-warning" href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank" role="button">Descargar Lista PDF</a>
+                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
                             </div>
                         </div>
                         <div class="text-center p-4">
                             <a class="d-block h5" href="">ONM5022T Cuchilla Mixer Filo Triangular</a>
-                            <span class="text-primary me-1">Espesores
-                            </span>
-                            <br>
-                            <span class="text-decoration-underline">6,35mm</span>
-                            <br>
+                            <span class="text-primary me-1">Espesores</span><br>
+                            <span class="text-decoration-underline">6,35mm</span><br>
                             <span class="text-decoration-underline">540 / 3 Ø de 16mm - 1 ■ de 15x15</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Mixer 5025 C -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="product-item">
-                        <div class="position-relative">
-                            <img class="img-fluid" src="img/02. NO REDONDOS/Mixer/ONM5025C Sin Fondo.png" alt="">
+                <!-- ONM5025C -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s" data-code="ONM5025C" data-title="ONM5025C Cuchilla Mixer">
+                    <div class="product-item h-100" data-images="img/02. NO REDONDOS/Mixer/ONM5025C Sin Fondo.png">
+                        <div class="position-relative product-gallery">
+                            <img class="img-fluid product-main" src="img/02. NO REDONDOS/Mixer/ONM5025C Sin Fondo.png" alt="ONM5025C">
                             <div class="product-overlay">
-                                <a class="btn btn-warning" href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank"
-                                    role="button">Descargar Lista PDF</a>
-
-                                <!-- <a class="btn btn-square btn-secondary rounded-circle m-1"
-                                    href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-filetype-pdf" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5zM1.6 11.85H0v3.999h.791v-1.342h.803q.43 0 .732-.173.305-.175.463-.474a1.4 1.4 0 0 0 .161-.677q0-.375-.158-.677a1.2 1.2 0 0 0-.46-.477q-.3-.18-.732-.179m.545 1.333a.8.8 0 0 1-.085.38.57.57 0 0 1-.238.241.8.8 0 0 1-.375.082H.788V12.48h.66q.327 0 .512.181.185.183.185.522m1.217-1.333v3.999h1.46q.602 0 .998-.237a1.45 1.45 0 0 0 .595-.689q.196-.45.196-1.084 0-.63-.196-1.075a1.43 1.43 0 0 0-.589-.68q-.396-.234-1.005-.234zm.791.645h.563q.371 0 .609.152a.9.9 0 0 1 .354.454q.118.302.118.753a2.3 2.3 0 0 1-.068.592 1.1 1.1 0 0 1-.196.422.8.8 0 0 1-.334.252 1.3 1.3 0 0 1-.483.082h-.563zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638z" />
-                                    </svg></a>
-                                <a class="btn btn-square btn-secondary rounded-circle m-1"
-                                    href="https://wa.me/3572619825" target="_blank">
-                                    <i class="bi bi-whatsapp"></i>
-                                </a> -->
+                                <a class="btn btn-warning" href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank" role="button">Descargar Lista PDF</a>
+                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
                             </div>
                         </div>
                         <div class="text-center p-4">
                             <a class="d-block h5" href="">ONM5025C Cuchilla Mixer Filo Circular</a>
-                            <span class="text-primary me-1">Espesores
-                            </span>
-                            <br>
-                            <span class="text-decoration-underline">6,35mm</span>
-                            <br>
+                            <span class="text-primary me-1">Espesores</span><br>
+                            <span class="text-decoration-underline">6,35mm</span><br>
                             <span class="text-decoration-underline">547X206 / 3 ■ de 13,5mm - 1 ■ de 13,5</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Mixer 5025 T -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="product-item">
-                        <div class="position-relative">
-                            <img class="img-fluid" src="img/02. NO REDONDOS/Mixer/ONM5025T Sin Fondo.png" alt="">
+                <!-- ONM5025T -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s" data-code="ONM5025T" data-title="ONM5025T Cuchilla Mixer">
+                    <div class="product-item h-100" data-images="img/02. NO REDONDOS/Mixer/ONM5025T Sin Fondo.png">
+                        <div class="position-relative product-gallery">
+                            <img class="img-fluid product-main" src="img/02. NO REDONDOS/Mixer/ONM5025T Sin Fondo.png" alt="ONM5025T">
                             <div class="product-overlay">
-                                <a class="btn btn-warning" href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank"
-                                    role="button">Descargar Lista PDF</a>
-
-                                <!-- <a class="btn btn-square btn-secondary rounded-circle m-1"
-                                    href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-filetype-pdf" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5zM1.6 11.85H0v3.999h.791v-1.342h.803q.43 0 .732-.173.305-.175.463-.474a1.4 1.4 0 0 0 .161-.677q0-.375-.158-.677a1.2 1.2 0 0 0-.46-.477q-.3-.18-.732-.179m.545 1.333a.8.8 0 0 1-.085.38.57.57 0 0 1-.238.241.8.8 0 0 1-.375.082H.788V12.48h.66q.327 0 .512.181.185.183.185.522m1.217-1.333v3.999h1.46q.602 0 .998-.237a1.45 1.45 0 0 0 .595-.689q.196-.45.196-1.084 0-.63-.196-1.075a1.43 1.43 0 0 0-.589-.68q-.396-.234-1.005-.234zm.791.645h.563q.371 0 .609.152a.9.9 0 0 1 .354.454q.118.302.118.753a2.3 2.3 0 0 1-.068.592 1.1 1.1 0 0 1-.196.422.8.8 0 0 1-.334.252 1.3 1.3 0 0 1-.483.082h-.563zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638z" />
-                                    </svg></a>
-                                <a class="btn btn-square btn-secondary rounded-circle m-1"
-                                    href="https://wa.me/3572619825" target="_blank">
-                                    <i class="bi bi-whatsapp"></i>
-                                </a> -->
+                                <a class="btn btn-warning" href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank" role="button">Descargar Lista PDF</a>
+                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
                             </div>
                         </div>
                         <div class="text-center p-4">
                             <a class="d-block h5" href="">ONM5025T Cuchilla Mixer Filo Triangular</a>
-                            <span class="text-primary me-1">Espesores
-                            </span>
-                            <br>
-                            <span class="text-decoration-underline">6,35mm</span>
-                            <br>
+                            <span class="text-primary me-1">Espesores</span><br>
+                            <span class="text-decoration-underline">6,35mm</span><br>
                             <span class="text-decoration-underline">546X206 / 3 ■ de 13,5mm - 1 ■ de 13,5</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Mixer 5023 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="product-item">
-                        <div class="position-relative">
-                            <img class="img-fluid" src="img/02. NO REDONDOS/Mixer/ONM5023 Sin Fondo.png" alt="">
+                <!-- ONM5023 -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s" data-code="ONM5023" data-title="ONM5023 Cuchilla Mixer">
+                    <div class="product-item h-100" data-images="img/02. NO REDONDOS/Mixer/ONM5023 Sin Fondo.png">
+                        <div class="position-relative product-gallery">
+                            <img class="img-fluid product-main" src="img/02. NO REDONDOS/Mixer/ONM5023 Sin Fondo.png" alt="ONM5023">
                             <div class="product-overlay">
-                                <a class="btn btn-warning" href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank"
-                                    role="button">Descargar Lista PDF</a>
-
-                                <!-- <a class="btn btn-square btn-secondary rounded-circle m-1"
-                                    href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-filetype-pdf" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5zM1.6 11.85H0v3.999h.791v-1.342h.803q.43 0 .732-.173.305-.175.463-.474a1.4 1.4 0 0 0 .161-.677q0-.375-.158-.677a1.2 1.2 0 0 0-.46-.477q-.3-.18-.732-.179m.545 1.333a.8.8 0 0 1-.085.38.57.57 0 0 1-.238.241.8.8 0 0 1-.375.082H.788V12.48h.66q.327 0 .512.181.185.183.185.522m1.217-1.333v3.999h1.46q.602 0 .998-.237a1.45 1.45 0 0 0 .595-.689q.196-.45.196-1.084 0-.63-.196-1.075a1.43 1.43 0 0 0-.589-.68q-.396-.234-1.005-.234zm.791.645h.563q.371 0 .609.152a.9.9 0 0 1 .354.454q.118.302.118.753a2.3 2.3 0 0 1-.068.592 1.1 1.1 0 0 1-.196.422.8.8 0 0 1-.334.252 1.3 1.3 0 0 1-.483.082h-.563zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638z" />
-                                    </svg></a>
-                                <a class="btn btn-square btn-secondary rounded-circle m-1"
-                                    href="https://wa.me/3572619825" target="_blank">
-                                    <i class="bi bi-whatsapp"></i>
-                                </a> -->
+                                <a class="btn btn-warning" href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank" role="button">Descargar Lista PDF</a>
+                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
                             </div>
                         </div>
                         <div class="text-center p-4">
                             <a class="d-block h5" href="">ONM5023 Cuchilla Mixer Primaria</a>
-                            <span class="text-primary me-1">Espesores
-                            </span>
-                            <br>
-                            <span class="text-decoration-underline">6,35mm</span>
-                            <br>
+                            <span class="text-primary me-1">Espesores</span><br>
+                            <span class="text-decoration-underline">6,35mm</span><br>
                             <span class="text-decoration-underline">439X393X145 / 4 ■ de 14mm</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Mixer 5024 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="product-item">
-                        <div class="position-relative">
-                            <img class="img-fluid" src="img/02. NO REDONDOS/Mixer/ONM5024 Sin Fondo.png" alt="">
+                <!-- ONM5024 -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s" data-code="ONM5024" data-title="ONM5024 Cuchilla Mixer">
+                    <div class="product-item h-100" data-images="img/02. NO REDONDOS/Mixer/ONM5024 Sin Fondo.png">
+                        <div class="position-relative product-gallery">
+                            <img class="img-fluid product-main" src="img/02. NO REDONDOS/Mixer/ONM5024 Sin Fondo.png" alt="ONM5024">
                             <div class="product-overlay">
-                                <a class="btn btn-warning" href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank"
-                                    role="button">Descargar Lista PDF</a>
-
-                                <!-- <a class="btn btn-square btn-secondary rounded-circle m-1"
-                                    href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-filetype-pdf" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5zM1.6 11.85H0v3.999h.791v-1.342h.803q.43 0 .732-.173.305-.175.463-.474a1.4 1.4 0 0 0 .161-.677q0-.375-.158-.677a1.2 1.2 0 0 0-.46-.477q-.3-.18-.732-.179m.545 1.333a.8.8 0 0 1-.085.38.57.57 0 0 1-.238.241.8.8 0 0 1-.375.082H.788V12.48h.66q.327 0 .512.181.185.183.185.522m1.217-1.333v3.999h1.46q.602 0 .998-.237a1.45 1.45 0 0 0 .595-.689q.196-.45.196-1.084 0-.63-.196-1.075a1.43 1.43 0 0 0-.589-.68q-.396-.234-1.005-.234zm.791.645h.563q.371 0 .609.152a.9.9 0 0 1 .354.454q.118.302.118.753a2.3 2.3 0 0 1-.068.592 1.1 1.1 0 0 1-.196.422.8.8 0 0 1-.334.252 1.3 1.3 0 0 1-.483.082h-.563zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638z" />
-                                    </svg></a>
-                                <a class="btn btn-square btn-secondary rounded-circle m-1"
-                                    href="https://wa.me/3572619825" target="_blank">
-                                    <i class="bi bi-whatsapp"></i>
-                                </a> -->
+                                <a class="btn btn-warning" href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank" role="button">Descargar Lista PDF</a>
+                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
                             </div>
                         </div>
                         <div class="text-center p-4">
                             <a class="d-block h5" href="">ONM5024 Cuchilla Mixer Secundaria</a>
-                            <span class="text-primary me-1">Espesores
-                            </span>
-                            <br>
-                            <span class="text-decoration-underline">6,35mm</span>
-                            <br>
+                            <span class="text-primary me-1">Espesores</span><br>
+                            <span class="text-decoration-underline">6,35mm</span><br>
                             <span class="text-decoration-underline">Largo 302X270 Alto 31,5X68,5 / 3 ■ de 14mm</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Mixer 5026 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="product-item">
-                        <div class="position-relative">
-                            <img class="img-fluid" src="img/02. NO REDONDOS/Mixer/ONM5026 Sin Fondo.png" alt="">
+                <!-- ONM5026 -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s" data-code="ONM5026" data-title="ONM5026 Cuchilla Mixer">
+                    <div class="product-item h-100" data-images="img/02. NO REDONDOS/Mixer/ONM5026 Sin Fondo.png">
+                        <div class="position-relative product-gallery">
+                            <img class="img-fluid product-main" src="img/02. NO REDONDOS/Mixer/ONM5026 Sin Fondo.png" alt="ONM5026">
                             <div class="product-overlay">
-                                <a class="btn btn-warning" href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank"
-                                    role="button">Descargar Lista PDF</a>
-
-                                <!-- <a class="btn btn-square btn-secondary rounded-circle m-1"
-                                    href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-filetype-pdf" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5zM1.6 11.85H0v3.999h.791v-1.342h.803q.43 0 .732-.173.305-.175.463-.474a1.4 1.4 0 0 0 .161-.677q0-.375-.158-.677a1.2 1.2 0 0 0-.46-.477q-.3-.18-.732-.179m.545 1.333a.8.8 0 0 1-.085.38.57.57 0 0 1-.238.241.8.8 0 0 1-.375.082H.788V12.48h.66q.327 0 .512.181.185.183.185.522m1.217-1.333v3.999h1.46q.602 0 .998-.237a1.45 1.45 0 0 0 .595-.689q.196-.45.196-1.084 0-.63-.196-1.075a1.43 1.43 0 0 0-.589-.68q-.396-.234-1.005-.234zm.791.645h.563q.371 0 .609.152a.9.9 0 0 1 .354.454q.118.302.118.753a2.3 2.3 0 0 1-.068.592 1.1 1.1 0 0 1-.196.422.8.8 0 0 1-.334.252 1.3 1.3 0 0 1-.483.082h-.563zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638z" />
-                                    </svg></a>
-                                <a class="btn btn-square btn-secondary rounded-circle m-1"
-                                    href="https://wa.me/3572619825" target="_blank">
-                                    <i class="bi bi-whatsapp"></i>
-                                </a> -->
+                                <a class="btn btn-warning" href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank" role="button">Descargar Lista PDF</a>
+                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
                             </div>
                         </div>
                         <div class="text-center p-4">
                             <a class="d-block h5" href="">ONM5026 Cuchilla Mixer</a>
-                            <span class="text-primary me-1">Espesores
-                            </span>
-                            <br>
-                            <span class="text-decoration-underline">6,35mm</span>
-                            <br>
+                            <span class="text-primary me-1">Espesores</span><br>
+                            <span class="text-decoration-underline">6,35mm</span><br>
                             <span class="text-decoration-underline">Largo 442 Alto 42X141 / 4 ■ de 14mm</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Mixer 5026 Acorazado -->
-                <!-- <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="product-item">
-                        <div class="position-relative">
-                            <img class="img-fluid" src="img/02. NO REDONDOS/Mixer/ONM5026-AC Sin Fondo.png" alt="">
+                <!-- ONM5027 -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s" data-code="ONM5027" data-title="ONM5027 Cuchilla Mixer">
+                    <div class="product-item h-100" data-images="img/02. NO REDONDOS/Mixer/ONM5027 Sin Fondo.png">
+                        <div class="position-relative product-gallery">
+                            <img class="img-fluid product-main" src="img/02. NO REDONDOS/Mixer/ONM5027 Sin Fondo.png" alt="ONM5027">
                             <div class="product-overlay">
-                                <a class="btn btn-square btn-secondary rounded-circle m-1"
-                                    href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-filetype-pdf" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5zM1.6 11.85H0v3.999h.791v-1.342h.803q.43 0 .732-.173.305-.175.463-.474a1.4 1.4 0 0 0 .161-.677q0-.375-.158-.677a1.2 1.2 0 0 0-.46-.477q-.3-.18-.732-.179m.545 1.333a.8.8 0 0 1-.085.38.57.57 0 0 1-.238.241.8.8 0 0 1-.375.082H.788V12.48h.66q.327 0 .512.181.185.183.185.522m1.217-1.333v3.999h1.46q.602 0 .998-.237a1.45 1.45 0 0 0 .595-.689q.196-.45.196-1.084 0-.63-.196-1.075a1.43 1.43 0 0 0-.589-.68q-.396-.234-1.005-.234zm.791.645h.563q.371 0 .609.152a.9.9 0 0 1 .354.454q.118.302.118.753a2.3 2.3 0 0 1-.068.592 1.1 1.1 0 0 1-.196.422.8.8 0 0 1-.334.252 1.3 1.3 0 0 1-.483.082h-.563zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638z" />
-                                    </svg></a>
-                                <a class="btn btn-square btn-secondary rounded-circle m-1"
-                                    href="https://wa.me/3572619825" target="_blank">
-                                    <i class="bi bi-whatsapp"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="text-center p-4">
-                            <a class="d-block h5" href="">ONM5026-AC Cuchilla Mixer Filo Liso Acorazada</a>
-                            <span class="text-primary me-1">Espesores
-                            </span>
-                            <br>
-                            <span class="text-decoration-underline">6,35mm</span>
-                            <br>
-                            <span class="text-decoration-underline">Largo 442 Alto 42X141 / 4 ■ de 14mm</span>
-                        </div>
-                    </div>
-                </div> -->
-
-                <!-- Mixer 5027 -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="product-item">
-                        <div class="position-relative">
-                            <img class="img-fluid" src="img/02. NO REDONDOS/Mixer/ONM5027 Sin Fondo.png" alt="">
-                            <div class="product-overlay">
-                                <a class="btn btn-warning" href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank"
-                                    role="button">Descargar Lista PDF</a>
-
-                                <!-- <a class="btn btn-square btn-secondary rounded-circle m-1"
-                                    href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-filetype-pdf" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5zM1.6 11.85H0v3.999h.791v-1.342h.803q.43 0 .732-.173.305-.175.463-.474a1.4 1.4 0 0 0 .161-.677q0-.375-.158-.677a1.2 1.2 0 0 0-.46-.477q-.3-.18-.732-.179m.545 1.333a.8.8 0 0 1-.085.38.57.57 0 0 1-.238.241.8.8 0 0 1-.375.082H.788V12.48h.66q.327 0 .512.181.185.183.185.522m1.217-1.333v3.999h1.46q.602 0 .998-.237a1.45 1.45 0 0 0 .595-.689q.196-.45.196-1.084 0-.63-.196-1.075a1.43 1.43 0 0 0-.589-.68q-.396-.234-1.005-.234zm.791.645h.563q.371 0 .609.152a.9.9 0 0 1 .354.454q.118.302.118.753a2.3 2.3 0 0 1-.068.592 1.1 1.1 0 0 1-.196.422.8.8 0 0 1-.334.252 1.3 1.3 0 0 1-.483.082h-.563zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638z" />
-                                    </svg></a>
-                                <a class="btn btn-square btn-secondary rounded-circle m-1"
-                                    href="https://wa.me/3572619825" target="_blank">
-                                    <i class="bi bi-whatsapp"></i>
-                                </a> -->
+                                <a class="btn btn-warning" href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank" role="button">Descargar Lista PDF</a>
+                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
                             </div>
                         </div>
                         <div class="text-center p-4">
                             <a class="d-block h5" href="">ONM5027 Cuchilla Mixer Plegada</a>
-                            <span class="text-primary me-1">Espesores
-                            </span>
-                            <br>
-                            <span class="text-decoration-underline">6,35mm</span>
-                            <br>
+                            <span class="text-primary me-1">Espesores</span><br>
+                            <span class="text-decoration-underline">6,35mm</span><br>
                             <span class="text-decoration-underline">Largo 404 Alto 52 / 3 ■ de 14mm</span>
                         </div>
                     </div>
                 </div>
 
-
-
             </div>
-
-
-            <!-- ------------------------SEMBRADORES----------------------------------------- -->
-
-            <!-- <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-                <p class="section-title bg-white text-center text-primary px-3">Nuestros Productos</p>
-                <h1 class="mb-5">DISCOS Y CUCHILLAS PARA SEMBRADORAS</h1>
-            </div>
-
-            <div class="row gx-4">
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="product-item">
-                        <div class="position-relative">
-                            <img class="img-fluid" src="img/Cuchillas-Action-2000.jpg" alt="">
-                            <div class="product-overlay">
-                                <a class="btn btn-square btn-secondary rounded-circle m-1" href="img/medidas-discos.png" target="_blank"><i class="bi bi-link"></i></a>
-                                <a class="btn btn-square btn-secondary rounded-circle m-1" href="">
-                                    <i class="bi bi-cart"></i>
-                                </a>
-                                
-                            </div>
-                        </div>
-                        <div class="text-center p-4">
-                            <a class="d-block h5" href="">Cuchillas Action 2000, contiene 18 ondulaciones, Abertura de corte 12mm.</a>
-                            <span class="text-primary me-1">Espesores
-                            </span>
-                            <br>
-                            <span class="text-decoration-underline">4mm hasta 5mm</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="product-item">
-                        <div class="position-relative">
-                            <img class="img-fluid" src="img/ONC33-AV.jpg" alt="">
-                            <div class="product-overlay">
-                                <a class="btn btn-square btn-secondary rounded-circle m-1" href="img/medidas-discos.png" target="_blank"><i class="bi bi-link"></i></a>
-                                <a class="btn btn-square btn-secondary rounded-circle m-1" href="">
-                                    <i class="bi bi-cart"></i>
-                                </a>
-                                
-                            </div>
-                        </div>
-                        <div class="text-center p-4">
-                            <a class="d-block h5" href="">Cuchillas ON 33 AV, contiene 33 ondulaciones, Abertura de corte 7mm</a>
-                            <span class="text-primary me-1">Espesores
-                            </span>
-                            <br>
-                            <span class="text-decoration-underline">4mm hasta 5mm</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="product-item">
-                        <div class="position-relative">
-                            <img class="img-fluid" src="img/ONCOFLISO.jpg" alt="">
-                            <div class="product-overlay">
-                                <a class="btn btn-square btn-secondary rounded-circle m-1" href=""><i class="bi bi-link"></i></a>
-                                <a class="btn btn-square btn-secondary rounded-circle m-1" href="">
-                                    <i class="bi bi-cart"></i>
-                                </a>
-                                
-                            </div>
-                        </div>
-                        <div class="text-center p-4">
-                            <a class="d-block h5" href="">Cuchillas TANGO filo liso, contiene 40 ondulaciones. Abertura de corte 9mm</a>
-                            <span class="text-primary me-1">Espesores
-                            </span>
-                            <br>
-                            <span class="text-decoration-underline">4mm hasta 5mm</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="product-item">
-                        <div class="position-relative">
-                            <img class="img-fluid" src="img/ONCOFONDULADA.jpg" alt="">
-                            <div class="product-overlay">
-                                <a class="btn btn-square btn-secondary rounded-circle m-1" href="#"><i class="bi bi-link"></i></a>
-                                <a class="btn btn-square btn-secondary rounded-circle m-1" href="">
-                                    <i class="bi bi-cart"></i>
-                                </a>
-                                
-                            </div>
-                        </div>
-                        <div class="text-center p-4">
-                            <a class="d-block h5" href="">Cuchillas TANGO filo ondulado, contiene 40 ondulaciones. Abertura de corte 9mm</a>
-                            <span class="text-primary me-1">Espesores
-                            </span>
-                            <br>
-                            <span class="text-decoration-underline">4mm hasta 5mm</span>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-
         </div>
     </div>
     <!-- Product End -->
@@ -1189,6 +915,88 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
+    <!-- agrega al final, antes de </body> -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // FILTRO Mixer
+        (function(){
+            const select = document.getElementById('filter-mixer');
+            const clearBtn = document.getElementById('clear-filter-mixer');
+            const row = document.getElementById('mixer-row');
+            const cols = row ? Array.from(row.querySelectorAll(':scope > [class*="col-"]')) : [];
+            const countBadge = document.querySelector('#filter-count .badge');
+            const noId = 'mixer-no-results';
+            function ensureNoResults(){
+                let el = document.getElementById(noId);
+                if (!el && row && row.parentElement){
+                    el = document.createElement('div');
+                    el.id = noId;
+                    el.className = 'col-12 text-center py-4';
+                    el.innerHTML = '<p class="text-muted mb-0">No se encontraron productos para la selección actual.</p>';
+                    row.parentElement.appendChild(el);
+                }
+                return el;
+            }
+            function normalize(s){ return (s||'').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim(); }
+            function applyFilter(val){
+                const v = (val||'all').toString();
+                let visible = 0;
+                cols.forEach(col=>{
+                    const code = (col.getAttribute('data-code')||'').toString();
+                    const title = normalize(col.getAttribute('data-title') || col.textContent);
+                    const matches = v === 'all' || code.toLowerCase() === v.toLowerCase() || title.indexOf(normalize(v)) !== -1;
+                    col.style.display = matches ? '' : 'none';
+                    if (matches) visible++;
+                });
+                const noEl = ensureNoResults();
+                if (noEl) noEl.style.display = visible === 0 ? '' : 'none';
+                if (countBadge) countBadge.textContent = visible;
+            }
+            if (select) select.addEventListener('change', function(){ applyFilter(this.value); });
+            if (clearBtn) clearBtn.addEventListener('click', function(){ if (select) select.value='all'; applyFilter('all'); });
+            applyFilter(select ? select.value : 'all');
+        })();
+
+        // GALERIA por producto: click/swipe cicla imágenes
+        (function(){
+            const items = document.querySelectorAll('.product-item[data-images]');
+            items.forEach(item=>{
+                const images = item.getAttribute('data-images').split('|').map(s=>s.trim()).filter(Boolean);
+                const imgEl = item.querySelector('.product-main');
+                const counter = item.querySelector('.image-counter');
+                if (!images.length || !imgEl) return;
+                let idx = 0;
+                // precarga
+                images.forEach(src => { const i = new Image(); i.src = src; });
+                function show(i){
+                    idx = (i + images.length) % images.length;
+                    imgEl.src = images[idx];
+                    if (counter) counter.textContent = (idx+1) + '/' + images.length;
+                }
+                const trigger = item.querySelector('.product-gallery') || imgEl;
+                if (trigger){
+                    trigger.style.cursor = 'pointer';
+                    trigger.addEventListener('click', function(e){
+                        if (e.target.closest('a')) return;
+                        show(idx+1);
+                    });
+                    // swipe
+                    let startX = null;
+                    trigger.addEventListener('touchstart', function(e){ startX = e.touches && e.touches[0] && e.touches[0].clientX; }, {passive:true});
+                    trigger.addEventListener('touchend', function(e){
+                        if (startX === null) return;
+                        const endX = e.changedTouches && e.changedTouches[0] && e.changedTouches[0].clientX;
+                        const diff = startX - endX;
+                        if (Math.abs(diff) > 30) show(diff > 0 ? idx+1 : idx-1);
+                        startX = null;
+                    }, {passive:true});
+                }
+                show(0);
+            });
+        })();
+    });
+    </script>
+    <!-- ...existing code... -->
 </body>
 
 </html>
