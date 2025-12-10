@@ -98,18 +98,23 @@
                     <a href="#" class="nav-link dropdown-toggle menu-toggle">Productos</a>
                     <div class="dropdown-menu bg-light m-0">
                         <div class="dropdown-submenu">
-                            <a class="dropdown-item d-flex justify-content-between align-items-center submenu-toggle" href="#">
+                            <a class="dropdown-item d-flex justify-content-between align-items-center submenu-toggle"
+                                href="#">
                                 Discos <span>&#9654;</span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="Discos.html">Rastras y Arado</a></li>
-                                <li><a class="dropdown-item" href="DiscoChico.html">Sembradoras</a></li>
-                                <li><a class="dropdown-item" href="DiscoMarcadores.html">Plantadores y Marcadores</a>
+                                <li><a class="dropdown-item" href="Discos.html">Discos Concavos Lisos y Dentados</a>
+                                </li>
+                                <li><a class="dropdown-item" href="PlanoLiso.html">Discos Planos Lisos y Dentados</a>
+                                </li>
+                                <li><a class="dropdown-item" href="DiscoChico.html">Discos Ondulados</a></li>
+                                <li><a class="dropdown-item" href="DiscoMarcadores.html">Discos Estrellas</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="dropdown-submenu">
-                            <a class="dropdown-item d-flex justify-content-between align-items-center submenu-toggle" href="#">
+                            <a class="dropdown-item d-flex justify-content-between align-items-center submenu-toggle"
+                                href="#">
                                 Fruticultura <span>&#9654;</span>
                             </a>
                             <ul class="dropdown-menu">
@@ -461,58 +466,58 @@
     <!-- Fin chat bottpres -->
 
     <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Menú principal por clic en móviles
-    document.querySelectorAll('.menu-toggle').forEach(function(toggle) {
-        toggle.addEventListener('click', function(e) {
-            if (window.innerWidth < 992) {
-                e.preventDefault();
-                e.stopPropagation();
-                var parent = this.parentElement;
-                var menu = parent.querySelector('.dropdown-menu');
-                document.querySelectorAll('.nav-item.dropdown .dropdown-menu').forEach(function(m) {
-                    if (m !== menu) m.classList.remove('show');
+        document.addEventListener('DOMContentLoaded', function () {
+            // Menú principal por clic en móviles
+            document.querySelectorAll('.menu-toggle').forEach(function (toggle) {
+                toggle.addEventListener('click', function (e) {
+                    if (window.innerWidth < 992) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        var parent = this.parentElement;
+                        var menu = parent.querySelector('.dropdown-menu');
+                        document.querySelectorAll('.nav-item.dropdown .dropdown-menu').forEach(function (m) {
+                            if (m !== menu) m.classList.remove('show');
+                        });
+                        menu.classList.toggle('show');
+                    }
                 });
-                menu.classList.toggle('show');
-            }
-        });
-    });
+            });
 
-    // Submenú por clic en móviles
-    document.querySelectorAll('.submenu-toggle').forEach(function(toggle) {
-        toggle.addEventListener('click', function(e) {
-            if (window.innerWidth < 992) {
-                e.preventDefault();
-                e.stopPropagation();
-                var parent = this.closest('.dropdown-submenu');
-                parent.classList.toggle('open');
-                parent.parentElement.querySelectorAll('.dropdown-submenu').forEach(function(sub) {
-                    if (sub !== parent) sub.classList.remove('open');
+            // Submenú por clic en móviles
+            document.querySelectorAll('.submenu-toggle').forEach(function (toggle) {
+                toggle.addEventListener('click', function (e) {
+                    if (window.innerWidth < 992) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        var parent = this.closest('.dropdown-submenu');
+                        parent.classList.toggle('open');
+                        parent.parentElement.querySelectorAll('.dropdown-submenu').forEach(function (sub) {
+                            if (sub !== parent) sub.classList.remove('open');
+                        });
+                    }
                 });
-            }
-        });
-    });
-
-    // Cerrar menús al hacer clic fuera en móviles
-    document.addEventListener('click', function(e) {
-        if (window.innerWidth < 992) {
-            document.querySelectorAll('.nav-item.dropdown .dropdown-menu').forEach(function(menu) {
-                menu.classList.remove('show');
             });
-            document.querySelectorAll('.dropdown-submenu').forEach(function(sub) {
-                sub.classList.remove('open');
-            });
-        }
-    });
 
-    // Evitar cierre al interactuar dentro del menú
-    document.querySelectorAll('.dropdown-menu').forEach(function(menu) {
-        menu.addEventListener('click', function(e) {
-            e.stopPropagation();
+            // Cerrar menús al hacer clic fuera en móviles
+            document.addEventListener('click', function (e) {
+                if (window.innerWidth < 992) {
+                    document.querySelectorAll('.nav-item.dropdown .dropdown-menu').forEach(function (menu) {
+                        menu.classList.remove('show');
+                    });
+                    document.querySelectorAll('.dropdown-submenu').forEach(function (sub) {
+                        sub.classList.remove('open');
+                    });
+                }
+            });
+
+            // Evitar cierre al interactuar dentro del menú
+            document.querySelectorAll('.dropdown-menu').forEach(function (menu) {
+                menu.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                });
+            });
         });
-    });
-});
-</script>
+    </script>
 
 </body>
 
