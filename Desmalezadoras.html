@@ -35,6 +35,61 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <style>
+    /* Estilos para thumbs e igualdad de tamaños */
+    .product-item img.img-fluid { width:100%; height:220px; object-fit:cover; display:block; }
+    .image-gallery { display:flex; flex-wrap:nowrap; gap:8px; margin-top:8px; }
+    .image-gallery img { width:86px; height:86px; object-fit:cover; border-radius:4px; border:1px solid #ddd; }
+    .filter-bar { display:flex; justify-content:center; gap:12px; align-items:center; margin:18px 0; }
+    .filter-bar select { max-width:320px; }
+
+    /* Botones más pequeños dentro del overlay de cada producto */
+    .product-overlay { display:flex; flex-direction:column; gap:6px; align-items:center; }
+    .product-overlay .btn { padding: .25rem .45rem; font-size: .78rem; line-height:1; border-radius:.25rem; }
+    .product-overlay .btn.btn-sm { padding: .18rem .35rem; font-size:.72rem; }
+    .product-overlay .btn.btn-warning { padding: .28rem .5rem; font-size:.8rem; }
+    .product-overlay .btn.btn-square { width:34px; height:34px; padding:0; display:inline-flex; align-items:center; justify-content:center; }
+
+    .overlay-upload-btn { margin-top:6px; display:flex; gap:6px; align-items:center; }
+
+    /* Galería dentro de la imagen (overlay) */
+    .position-relative { position:relative; }
+    /* fondo transparente para miniaturas: imagen limpia */
+    .position-relative > .image-gallery { position:absolute; left:10px; right:10px; bottom:8px; background: transparent; padding:4px; border-radius:6px; display:flex; gap:6px; overflow-x:auto; align-items:center; }
+    .position-relative > .image-gallery img { width:56px; height:56px; object-fit:cover; border-radius:4px; border:1px solid rgba(255,255,255,0.85); box-shadow:0 1px 4px rgba(0,0,0,0.12); }
+    .position-relative > .image-gallery img:hover { transform:scale(1.04); box-shadow:0 4px 10px rgba(0,0,0,0.18); }
+
+    /* En pantallas pequeñas, miniaturas más chicas */
+    @media (max-width:576px) {
+        .position-relative > .image-gallery img { width:44px; height:44px; }
+        .product-item img.img-fluid { height:160px; }
+    }
+
+    /* Asegurar que las cards se alineen en filas pares y ocupen toda la altura del contenedor */
+    .row.gx-4 > [class*="col-"] { display:flex; }
+    .product-item { display:flex; flex-direction:column; width:100%; height:100%; }
+    .product-item .position-relative { flex: 0 0 auto; }
+    .product-item .text-center.p-4 { margin-top:auto; }
+
+    /* Móvil: reducir altura de imagen para mejor visual */
+    @media (max-width:576px) {
+        .product-item img.img-fluid { height:180px; }
+        .image-gallery img { width:64px; height:64px; }
+    }
+    
+    /* Flechas de navegación (carrusel) dentro del overlay */
+    /* Usar color principal del sitio (#5B8C51) para combinar */
+    .gallery-arrow {
+        position:absolute; top:50%; transform:translateY(-50%); z-index:40; background:#ffffff00; color:#000000; border:0; width:36px; height:36px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; cursor:pointer; box-shadow:0 2px 6px rgba(0,0,0,0.18);
+    }
+    .gallery-arrow.left { left:10px; }
+    .gallery-arrow.right { right:10px; }
+    .gallery-arrow:active { transform:translateY(-50%) scale(.98); }
+    @media (max-width:576px) { .gallery-arrow { width:30px; height:30px; } }
+
+    /* iconos dentro de flechas: usar tamaño y fuente consistente */
+    .gallery-arrow { font-size:20px; line-height:1; }
+    </style>
 </head>
 
 <body>
@@ -165,6 +220,13 @@
             <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
                 <p class="section-title bg-white text-center text-primary px-3">Nuestros Productos</p>
                 <h1 class="mb-5">DESMALEZADORAS</h1>
+            </div>
+
+            <div class="filter-bar">
+                <label for="brandFilter" class="mb-0">Filtrar por modelo:</label>
+                <select id="brandFilter" class="form-select">
+                    <option value="all">Todas</option>
+                </select>
             </div>
 
             <!-- ------------ Grupo N°2 De 4 imagenes --------------------- -->
@@ -4540,8 +4602,335 @@
                 });
             });
         });
-    </script>
+        </script>
 
-</body>
+        <script>
+        // Script para filtro de marcas e integración de subida múltiple de imágenes (previews)
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mapeo de marcas → códigos (puede ampliarse)
+            const brands = {
+                "ACEPLA": ["OND2010"],
+                "AEV": ["OND643","OND3705","OND3706"],
+                "ALASIA": ["OND924"],
+                "AGROAR": ["OND943","OND2030","OND2031","OND2032","OND2033","OND2035","OND2037"],
+                "AGROMEC": ["OND1600","OND1601","OND1657","OND1602","ONT1680","OND1681","OND1682","OND2018","OND3703","OND3704","ONT3707"],
+                "AGROSUD": ["OND800","OND2027","OND2028","OND3002"],
+                "ANCA": ["OND2005","ONT2036"],
+                "AVANTI": ["OND2002","OND2021"],
+                "BAIMA": ["OND494","OND1124","OND1125","OND2011","OND2012","OND2016","OND2017","OND3003","OND3004"],
+                "CERUTTI": ["OND919","OND921","OND922"],
+                "CORTI": ["OND543-544"],
+                "DE GRANDE": ["OND1120","OND1123","OND1129","OND491","OND492"],
+                "DEUYZ - TATU": ["OND862","OND863"],
+                "DOBLE TT": ["OND395","OND600"],
+                "GIAROLI": ["OND3001"],
+                "GROSSPAL": ["OND320","OND1197"],
+                "HILCOR": ["OND562","OND521","OND540","OND569","OND570","OND2015"],
+                "JLC": ["OND180","OND192","OND196","OND197","OND198"],
+                "KERN": ["OND2024","OND2025"],
+                "LOMBARDI": ["OND495"],
+                "LOMBARDO": ["OND2007","OND2008","OND2009","OND2022"],
+                "MAINERO Y SCHIARRE": ["OND579","OND595"],
+                "METALBERT": ["OND1061","OND1062","OND1063"],
+                "MARINOZZI": ["OND1000"],
+                "MONTANA": ["OND580"],
+                "NAVA": ["OND1999","OND2000","OND2001"],
+                "PEREZ": ["OND2003","OND2003-12","OND2004","OND3000"],
+                "RACCOLTA": ["OND2026"],
+                "TATU MARCHERSAN": ["OND917"],
+                "VARGAS": ["OND918","OND920"],
+                "VARIOS": ["OND320","OND561-562","OND916","OND923","OND1064","OND1065","OND1304","OND1999","OND2038"],
+                "YOMEL": ["OND398","OND399","OND500","OND501","OND509","OND510","OND511","OND512","OND1518","OND4998"]
+            };
 
-</html>
+            const normalize = s => String(s||'').toUpperCase().replace(/[^A-Z0-9]/g,'');
+
+            // Poblar select con marcas
+            const brandFilter = document.getElementById('brandFilter');
+            Object.keys(brands).forEach(b => {
+                const opt = document.createElement('option');
+                opt.value = b;
+                opt.textContent = b;
+                brandFilter.appendChild(opt);
+            });
+
+            // Inferir marca desde la ruta de la imagen
+            function inferBrandFromSrc(src) {
+                try {
+                    const m = src.match(/Desmalesadora\/(?:[^\/]*\/)??([^\/\%?#]+)\//i) || src.match(/Desmalesadora\/(?:([^\/]+))\//i);
+                    if (m && m[1]) return m[1];
+                    // fallback: tomar carpeta justo después de "Desmalesadora/"
+                    const idx = src.toLowerCase().indexOf('desmalesadora/');
+                    if (idx>=0) {
+                        const sub = src.substring(idx+'desmalesadora/'.length).split('/')[0];
+                        return sub || '';
+                    }
+                } catch(e){}
+                return '';
+            }
+
+            // Preparar cada producto: asignar data-brand-normalized y preparar galería de imágenes desde código
+            const productItems = Array.from(document.querySelectorAll('.product-item'));
+            productItems.forEach(function (item, idx) {
+                const img = item.querySelector('img');
+                const src = img ? img.getAttribute('src') : '';
+                const inferred = inferBrandFromSrc(src).replace(/[-_]/g,' ');
+                const normalized = normalize(inferred);
+                item.dataset.brand = inferred || '';
+                item.dataset.brandNormalized = normalized;
+
+                // extraer código OND desde el título descriptivo si existe
+                const titleEl = item.querySelector('.text-center a') || item.querySelector('.text-center .h5');
+                let code = '';
+                if (titleEl) {
+                    const m = (titleEl.textContent || '').match(/(OND[0-9\-]+)/i);
+                    if (m) code = m[1].toUpperCase();
+                }
+                item.dataset.code = code;
+
+                // función para crear/obtener gallery
+                    function ensureGallery() {
+                    let gallery = item.querySelector('.image-gallery');
+                    if (!gallery) {
+                        gallery = document.createElement('div');
+                        gallery.className = 'image-gallery';
+                        const imgContainer = item.querySelector('.position-relative') || item;
+                        // insertar DENTRO del contenedor de imagen para que la galería quede sobre la misma imagen
+                        imgContainer.appendChild(gallery);
+                        gallery.style.display = 'flex';
+                        gallery.style.overflowX = 'auto';
+                        gallery.style.padding = '6px 0';
+                    }
+                    return gallery;
+                }
+
+                // crear gallery a partir de URLs
+                function createGalleryFromUrls(urls) {
+                    if (!urls || !urls.length) return;
+                    const gallery = ensureGallery();
+                    urls.forEach(function (u) {
+                        const t = document.createElement('img');
+                        t.src = u;
+                        t.alt = code || 'imagen';
+                        gallery.appendChild(t);
+                    });
+                }
+
+                // si el elemento trae data-images (separadas por | o ,) crear la galería
+                const dataImgs = item.dataset.images;
+                if (dataImgs) {
+                    const urls = dataImgs.split(/\||,/).map(s => s.trim()).filter(Boolean);
+                    createGalleryFromUrls(urls);
+                }
+
+                // Intentar detectar automáticamente variantes numeradas (01,02..) junto a la imagen principal
+                function loadImage(url) {
+                    return new Promise(function (resolve, reject) {
+                        const i = new Image();
+                        i.onload = function () { resolve(url); };
+                        i.onerror = function () { reject(url); };
+                        i.src = url;
+                    });
+                }
+
+                function tryDetectNumberedVariants(src, max=6) {
+                    const results = [];
+                    const m = src.match(/(.*?)(?:[ _-]?0?1)(\.[^./]+)$/i);
+                    let base, ext;
+                    if (m) { base = m[1]; ext = m[2]; }
+                    else {
+                        const m2 = src.match(/(.*?)(\.[^./]+)$/i);
+                        if (!m2) return Promise.resolve([]);
+                        base = m2[1]; ext = m2[2];
+                    }
+                    // patrones a probar: ' 02', '02', '_02', '-02'
+                    const pads = function(n){ return n<10? '0'+n : String(n); };
+                    const tries = [];
+                    for (let i=2;i<=max;i++) {
+                        const p = pads(i);
+                        tries.push(base + ' ' + p + ext);
+                        tries.push(base + p + ext);
+                        tries.push(base + '_' + p + ext);
+                        tries.push(base + '-' + p + ext);
+                    }
+                    // probar secuencialmente y acumular los que existan
+                    return Promise.all(tries.map(u => loadImage(u).then(()=>u).catch(()=>null))).then(arr=>arr.filter(Boolean));
+                }
+
+                // Si aún no hay miniaturas, intentar detectar variantes automáticamente
+                (function autoDetect(){
+                    const gallery = item.querySelector('.image-gallery');
+                    if (gallery && gallery.querySelectorAll('img').length) return;
+                    if (!src) return;
+                    tryDetectNumberedVariants(src, 6).then(function(found){
+                        if (found && found.length) createGalleryFromUrls(found);
+                        // notificar que la galería cambió
+                        item.dispatchEvent(new CustomEvent('gallery:imagesUpdated'));
+                    }).catch(()=>{});
+                })();
+
+                // click en miniatura para establecer imagen principal
+                function attachThumbnailHandlers() {
+                    const gallery = item.querySelector('.image-gallery');
+                    if (!gallery) return;
+                    const thumbs = gallery.querySelectorAll('img');
+                    thumbs.forEach(function(th, index){
+                        th.style.cursor = 'pointer';
+                        th.addEventListener('click', function(){
+                            if (img) {
+                                img.src = th.src;
+                                // si se hace click, actualizar primary index en el scope del listener mediante evento
+                                item.dispatchEvent(new CustomEvent('gallery:thumbnailClicked', { detail: { src: th.src } }));
+                            }
+                        });
+                    });
+                }
+
+                // re-attach handlers tras actualización
+                item.addEventListener('gallery:imagesUpdated', function(){ attachThumbnailHandlers(); });
+                // attach ahora si ya existen
+                attachThumbnailHandlers();
+
+                // Preparar comportamiento de imágenes: hover muestra segunda imagen (si existe), click/tap cambia imagen principal
+                if (img) {
+                    const originalSrc = img.src;
+                    let currentPrimaryIndex = 0; // índice en images[] que está actualmente en la vista principal
+                    let images = [originalSrc];
+
+                    function getGalleryUrls() {
+                        const gallery = item.querySelector('.image-gallery');
+                        if (!gallery) return [];
+                        return Array.from(gallery.querySelectorAll('img')).map(i => i.src).filter(Boolean);
+                    }
+
+                    function refreshImages() {
+                        const galleryUrls = getGalleryUrls();
+                        images = [originalSrc].concat(galleryUrls);
+                        // si currentPrimaryIndex fuera mayor al largo, resetear
+                        if (currentPrimaryIndex >= images.length) currentPrimaryIndex = 0;
+                    }
+
+                    // iniciar lista
+                    refreshImages();
+
+                    // hover: mostrar la segunda imagen temporalmente (si existe)
+                    img.addEventListener('mouseenter', function () {
+                        refreshImages();
+                        if (images.length > 1) {
+                            img.src = images[1];
+                        }
+                    });
+                    img.addEventListener('mouseleave', function () {
+                        // restaurar la imagen actualmente primaria
+                        refreshImages();
+                        img.src = images[currentPrimaryIndex] || originalSrc;
+                    });
+
+                    // click / tap: avanzar a la siguiente imagen y convertirla en principal
+                    function advancePrimary() {
+                        refreshImages();
+                        if (images.length <= 1) return;
+                        currentPrimaryIndex = (currentPrimaryIndex + 1) % images.length;
+                        img.src = images[currentPrimaryIndex];
+                        // actualizar originalSrc para que futuras restauraciones usen la nueva principal
+                        // si currentPrimaryIndex == 0, originalSrc vuelve a la primera
+                        // (no necesitamos cambiar the DOM src besides img.src)
+                    }
+
+                    img.addEventListener('click', function (e) { advancePrimary(); });
+                    img.addEventListener('touchstart', function (e) { advancePrimary(); }, {passive:true});
+
+                    // permitir retroceder
+                    function retreatPrimary() {
+                        refreshImages();
+                        if (images.length <= 1) return;
+                        currentPrimaryIndex = (currentPrimaryIndex - 1 + images.length) % images.length;
+                        img.src = images[currentPrimaryIndex];
+                    }
+
+                    // crear flechas si no existen y asignar eventos
+                    try {
+                        const pos = item.querySelector('.position-relative') || item;
+                        let leftBtn = pos.querySelector('.gallery-arrow.left');
+                        let rightBtn = pos.querySelector('.gallery-arrow.right');
+                        if (!leftBtn) {
+                            leftBtn = document.createElement('button');
+                            leftBtn.className = 'gallery-arrow left';
+                            leftBtn.innerHTML = '&#8249;';
+                            pos.appendChild(leftBtn);
+                        }
+                        if (!rightBtn) {
+                            rightBtn = document.createElement('button');
+                            rightBtn.className = 'gallery-arrow right';
+                            rightBtn.innerHTML = '&#8250;';
+                            pos.appendChild(rightBtn);
+                        }
+                        leftBtn.addEventListener('click', function(e){ e.stopPropagation(); retreatPrimary(); });
+                        rightBtn.addEventListener('click', function(e){ e.stopPropagation(); advancePrimary(); });
+                    } catch (err) {}
+
+                    // cuando un thumbnail es clickeado, actualizar el índice primario
+                    item.addEventListener('gallery:thumbnailClicked', function(e){
+                        try { refreshImages(); const src = e && e.detail && e.detail.src; if (src) { const idx = images.indexOf(src); if (idx>=0) currentPrimaryIndex = idx; } } catch(err){}
+                    });
+                }
+
+            });
+
+            // función pública para agregar imágenes a un producto desde código
+            window.addImagesToProduct = function (identifier, urls) {
+                if (!identifier || !urls || !urls.length) return null;
+                let item = null;
+                // buscar por código (exacto)
+                item = document.querySelector('.product-item[data-code="' + identifier + '"]');
+                if (!item && typeof identifier === 'number') {
+                    const items = document.querySelectorAll('.product-item');
+                    item = items[identifier] || null;
+                }
+                if (!item) {
+                    // buscar por coincidencia en texto
+                    item = Array.from(document.querySelectorAll('.product-item')).find(it => (it.textContent||'').toUpperCase().includes(String(identifier).toUpperCase()));
+                }
+                if (!item) return null;
+                const gallery = item.querySelector('.image-gallery') || (function(){ const g=document.createElement('div'); g.className='image-gallery'; const c=item.querySelector('.position-relative')||item; c.appendChild(g); g.style.display='flex'; g.style.overflowX='auto'; g.style.padding='6px 0'; return g; })();
+                urls.forEach(function(u){ const i=document.createElement('img'); i.src=u; gallery.appendChild(i); });
+                // notificar a la card que la galería cambió para re-attach
+                try { item.dispatchEvent(new CustomEvent('gallery:imagesUpdated')); } catch(e){}
+                // retornar gallery y refrescará en el siguiente hover/click
+                return gallery;
+            };
+
+            // Construir mapa código -> marca para fallback en filtrado
+            const codeToBrand = {};
+            Object.keys(brands).forEach(function(b){ (brands[b]||[]).forEach(function(code){ if(code) codeToBrand[String(code).toUpperCase().replace(/[^A-Z0-9\-]/g,'')] = normalize(b); }); });
+
+            // Filtrado por select con fallback por codigo OND
+            brandFilter.addEventListener('change', function () {
+                const val = this.value;
+                const normVal = normalize(val);
+                document.querySelectorAll('.product-item').forEach(function (item) {
+                    const col = item.closest('.col-md-6, .col-lg-4, .col-xl-3');
+                    if (!col) return;
+                    if (val === 'all') { col.style.display = ''; return; }
+                    const itemNorm = item.dataset.brandNormalized || '';
+                    const itemCode = (item.dataset.code || '').toUpperCase();
+                    let show = false;
+                    if (itemNorm && itemNorm === normVal) show = true;
+                    // fallback: si el codigo OND pertenece a la marca
+                    if (!show && itemCode) {
+                        const mapped = codeToBrand[itemCode] || '';
+                        if (mapped && mapped === normVal) show = true;
+                    }
+                    // ultimo recurso: buscar coincidencia textual en carpeta/brand
+                    if (!show && (item.dataset.brand||'').toUpperCase().indexOf(val.toUpperCase()) !== -1) show = true;
+                    col.style.display = show ? '' : 'none';
+                });
+                // tras filtrar, forzar reflow para que las cards queden alineadas (en móvil y escritorio)
+                setTimeout(function(){ document.querySelectorAll('.row.gx-4').forEach(r=>r.offsetHeight); }, 50);
+            });
+        });
+        </script>
+
+    </body>
+
+    </html>
