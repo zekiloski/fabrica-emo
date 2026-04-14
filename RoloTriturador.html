@@ -35,6 +35,61 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <style>
+    /* Estilos para thumbs e igualdad de tamaños */
+    .product-item img.img-fluid { width:100%; height:220px; object-fit:cover; display:block; }
+    .image-gallery { display:flex; flex-wrap:nowrap; gap:8px; margin-top:8px; }
+    .image-gallery img { width:86px; height:86px; object-fit:cover; border-radius:4px; border:1px solid #ddd; }
+    .filter-bar { display:flex; justify-content:center; gap:12px; align-items:center; margin:18px 0; }
+    .filter-bar select { max-width:320px; }
+
+    /* Botones más pequeños dentro del overlay de cada producto */
+    .product-overlay { display:flex; flex-direction:column; gap:6px; align-items:center; }
+    .product-overlay .btn { padding: .25rem .45rem; font-size: .78rem; line-height:1; border-radius:.25rem; }
+    .product-overlay .btn.btn-sm { padding: .18rem .35rem; font-size:.72rem; }
+    .product-overlay .btn.btn-warning { padding: .28rem .5rem; font-size:.8rem; }
+    .product-overlay .btn.btn-square { width:34px; height:34px; padding:0; display:inline-flex; align-items:center; justify-content:center; }
+
+    .overlay-upload-btn { margin-top:6px; display:flex; gap:6px; align-items:center; }
+
+    /* Galería dentro de la imagen (overlay) */
+    .position-relative { position:relative; }
+    /* fondo transparente para miniaturas: imagen limpia */
+    .position-relative > .image-gallery { position:absolute; left:10px; right:10px; bottom:8px; background: transparent; padding:4px; border-radius:6px; display:flex; gap:6px; overflow-x:auto; align-items:center; }
+    .position-relative > .image-gallery img { width:56px; height:56px; object-fit:cover; border-radius:4px; border:1px solid rgba(255,255,255,0.85); box-shadow:0 1px 4px rgba(0,0,0,0.12); }
+    .position-relative > .image-gallery img:hover { transform:scale(1.04); box-shadow:0 4px 10px rgba(0,0,0,0.18); }
+
+    /* En pantallas pequeñas, miniaturas más chicas */
+    @media (max-width:576px) {
+        .position-relative > .image-gallery img { width:44px; height:44px; }
+        .product-item img.img-fluid { height:160px; }
+    }
+
+    /* Asegurar que las cards se alineen en filas pares y ocupen toda la altura del contenedor */
+    .row.gx-4 > [class*="col-"] { display:flex; }
+    .product-item { display:flex; flex-direction:column; width:100%; height:100%; }
+    .product-item .position-relative { flex: 0 0 auto; }
+    .product-item .text-center.p-4 { margin-top:auto; }
+
+    /* Móvil: reducir altura de imagen para mejor visual */
+    @media (max-width:576px) {
+        .product-item img.img-fluid { height:180px; }
+        .image-gallery img { width:64px; height:64px; }
+    }
+    
+    /* Flechas de navegación (carrusel) dentro del overlay */
+    /* Usar color principal del sitio (#5B8C51) para combinar */
+    .gallery-arrow {
+        position:absolute; top:50%; transform:translateY(-50%); z-index:40; background:#ffffff00; color:#000000; border:0; width:36px; height:36px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; cursor:pointer; box-shadow:0 2px 6px rgba(0,0,0,0.18);
+    }
+    .gallery-arrow.left { left:10px; }
+    .gallery-arrow.right { right:10px; }
+    .gallery-arrow:active { transform:translateY(-50%) scale(.98); }
+    @media (max-width:576px) { .gallery-arrow { width:30px; height:30px; } }
+
+    /* iconos dentro de flechas: usar tamaño y fuente consistente */
+    .gallery-arrow { font-size:20px; line-height:1; }
+    </style>
 </head>
 
 <body>
@@ -167,29 +222,229 @@
                 <p class="section-title bg-white text-center text-primary px-3">Nuestros Productos</p>
                 <h1 class="mb-5">ROLO TRITURADOR</h1>
             </div>
+
+            <div class="filter-bar">
+                <label for="brandFilter" class="mb-0">Filtrar por marca:</label>
+                <select id="brandFilter" class="form-select">
+                    <option value="all">Todas</option>
+                </select>
+            </div>
+
+            <!-- Grupo N°1 de 4 imagenes -->
             <div class="row gx-4">
+                <!-- Producto 1 -->
                 <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="product-item">
                         <div class="position-relative">
                             <img class="img-fluid"
-                                src="img/02. NO REDONDOS/Trituradora/ONT2029 Rolo Triturador 750x100x8.png" alt="">
+                                src="img/02. NO REDONDOS/Trituradora/Aireadora/ONT4003/ONT4003 01.png" alt="">
+                            <div class="product-overlay">
+                                <a class="btn btn-warning" href="img/pdf/Rolo Triturador/Rolo Triturador.pdf"
+                                    target="_blank" role="button">Descargar Lista PDF</a>
+                            </div>
+                        </div>
+                        <div class="text-center p-4">
+                            <a class="d-block h5" href="">ONT4003 Cuchilla Aireadora</a>
+                            <span class="text-primary me-1">Espesores
+                            </span>
+                            <br>
+                            <span class="text-decoration-underline">12,5mm</span>
+                            <br>
+                            <span class="text-decoration-underline">374,5 x 170 (3 agujeros de Ø17)</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fin Producto 1 -->
+
+                <!-- Producto 2 -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="product-item">
+                        <div class="position-relative">
+                            <img class="img-fluid"
+                                src="img/02. NO REDONDOS/Trituradora/Aireadora/ONT4007/ONT4007 02.png" alt="">
                             <div class="product-overlay">
                                 <a class="btn btn-warning" href="img/pdf/Rolo Triturador/Rolo Triturador.pdf"
                                     target="_blank" role="button">Descargar Lista PDF</a>
 
-                                <!-- <a class="btn btn-square btn-secondary rounded-circle m-1"
-                                    href="img/pdf/Rolo Triturador/Rolo Triturador.pdf" target="_blank"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-filetype-pdf" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5zM1.6 11.85H0v3.999h.791v-1.342h.803q.43 0 .732-.173.305-.175.463-.474a1.4 1.4 0 0 0 .161-.677q0-.375-.158-.677a1.2 1.2 0 0 0-.46-.477q-.3-.18-.732-.179m.545 1.333a.8.8 0 0 1-.085.38.57.57 0 0 1-.238.241.8.8 0 0 1-.375.082H.788V12.48h.66q.327 0 .512.181.185.183.185.522m1.217-1.333v3.999h1.46q.602 0 .998-.237a1.45 1.45 0 0 0 .595-.689q.196-.45.196-1.084 0-.63-.196-1.075a1.43 1.43 0 0 0-.589-.68q-.396-.234-1.005-.234zm.791.645h.563q.371 0 .609.152a.9.9 0 0 1 .354.454q.118.302.118.753a2.3 2.3 0 0 1-.068.592 1.1 1.1 0 0 1-.196.422.8.8 0 0 1-.334.252 1.3 1.3 0 0 1-.483.082h-.563zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638z" />
-                                    </svg></a>
-                                <a class="btn btn-square btn-secondary rounded-circle m-1"
-                                    href="https://wa.me/3572619825" target="_blank">
-                                    <i class="bi bi-whatsapp"></i>
-                                </a> -->
+                            </div>
+                        </div>
+                        <div class="text-center p-4">
+                            <a class="d-block h5" href="">ONT4007 Cuchilla Aireadora</a>
+                            <span class="text-primary me-1">Espesores
+                            </span>
+                            <br>
+                            <span class="text-decoration-underline">10mm</span>
+                            <br>
+                            <span class="text-decoration-underline">178 x 100 (2 agujeros de ■17 frezados)</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fin Producto 2 -->
 
+                <!-- Producto 3 -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="product-item">
+                        <div class="position-relative">
+                            <img class="img-fluid"
+                                src="img/02. NO REDONDOS/Trituradora/Dolbi/ONT2041 01.png" alt="">
+                            <div class="product-overlay">
+                                <a class="btn btn-warning" href="img/pdf/Rolo Triturador/Rolo Triturador.pdf"
+                                    target="_blank" role="button">Descargar Lista PDF</a>
+                            </div>
+                        </div>
+                        <div class="text-center p-4">
+                            <a class="d-block h5" href="">ONT2041 Cuchilla Rolo Triturador</a>
+                            <span class="text-primary me-1">Espesores
+                            </span>
+                            <br>
+                            <span class="text-decoration-underline">10mm</span>
+                            <br>
+                            <span class="text-decoration-underline">750 x 115 (4 agujeros de ■14)</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fin Producto 3 -->
 
+                <!-- Producto 4 -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="product-item">
+                        <div class="position-relative">
+                            <img class="img-fluid"
+                                src="img/02. NO REDONDOS/Trituradora/Fontana/ONT2039/ONT2039 01.png" alt="">
+                            <div class="product-overlay">
+                                <a class="btn btn-warning" href="img/pdf/Rolo Triturador/Rolo Triturador.pdf"
+                                    target="_blank" role="button">Descargar Lista PDF</a>
+                            </div>
+                        </div>
+                        <div class="text-center p-4">
+                            <a class="d-block h5" href="">ONT2039 Cuchilla Rolo Trituradora</a>
+                            <span class="text-primary me-1">Espesores
+                            </span>
+                            <br>
+                            <span class="text-decoration-underline">10mm</span>
+                            <br>
+                            <span class="text-decoration-underline">750 x 170 (4 agujeros de Ø16,5)</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fin Producto 4 -->
+
+            </div>
+            <!-- Fin de Grupo N°1 de 4 imagenes -->
+
+            <!-- Grupo N°2 de 4 imagenes -->
+            <div class="row gx-4">
+                <!-- Producto 1 -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="product-item">
+                        <div class="position-relative">
+                            <img class="img-fluid"
+                                src="img/02. NO REDONDOS/Trituradora/Fontana/ONT5019/ONT5019 02.png" alt="">
+                            <div class="product-overlay">
+                                <a class="btn btn-warning" href="img/pdf/Rolo Triturador/Rolo Triturador.pdf"
+                                    target="_blank" role="button">Descargar Lista PDF</a>
+                            </div>
+                        </div>
+                        <div class="text-center p-4">
+                            <a class="d-block h5" href="">ONT5019 Cuchilla Aireadora</a>
+                            <span class="text-primary me-1">Espesores
+                            </span>
+                            <br>
+                            <span class="text-decoration-underline">10mm</span>
+                            <br>
+                            <span class="text-decoration-underline">374,5 x 170 (3 agujeros de Ø17)</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fin Producto 1 -->
+
+                <!-- Producto 2 -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="product-item">
+                        <div class="position-relative">
+                            <img class="img-fluid"
+                                src="img/02. NO REDONDOS/Trituradora/Metal Agro/ONT2042/ONT2042 01.png" alt="">
+                            <div class="product-overlay">
+                                <a class="btn btn-warning" href="img/pdf/Rolo Triturador/Rolo Triturador.pdf"
+                                    target="_blank" role="button">Descargar Lista PDF</a>
+
+                            </div>
+                        </div>
+                        <div class="text-center p-4">
+                            <a class="d-block h5" href="">ONT2042 Cuchilla Rolo Triturador</a>
+                            <span class="text-primary me-1">Espesores
+                            </span>
+                            <br>
+                            <span class="text-decoration-underline">10mm</span>
+                            <br>
+                            <span class="text-decoration-underline">749,5 x 100,5 (4 agujeros de Ø17)</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fin Producto 2 -->
+
+                <!-- Producto 3 -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="product-item">
+                        <div class="position-relative">
+                            <img class="img-fluid"
+                                src="img/02. NO REDONDOS/Trituradora/Metal Agro/ONT2049/ONT2049 02.png" alt="">
+                            <div class="product-overlay">
+                                <a class="btn btn-warning" href="img/pdf/Rolo Triturador/Rolo Triturador.pdf"
+                                    target="_blank" role="button">Descargar Lista PDF</a>
+                            </div>
+                        </div>
+                        <div class="text-center p-4">
+                            <a class="d-block h5" href="">ONT2049 Cuchilla Trituradora</a>
+                            <span class="text-primary me-1">Espesores
+                            </span>
+                            <br>
+                            <span class="text-decoration-underline">10mm</span>
+                            <br>
+                            <span class="text-decoration-underline">375 x 115 (2 agujeros de Ø17)</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fin Producto 3 -->
+
+                <!-- Producto 4 -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="product-item">
+                        <div class="position-relative">
+                            <img class="img-fluid"
+                                src="img/02. NO REDONDOS/Trituradora/Metal Agro/ONT2061/ONT2061 01.png" alt="">
+                            <div class="product-overlay">
+                                <a class="btn btn-warning" href="img/pdf/Rolo Triturador/Rolo Triturador.pdf"
+                                    target="_blank" role="button">Descargar Lista PDF</a>
+                            </div>
+                        </div>
+                        <div class="text-center p-4">
+                            <a class="d-block h5" href="">ONT2061 Cuchilla Trituradora</a>
+                            <span class="text-primary me-1">Espesores
+                            </span>
+                            <br>
+                            <span class="text-decoration-underline">10mm</span>
+                            <br>
+                            <span class="text-decoration-underline">749,5 x 127 (4 agujeros de Ø17)</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fin Producto 4 -->
+
+            </div>
+            <!-- Fin de Grupo N°2 de 4 imagenes -->
+
+            <!-- Grupo N°3 de 4 imagenes -->
+            <div class="row gx-4">
+                <!-- Producto 1 -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="product-item">
+                        <div class="position-relative">
+                            <img class="img-fluid"
+                                src="img/02. NO REDONDOS/Trituradora/ONT2029/ONT2029 Rolo Triturador 750x100x8.png" alt="">
+                            <div class="product-overlay">
+                                <a class="btn btn-warning" href="img/pdf/Rolo Triturador/Rolo Triturador.pdf"
+                                    target="_blank" role="button">Descargar Lista PDF</a>
                             </div>
                         </div>
                         <div class="text-center p-4">
@@ -203,99 +458,270 @@
                         </div>
                     </div>
                 </div>
+                <!-- Fin Producto 1 -->
 
+                <!-- Producto 2 -->
                 <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="product-item">
                         <div class="position-relative">
                             <img class="img-fluid"
-                                src="img/02. NO REDONDOS/Trituradora/ONT2029 Rolo Triturador 750x100x8.png" alt="">
+                                src="img/02. NO REDONDOS/Trituradora/ONT2040/ONT2040 02.png" alt="">
                             <div class="product-overlay">
                                 <a class="btn btn-warning" href="img/pdf/Rolo Triturador/Rolo Triturador.pdf"
                                     target="_blank" role="button">Descargar Lista PDF</a>
 
-                                <!-- <a class="btn btn-square btn-secondary rounded-circle m-1"
-                                    href="img/pdf/Rolo Triturador/Rolo Triturador.pdf" target="_blank"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-filetype-pdf" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5zM1.6 11.85H0v3.999h.791v-1.342h.803q.43 0 .732-.173.305-.175.463-.474a1.4 1.4 0 0 0 .161-.677q0-.375-.158-.677a1.2 1.2 0 0 0-.46-.477q-.3-.18-.732-.179m.545 1.333a.8.8 0 0 1-.085.38.57.57 0 0 1-.238.241.8.8 0 0 1-.375.082H.788V12.48h.66q.327 0 .512.181.185.183.185.522m1.217-1.333v3.999h1.46q.602 0 .998-.237a1.45 1.45 0 0 0 .595-.689q.196-.45.196-1.084 0-.63-.196-1.075a1.43 1.43 0 0 0-.589-.68q-.396-.234-1.005-.234zm.791.645h.563q.371 0 .609.152a.9.9 0 0 1 .354.454q.118.302.118.753a2.3 2.3 0 0 1-.068.592 1.1 1.1 0 0 1-.196.422.8.8 0 0 1-.334.252 1.3 1.3 0 0 1-.483.082h-.563zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638z" />
-                                    </svg></a>
-                                <a class="btn btn-square btn-secondary rounded-circle m-1"
-                                    href="https://wa.me/3572619825" target="_blank">
-                                    <i class="bi bi-whatsapp"></i>
-                                </a> -->
-
-
                             </div>
                         </div>
                         <div class="text-center p-4">
-                            <a class="d-block h5" href="">ONT2054 Cuchilla Rolo Triturador</a>
-                            <span class="text-primary me-1">Espesores
-                            </span>
-                            <br>
-                            <span class="text-decoration-underline">8mm</span>
-                            <br>
-                            <span class="text-decoration-underline">500 x 100 (3 agujeros de ■14)</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="product-item">
-                        <div class="position-relative">
-                            <img class="img-fluid"
-                                src="img/02. NO REDONDOS/Trituradora/ONT2029 Rolo Triturador 750x100x8.png" alt="">
-                            <div class="product-overlay">
-                                <a class="btn btn-warning" href="img/pdf/Rolo Triturador/Rolo Triturador.pdf"
-                                    target="_blank" role="button">Descargar Lista PDF</a>
-                                <!-- <a class="btn btn-square btn-secondary rounded-circle m-1"
-                                    href="img/pdf/Rolo Triturador/Rolo Triturador.pdf" target="_blank"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-filetype-pdf" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5zM1.6 11.85H0v3.999h.791v-1.342h.803q.43 0 .732-.173.305-.175.463-.474a1.4 1.4 0 0 0 .161-.677q0-.375-.158-.677a1.2 1.2 0 0 0-.46-.477q-.3-.18-.732-.179m.545 1.333a.8.8 0 0 1-.085.38.57.57 0 0 1-.238.241.8.8 0 0 1-.375.082H.788V12.48h.66q.327 0 .512.181.185.183.185.522m1.217-1.333v3.999h1.46q.602 0 .998-.237a1.45 1.45 0 0 0 .595-.689q.196-.45.196-1.084 0-.63-.196-1.075a1.43 1.43 0 0 0-.589-.68q-.396-.234-1.005-.234zm.791.645h.563q.371 0 .609.152a.9.9 0 0 1 .354.454q.118.302.118.753a2.3 2.3 0 0 1-.068.592 1.1 1.1 0 0 1-.196.422.8.8 0 0 1-.334.252 1.3 1.3 0 0 1-.483.082h-.563zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638z" />
-                                    </svg></a>
-                                <a class="btn btn-square btn-secondary rounded-circle m-1"
-                                    href="https://wa.me/3572619825" target="_blank">
-                                    <i class="bi bi-whatsapp"></i>
-                                </a> -->
-
-
-                            </div>
-                        </div>
-                        <div class="text-center p-4">
-                            <a class="d-block h5" href="">ONT4000 Cuchilla Rolo Triturador</a>
+                            <a class="d-block h5" href="">ONT2040 Cuchilla Rolo Triturador</a>
                             <span class="text-primary me-1">Espesores
                             </span>
                             <br>
                             <span class="text-decoration-underline">10mm</span>
                             <br>
-                            <span class="text-decoration-underline">750 x 115 (4 agujeros de ■12 frezados)</span>
+                            <span class="text-decoration-underline">750 x 125 (4 agujeros de Ø16,5)</span>
                         </div>
                     </div>
                 </div>
+                <!-- Fin Producto 2 -->
+
+                <!-- Producto 3 -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="product-item">
+                        <div class="position-relative">
+                            <img class="img-fluid"
+                                src="img/02. NO REDONDOS/Trituradora/ONT2053/ONT2053 02.png" alt="">
+                            <div class="product-overlay">
+                                <a class="btn btn-warning" href="img/pdf/Rolo Triturador/Rolo Triturador.pdf"
+                                    target="_blank" role="button">Descargar Lista PDF</a>
+                            </div>
+                        </div>
+                        <div class="text-center p-4">
+                            <a class="d-block h5" href="">ONT2053 Cuchilla Rolo Triturador</a>
+                            <span class="text-primary me-1">Espesores
+                            </span>
+                            <br>
+                            <span class="text-decoration-underline">10mm</span>
+                            <br>
+                            <span class="text-decoration-underline">740 x 115 (4 agujeros de ■14)</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fin Producto 3 -->
+
+                <!-- Producto 4 -->
                 <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s">
                     <div class="product-item">
                         <div class="position-relative">
                             <img class="img-fluid"
-                                src="img/02. NO REDONDOS/Trituradora/ONT2029 Rolo Triturador 750x100x8.png" alt="">
+                                src="img/02. NO REDONDOS/Trituradora/ONT2059/ONT2059 02.png" alt="">
+                            <div class="product-overlay">
+                                <a class="btn btn-warning" href="img/pdf/Rolo Triturador/Rolo Triturador.pdf"
+                                    target="_blank" role="button">Descargar Lista PDF</a>
+                            </div>
+                        </div>
+                        <div class="text-center p-4">
+                            <a class="d-block h5" href="">ONT2059 Cuchilla Trituradora Sin Filo </a>
+                            <span class="text-primary me-1">Espesores
+                            </span>
+                            <br>
+                            <span class="text-decoration-underline">12,7mm</span>
+                            <br>
+                            <span class="text-decoration-underline">750 x 100 (4 agujeros de ■14)</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fin Producto 4 -->
+
+            </div>
+            <!-- Fin de Grupo N°3 de 4 imagenes -->
+
+            <!-- Grupo N°4 de 4 imagenes -->
+            <div class="row gx-4">
+                <!-- Producto 1 -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="product-item">
+                        <div class="position-relative">
+                            <img class="img-fluid"
+                                src="img/02. NO REDONDOS/Trituradora/ONT2064/ONT2064 01.png" alt="">
+                            <div class="product-overlay">
+                                <a class="btn btn-warning" href="img/pdf/Rolo Triturador/Rolo Triturador.pdf"
+                                    target="_blank" role="button">Descargar Lista PDF</a>
+                            </div>
+                        </div>
+                        <div class="text-center p-4">
+                            <a class="d-block h5" href="">ONT2064 Cuchilla Trituradora Sin Filo </a>
+                            <span class="text-primary me-1">Espesores
+                            </span>
+                            <br>
+                            <span class="text-decoration-underline">12,7mm</span>
+                            <br>
+                            <span class="text-decoration-underline">500 x 127 (4 agujeros de ■21)</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fin Producto 1 -->
+
+                <!-- Producto 2 -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="product-item">
+                        <div class="position-relative">
+                            <img class="img-fluid"
+                                src="img/02. NO REDONDOS/Trituradora/Orion/ONT2065/ONT2065 01.png" alt="">
                             <div class="product-overlay">
                                 <a class="btn btn-warning" href="img/pdf/Rolo Triturador/Rolo Triturador.pdf"
                                     target="_blank" role="button">Descargar Lista PDF</a>
 
-                                <!-- <a class="btn btn-square btn-secondary rounded-circle m-1"
-                                    href="img/pdf/Rolo Triturador/Rolo Triturador.pdf" target="_blank"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-filetype-pdf" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd"
-                                            d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5zM1.6 11.85H0v3.999h.791v-1.342h.803q.43 0 .732-.173.305-.175.463-.474a1.4 1.4 0 0 0 .161-.677q0-.375-.158-.677a1.2 1.2 0 0 0-.46-.477q-.3-.18-.732-.179m.545 1.333a.8.8 0 0 1-.085.38.57.57 0 0 1-.238.241.8.8 0 0 1-.375.082H.788V12.48h.66q.327 0 .512.181.185.183.185.522m1.217-1.333v3.999h1.46q.602 0 .998-.237a1.45 1.45 0 0 0 .595-.689q.196-.45.196-1.084 0-.63-.196-1.075a1.43 1.43 0 0 0-.589-.68q-.396-.234-1.005-.234zm.791.645h.563q.371 0 .609.152a.9.9 0 0 1 .354.454q.118.302.118.753a2.3 2.3 0 0 1-.068.592 1.1 1.1 0 0 1-.196.422.8.8 0 0 1-.334.252 1.3 1.3 0 0 1-.483.082h-.563zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638z" />
-                                    </svg></a>
-                                <a class="btn btn-square btn-secondary rounded-circle m-1"
-                                    href="https://wa.me/3572619825" target="_blank">
-                                    <i class="bi bi-whatsapp"></i>
-                                </a> -->
+                            </div>
+                        </div>
+                        <div class="text-center p-4">
+                            <a class="d-block h5" href="">ONT2065 Cuchilla Trituradora Sin Filo </a>
+                            <span class="text-primary me-1">Espesores
+                            </span>
+                            <br>
+                            <span class="text-decoration-underline">8mm</span>
+                            <br>
+                            <span class="text-decoration-underline">750 x 100 (4 agujeros de ■14)</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fin Producto 2 -->
 
+                <!-- Producto 3 -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="product-item">
+                        <div class="position-relative">
+                            <img class="img-fluid"
+                                src="img/02. NO REDONDOS/Trituradora/ONT2066/ONT2066 01.png" alt="">
+                            <div class="product-overlay">
+                                <a class="btn btn-warning" href="img/pdf/Rolo Triturador/Rolo Triturador.pdf"
+                                    target="_blank" role="button">Descargar Lista PDF</a>
+                            </div>
+                        </div>
+                        <div class="text-center p-4">
+                            <a class="d-block h5" href="">ONT2066 Cuchilla Trituradora Sin Filo </a>
+                            <span class="text-primary me-1">Espesores
+                            </span>
+                            <br>
+                            <span class="text-decoration-underline">8mm</span>
+                            <br>
+                            <span class="text-decoration-underline">505 x 100 (3 agujeros de ■14)</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fin Producto 3 -->
 
+                <!-- Producto 4 -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="product-item">
+                        <div class="position-relative">
+                            <img class="img-fluid"
+                                src="img/02. NO REDONDOS/Trituradora/ONT2071/ONT2071 01.png" alt="">
+                            <div class="product-overlay">
+                                <a class="btn btn-warning" href="img/pdf/Rolo Triturador/Rolo Triturador.pdf"
+                                    target="_blank" role="button">Descargar Lista PDF</a>
+                            </div>
+                        </div>
+                        <div class="text-center p-4">
+                            <a class="d-block h5" href="">ONT2071 Cuchilla Rolo Triturador </a>
+                            <span class="text-primary me-1">Espesores
+                            </span>
+                            <br>
+                            <span class="text-decoration-underline">12,7mm</span>
+                            <br>
+                            <span class="text-decoration-underline">300 x 170 (4 agujeros de Ø17)</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fin Producto 4 -->
+
+            </div>
+            <!-- Fin de Grupo N°4 de 4 imagenes -->
+
+            <!-- Grupo N°5 de 4 imagenes -->
+            <div class="row gx-4">
+                <!-- Producto 1 -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="product-item">
+                        <div class="position-relative">
+                            <img class="img-fluid"
+                                src="img/02. NO REDONDOS/Trituradora/ONT3709/ONT3709 03.png" alt="">
+                            <div class="product-overlay">
+                                <a class="btn btn-warning" href="img/pdf/Rolo Triturador/Rolo Triturador.pdf"
+                                    target="_blank" role="button">Descargar Lista PDF</a>
+                            </div>
+                        </div>
+                        <div class="text-center p-4">
+                            <a class="d-block h5" href="">ONT3709 Cuchilla Rolo Triturador</a>
+                            <span class="text-primary me-1">Espesores
+                            </span>
+                            <br>
+                            <span class="text-decoration-underline">10mm</span>
+                            <br>
+                            <span class="text-decoration-underline">302 x 180 (4 agujeros de ■18 Frezados)</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fin Producto 1 -->
+
+                <!-- Producto 2 -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="product-item">
+                        <div class="position-relative">
+                            <img class="img-fluid"
+                                src="img/02. NO REDONDOS/Trituradora/ONT4001/ONT4001 02.png" alt="">
+                            <div class="product-overlay">
+                                <a class="btn btn-warning" href="img/pdf/Rolo Triturador/Rolo Triturador.pdf"
+                                    target="_blank" role="button">Descargar Lista PDF</a>
+
+                            </div>
+                        </div>
+                        <div class="text-center p-4">
+                            <a class="d-block h5" href="">ONT4001 Cuchilla Rolo Triturador</a>
+                            <span class="text-primary me-1">Espesores
+                            </span>
+                            <br>
+                            <span class="text-decoration-underline">10mm</span>
+                            <br>
+                            <span class="text-decoration-underline">100 x 80 (2 agujeros de ■13,5 Frezados)</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fin Producto 2 -->
+
+                <!-- Producto 3 -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="product-item">
+                        <div class="position-relative">
+                            <img class="img-fluid"
+                                src="img/02. NO REDONDOS/Trituradora/Fontana/ONT5011/ONT5011 02.png" alt="">
+                            <div class="product-overlay">
+                                <a class="btn btn-warning" href="img/pdf/Rolo Triturador/Rolo Triturador.pdf"
+                                    target="_blank" role="button">Descargar Lista PDF</a>
+                            </div>
+                        </div>
+                        <div class="text-center p-4">
+                            <a class="d-block h5" href="">ONT5011 Cuchilla Aireadora</a>
+                            <span class="text-primary me-1">Espesores
+                            </span>
+                            <br>
+                            <span class="text-decoration-underline">10mm</span>
+                            <br>
+                            <span class="text-decoration-underline">375 x 127 (3 agujeros de Ø17)</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fin Producto 3 -->
+
+                <!-- Producto 4 -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="product-item">
+                        <div class="position-relative">
+                            <img class="img-fluid"
+                                src="img/02. NO REDONDOS/Trituradora/Orion/ONT2050/ONT2050 01.png" alt="">
+                            <div class="product-overlay">
+                                <a class="btn btn-warning" href="img/pdf/Rolo Triturador/Rolo Triturador.pdf"
+                                    target="_blank" role="button">Descargar Lista PDF</a>
                             </div>
                         </div>
                         <div class="text-center p-4">
@@ -309,444 +735,119 @@
                         </div>
                     </div>
                 </div>
+                <!-- Fin Producto 4 -->
+
             </div>
+            <!-- Fin de Grupo N° 5 de 4 imagenes -->
 
-
-            <!-- ------------------------SEMBRADORES----------------------------------------- -->
-
-            <!-- <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-                <p class="section-title bg-white text-center text-primary px-3">Nuestros Productos</p>
-                <h1 class="mb-5">DISCOS Y CUCHILLAS PARA SEMBRADORAS</h1>
-            </div>
-
+            <!-- Grupo N°6 de 4 imagenes -->
             <div class="row gx-4">
+                <!-- Producto 1 -->
                 <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="product-item">
                         <div class="position-relative">
-                            <img class="img-fluid" src="img/Cuchillas-Action-2000.jpg" alt="">
+                            <img class="img-fluid"
+                                src="img/02. NO REDONDOS/Trituradora/Orion/ONT2052/OND2052 01.png" alt="">
                             <div class="product-overlay">
-                                <a class="btn btn-square btn-secondary rounded-circle m-1" href="img/medidas-discos.png" target="_blank"><i class="bi bi-link"></i></a>
-                                <a class="btn btn-square btn-secondary rounded-circle m-1" href="">
-                                    <i class="bi bi-cart"></i>
-                                </a>
-                                
+                                <a class="btn btn-warning" href="img/pdf/Rolo Triturador/Rolo Triturador.pdf"
+                                    target="_blank" role="button">Descargar Lista PDF</a>
                             </div>
                         </div>
                         <div class="text-center p-4">
-                            <a class="d-block h5" href="">Cuchillas Action 2000, contiene 18 ondulaciones, Abertura de corte 12mm.</a>
+                            <a class="d-block h5" href="">ONT2052 Cuchilla Trituradora Filo Ondulado </a>
                             <span class="text-primary me-1">Espesores
                             </span>
                             <br>
-                            <span class="text-decoration-underline">4mm hasta 5mm</span>
+                            <span class="text-decoration-underline">8mm</span>
+                            <br>
+                            <span class="text-decoration-underline">744 x 100 (4 agujeros de ■14)</span>
                         </div>
                     </div>
                 </div>
+                <!-- Fin Producto 1 -->
+
+                <!-- Producto 2 -->
                 <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.3s">
                     <div class="product-item">
                         <div class="position-relative">
-                            <img class="img-fluid" src="img/ONC33-AV.jpg" alt="">
+                            <img class="img-fluid"
+                                src="img/02. NO REDONDOS/Trituradora/Stefoni/ONT2054 02.png" alt="">
                             <div class="product-overlay">
-                                <a class="btn btn-square btn-secondary rounded-circle m-1" href="img/medidas-discos.png" target="_blank"><i class="bi bi-link"></i></a>
-                                <a class="btn btn-square btn-secondary rounded-circle m-1" href="">
-                                    <i class="bi bi-cart"></i>
-                                </a>
-                                
+                                <a class="btn btn-warning" href="img/pdf/Rolo Triturador/Rolo Triturador.pdf"
+                                    target="_blank" role="button">Descargar Lista PDF</a>
+
                             </div>
                         </div>
                         <div class="text-center p-4">
-                            <a class="d-block h5" href="">Cuchillas ON 33 AV, contiene 33 ondulaciones, Abertura de corte 7mm</a>
+                            <a class="d-block h5" href="">ONT2054 Cuchilla Trituradora Lisa</a>
                             <span class="text-primary me-1">Espesores
                             </span>
                             <br>
-                            <span class="text-decoration-underline">4mm hasta 5mm</span>
+                            <span class="text-decoration-underline">8mm</span>
+                            <br>
+                            <span class="text-decoration-underline">500 x 100 (3 agujeros de ■14)</span>
                         </div>
                     </div>
                 </div>
+                <!-- Fin Producto 2 -->
+
+                <!-- Producto 3 -->
                 <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="product-item">
                         <div class="position-relative">
-                            <img class="img-fluid" src="img/ONCOFLISO.jpg" alt="">
+                            <img class="img-fluid"
+                                src="img/02. NO REDONDOS/Trituradora/Walter Borra/ONT4000 01.png" alt="">
                             <div class="product-overlay">
-                                <a class="btn btn-square btn-secondary rounded-circle m-1" href=""><i class="bi bi-link"></i></a>
-                                <a class="btn btn-square btn-secondary rounded-circle m-1" href="">
-                                    <i class="bi bi-cart"></i>
-                                </a>
-                                
+                                <a class="btn btn-warning" href="img/pdf/Rolo Triturador/Rolo Triturador.pdf"
+                                    target="_blank" role="button">Descargar Lista PDF</a>
                             </div>
                         </div>
                         <div class="text-center p-4">
-                            <a class="d-block h5" href="">Cuchillas TANGO filo liso, contiene 40 ondulaciones. Abertura de corte 9mm</a>
+                            <a class="d-block h5" href="">ONT4000 Cuchilla Rolo Triturador</a>
                             <span class="text-primary me-1">Espesores
                             </span>
                             <br>
-                            <span class="text-decoration-underline">4mm hasta 5mm</span>
+                            <span class="text-decoration-underline">10mm</span>
+                            <br>
+                            <span class="text-decoration-underline">750 x 115 (4 agujeros de ■12 Frezados)</span>
                         </div>
                     </div>
                 </div>
+                <!-- Fin Producto 3 -->
+
+                <!-- Producto 4 -->
                 <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s">
                     <div class="product-item">
                         <div class="position-relative">
-                            <img class="img-fluid" src="img/ONCOFONDULADA.jpg" alt="">
+                            <img class="img-fluid"
+                                src="img/02. NO REDONDOS/Trituradora/Metal Agro/ONT2045/ONT2045.png" alt="">
                             <div class="product-overlay">
-                                <a class="btn btn-square btn-secondary rounded-circle m-1" href="#"><i class="bi bi-link"></i></a>
-                                <a class="btn btn-square btn-secondary rounded-circle m-1" href="">
-                                    <i class="bi bi-cart"></i>
-                                </a>
-                                
+                                <a class="btn btn-warning" href="img/pdf/Rolo Triturador/Rolo Triturador.pdf"
+                                    target="_blank" role="button">Descargar Lista PDF</a>
                             </div>
                         </div>
                         <div class="text-center p-4">
-                            <a class="d-block h5" href="">Cuchillas TANGO filo ondulado, contiene 40 ondulaciones. Abertura de corte 9mm</a>
+                            <a class="d-block h5" href="">ONT2045 Cuchilla Rolo Triturador</a>
                             <span class="text-primary me-1">Espesores
                             </span>
                             <br>
-                            <span class="text-decoration-underline">4mm hasta 5mm</span>
+                            <span class="text-decoration-underline">10mm</span>
+                            <br>
+                            <span class="text-decoration-underline">749,5 x 115 (4 agujeros de Ø17)</span>
                         </div>
                     </div>
                 </div>
-            </div> -->
+                <!-- Fin Producto 4 -->
+
+            </div>
+            <!-- Fin de Grupo N° 6 de 4 imagenes -->
+
 
         </div>
     </div>
     <!-- Product End -->
 
 
-    <!-- <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-        <p class="section-title bg-white text-center text-primary px-3">Ver Mas Productos</p>
-        <h1 class="mb-5">Nomina de Cuchillas para Rolo</h1>
-    </div> -->
-    <!-- Tabla de Medidas de Rolos -->
-    <!-- <div class="container-xxl py-5">
-        <table class="table table-hover">
-            <thead class="text-center">
-                <tr>
-                    <th scope="col"></th>
-                    <th scope="col">Codigo</th>
-                    <th scope="col">Largo</th>
-                    <th scope="col">Ancho</th>
-                    <th scope="col">Espesor</th>
-                    <th scope="col">Plano</th>
-                </tr>
-            </thead>
-            <tbody class="text-center">
-
-                
-                <tr>
-                    <th scope="row"></th>
-                    <td>ONT2029 Cuchilla Rolo Triturador</td>
-                    <td>750 mm</td>
-                    <td>100 mm</td>
-                    <td>8 mm</td>
-                    <td><a class="btn btn-outline-primary btn-sm"
-                            href="img/02. NO REDONDOS/Trituradora/Img_Planos/ONT2029.jpg" role="button"
-                            target="_blank">Ver Plano</a> </td>
-                </tr>
-
-                
-                <tr>
-                    <th scope="row"></th>
-                    <td>ONT2054 Cuchilla Rolo Triturador</td>
-                    <td>500 mm</td>
-                    <td>100 mm</td>
-                    <td>8 mm</td>
-                    <td><a class="btn btn-outline-primary btn-sm"
-                            href="img/02. NO REDONDOS/Trituradora/Img_Planos/ONT2054.jpg" role="button"
-                            target="_blank">Ver Plano</a> </td>
-                </tr>
-
-                
-                <tr>
-                    <th scope="row"></th>
-                    <td>ONT4000 Cuchilla Rolo Triturador</td>
-                    <td>750 mm</td>
-                    <td>115 mm</td>
-                    <td>10 mm</td>
-                    <td><a class="btn btn-outline-primary btn-sm"
-                            href="img/02. NO REDONDOS/Trituradora/Img_Planos/ONT4000.jpg" role="button"
-                            target="_blank">Ver Plano</a> </td>
-                </tr>
-
-                
-                <tr>
-                    <th scope="row"></th>
-                    <td>ONT2050 Cuchilla Trituradora Filo Ondulado</td>
-                    <td>501 mm</td>
-                    <td>100 mm</td>
-                    <td>8 mm</td>
-                    <td><a class="btn btn-outline-primary btn-sm"
-                            href="img/02. NO REDONDOS/Trituradora/Img_Planos/ONT2050.jpg" role="button"
-                            target="_blank">Ver Plano</a> </td>
-                </tr>
-
-
-
-            </tbody>
-        </table>
-    </div> -->
-
-    <!-- Opcion de desplegar Rolos y Aireadoras -->
-
-    <!-- <div class="container">
-        <div class="accordion " id="accordionExample">
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                        Rolo Triturador
-                    </button>
-                </h2>
-                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <table class="table table-hover">
-                            <thead class="text-start">
-                                <tr>
-
-                                    <th scope="col">Codigo</th>
-                                    <th scope="col">Largo</th>
-                                    <th scope="col">Ancho</th>
-                                    <th scope="col">Espesor</th>
-                                    <th scope="col">Agujero</th>
-                                </tr>
-                                <tr>
-                                    <td>ONT2029 Cuchilla Rolo Triturador</td>
-                                    <td>750 mm</td>
-                                    <td>100 mm</td>
-                                    <td>8 mm</td>
-                                    <td>4 ■ de 14 mm</td>
-                                </tr>
-
-                                <tr>
-                                    <td>ONT2039 Cuchilla Rolo Triturador</td>
-                                    <td>750 mm</td>
-                                    <td>170 mm</td>
-                                    <td>10 mm</td>
-                                    <td>4 Ø de 16,5 mm</td>
-                                </tr>
-
-                                <tr>
-                                    <td>ONT2040 Rolo Triturador Reforzado</td>
-                                    <td>750 mm</td>
-                                    <td>125 mm</td>
-                                    <td>10 mm</td>
-                                    <td>4 ■ de 14 mm</td>
-                                </tr>
-
-                                <tr>
-                                    <td>ONT2041 Rolo Triturador Ganadera</td>
-                                    <td>750 mm</td>
-                                    <td>115 mm</td>
-                                    <td>10 mm</td>
-                                    <td>4 ■ de 14 mm</td>
-                                </tr>
-
-                                <tr>
-                                    <td>ONT2042 Cuchilla Rolo Triturador</td>
-                                    <td>749,5 mm</td>
-                                    <td>100 mm</td>
-                                    <td>10 mm</td>
-                                    <td>4 Ø de 17 mm</td>
-                                </tr>
-
-                                <tr>
-                                    <td>ONT2045 Cuchilla Rolo Triturador Ganadero</td>
-                                    <td>749,5 mm</td>
-                                    <td>115 mm</td>
-                                    <td>10 mm</td>
-                                    <td>4 Ø de 17 mm</td>
-                                </tr>
-
-                                <tr>
-                                    <td>ONT2049 Cuchilla Rolo Triturador</td>
-                                    <td>375 mm</td>
-                                    <td>115 mm</td>
-                                    <td>10 mm</td>
-                                    <td>2 Ø de 17 mm</td>
-                                </tr>
-
-                                <tr>
-                                    <td>ONT2050 Cuchilla Trituradora Filo Ondulado</td>
-                                    <td>501 mm</td>
-                                    <td>100 mm</td>
-                                    <td>8 mm</td>
-                                    <td>4 ■ de 14 mm</td>
-                                </tr>
-
-                                <tr>
-                                    <td>ONT2052 Cuchilla Trituradora Filo Ondulado</td>
-                                    <td>744 mm</td>
-                                    <td>100 mm</td>
-                                    <td>8 mm</td>
-                                    <td>4 ■ de 14 mm</td>
-                                </tr>
-
-                                <tr>
-                                    <td>ONT2053 Cuchilla Rolo Trituradora</td>
-                                    <td>740 mm</td>
-                                    <td>115 mm</td>
-                                    <td>10 mm</td>
-                                    <td>4 ■ de 14 mm</td>
-                                </tr>
-
-                                <tr>
-                                    <td>ONT2054 Cuchilla Rolo Triturador</td>
-                                    <td>500 mm</td>
-                                    <td>100 mm</td>
-                                    <td>8 mm</td>
-                                    <td>3 ■ de 14 mm</td>
-                                </tr>
-
-                                <tr>
-                                    <td>ONT2059 Cuchilla Trituradora (Sin Filo)</td>
-                                    <td>750 mm</td>
-                                    <td>100 mm</td>
-                                    <td>12,7 mm</td>
-                                    <td>4 ■ de 14 mm</td>
-                                </tr>
-
-                                <tr>
-                                    <td>ONT2061 Cuchilla Rolo Triturador</td>
-                                    <td>750 mm</td>
-                                    <td>125 mm</td>
-                                    <td>10 mm</td>
-                                    <td>4 ■ de 14 mm</td>
-                                </tr>
-
-                                <tr>
-                                    <td>ONT2064 Cuchilla Trituradora (sin filo)</td>
-                                    <td>500 mm</td>
-                                    <td>127 mm</td>
-                                    <td>12,7 mm</td>
-                                    <td>4 ■ de 21 mm</td>
-                                </tr>
-
-                                <tr>
-                                    <td>ONT2065 Cuchilla Trituradora (sin filo)</td>
-                                    <td>750 mm</td>
-                                    <td>100 mm</td>
-                                    <td>8 mm</td>
-                                    <td>4 ■ de 14 mm</td>
-                                </tr>
-
-                                <tr>
-                                    <td>ONT2066 Cuchilla Trituradora (sin filo)</td>
-                                    <td>505 mm</td>
-                                    <td>100 mm</td>
-                                    <td>8 mm</td>
-                                    <td>3 ■ de 14 mm</td>
-                                </tr>
-
-                                <tr>
-                                    <td>ONT2071 Cuchilla Trituradora</td>
-                                    <td>300 mm</td>
-                                    <td>170 mm</td>
-                                    <td>12,7 mm</td>
-                                    <td>4 Ø de 17 mm</td>
-                                </tr>
-
-                                <tr>
-                                    <td>ONT2081 Cuchilla Rolo Triturador</td>
-                                    <td>750 mm</td>
-                                    <td>125 mm</td>
-                                    <td>8 mm</td>
-                                    <td>4 ■ de 14 mm</td>
-                                </tr>
-
-                                <tr>
-                                    <td>ONT3800 Cuchilla Rolo Triturador</td>
-                                    <td>500 mm</td>
-                                    <td>127 mm</td>
-                                    <td>10 mm</td>
-                                    <td>3 ■ de 14 mm</td>
-                                </tr>
-
-                                <tr>
-                                    <td>ONT4000 Cuchilla Rolo Triturador</td>
-                                    <td>750 mm</td>
-                                    <td>115 mm</td>
-                                    <td>10 mm</td>
-                                    <td>4 ■ de 12 mm Fresados</td>
-                                </tr>
-
-                                <tr>
-                                    <td>ONT4001 Cuchilla Rolo Triturador</td>
-                                    <td>100 mm</td>
-                                    <td>80 mm</td>
-                                    <td>10 mm</td>
-                                    <td>2 ■ de 12 mm Fresados</td>
-                                </tr>
-
-                                <tr>
-                                    <td>ONT4002 Cuchilla Inferior sin Fin</td>
-                                    <td>960 mm</td>
-                                    <td>101,6 mm</td>
-                                    <td>15,8 mm</td>
-                                    <td>5 oblongo de 50 x 13,5 mm</td>
-                                </tr>
-
-                               
-
-                                
-
-
-                            </thead>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Cuchilla Airadora
-                    </button>
-                </h2>
-                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                        <table class="table table-hover">
-                            <thead class="text-start">
-                                <tr>
-
-                                    <th scope="col">Codigo</th>
-                                    <th scope="col">Largo</th>
-                                    <th scope="col">Ancho</th>
-                                    <th scope="col">Espesor</th>
-                                    <th scope="col">Agujero</th>
-                                </tr>
-
-                                <tr>
-                                    <td>ONT4003 Cuchilla Aireadora</td>
-                                    <td>375 mm</td>
-                                    <td>170 mm</td>
-                                    <td>12,5 mm</td>
-                                    <td>3 Ø de 17 mm</td>
-                                </tr>
-
-                                <tr>
-                                    <td>ONT5011 Cuchilla Rolo Triturador Aireador</td>
-                                    <td>375 mm</td>
-                                    <td>127 mm</td>
-                                    <td>10 mm</td>
-                                    <td>3 Ø de 17 mm</td>
-                                </tr>
-
-                                <tr>
-                                    <td>ONT5019 Cuchilla Rolo Triturador Aireador</td>
-                                    <td>375 mm</td>
-                                    <td>170 mm</td>
-                                    <td>10 mm</td>
-                                    <td>3 Ø de 17 mm</td>
-                                </tr>
-
-                            </thead>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div> -->
-    <!-- Fin de tabla de Rolos -->
 
     <!-- Consultar mas Productos -->
     <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
@@ -1090,6 +1191,328 @@
                 menu.addEventListener('click', function (e) {
                     e.stopPropagation();
                 });
+            });
+
+            // Lógica para el buscador de marcas y galería de imágenes
+            const brands = {
+                "DOLBI": ["ONT2041"],
+                "AGROMEC": [],
+                "AIREADORA": ["ONT4003", "ONT4007"],
+                "FONTANA": ["ONT2039", "ONT5011", "ONT5019"],
+                "METAL AGRO": ["ONT2042", "ONT2045", "ONT2049", "ONT2061"],
+                "ORION": ["ONT2050", "ONT2052", "ONT2065"],
+                "STEFONI": ["ONT2054"],
+                "WALTER BORRA": ["ONT4000"],
+                "VARIOS": ["ONT2029", "ONT2040", "ONT2053", "ONT2059", "ONT2064", "ONT2066", "ONT2071", "ONT3709", "ONT3800", "ONT4001"]
+            };
+
+            const normalize = s => String(s||'').toUpperCase().replace(/[^A-Z0-9]/g,'');
+
+            // Poblar select con marcas
+            const brandFilter = document.getElementById('brandFilter');
+            Object.keys(brands).forEach(b => {
+                const opt = document.createElement('option');
+                opt.value = b;
+                opt.textContent = b;
+                brandFilter.appendChild(opt);
+            });
+
+            // Inferir marca desde la ruta de la imagen
+            function inferBrandFromSrc(src) {
+                try {
+                    const m = src.match(/Trituradora\/(?:[^\/]*\/)??([^\/\%?#]+)\//i) || src.match(/Trituradora\/(?:([^\/]+))\//i);
+                    if (m && m[1]) return m[1];
+                    // fallback: tomar carpeta justo después de "Trituradora/"
+                    const idx = src.toLowerCase().indexOf('trituradora/');
+                    if (idx>=0) {
+                        const sub = src.substring(idx+'trituradora/'.length).split('/')[0];
+                        return sub || '';
+                    }
+                } catch(e){}
+                return '';
+            }
+
+            // Preparar cada producto: asignar data-brand-normalized y preparar galería de imágenes desde código
+            const productItems = Array.from(document.querySelectorAll('.product-item'));
+            productItems.forEach(function (item, idx) {
+                const img = item.querySelector('img');
+                const src = img ? img.getAttribute('src') : '';
+                const inferred = inferBrandFromSrc(src).replace(/[-_]/g,' ');
+                const normalized = normalize(inferred);
+                item.dataset.brand = inferred || '';
+                item.dataset.brandNormalized = normalized;
+
+                // extraer código ONT desde el título descriptivo si existe
+                const titleEl = item.querySelector('.text-center a') || item.querySelector('.text-center .h5');
+                let code = '';
+                if (titleEl) {
+                    const m = (titleEl.textContent || '').match(/(ONT[0-9\-]+)/i);
+                    if (m) code = m[1].toUpperCase();
+                }
+                item.dataset.code = code;
+
+                // función para crear/obtener gallery
+                    function ensureGallery() {
+                    let gallery = item.querySelector('.image-gallery');
+                    if (!gallery) {
+                        gallery = document.createElement('div');
+                        gallery.className = 'image-gallery';
+                        const imgContainer = item.querySelector('.position-relative') || item;
+                        // insertar DENTRO del contenedor de imagen para que la galería quede sobre la misma imagen
+                        imgContainer.appendChild(gallery);
+                        gallery.style.display = 'flex';
+                        gallery.style.overflowX = 'auto';
+                        gallery.style.padding = '6px 0';
+                    }
+                    return gallery;
+                }
+
+                // crear gallery a partir de URLs
+                function createGalleryFromUrls(urls) {
+                    if (!urls || !urls.length) return;
+                    const gallery = ensureGallery();
+                    urls.forEach(function (u) {
+                        const t = document.createElement('img');
+                        t.src = u;
+                        t.alt = code || 'imagen';
+                        gallery.appendChild(t);
+                    });
+                }
+
+                // si el elemento trae data-images (separadas por | o ,) crear la galería
+                const dataImgs = item.dataset.images;
+                if (dataImgs) {
+                    const urls = dataImgs.split(/\||,/).map(s => s.trim()).filter(Boolean);
+                    createGalleryFromUrls(urls);
+                }
+
+                // Intentar detectar automáticamente variantes numeradas (01,02..) junto a la imagen principal
+                function loadImage(url) {
+                    return new Promise(function (resolve, reject) {
+                        const i = new Image();
+                        i.onload = function () { resolve(url); };
+                        i.onerror = function () { reject(url); };
+                        i.src = url;
+                    });
+                }
+
+                function tryDetectNumberedVariants(src, max=6) {
+                    const results = [];
+                    const m = src.match(/(.*?)(?:[ _-]?0?1)(\.[^./]+)$/i);
+                    let base, ext;
+                    if (m) { base = m[1]; ext = m[2]; }
+                    else {
+                        const m2 = src.match(/(.*?)(\.[^./]+)$/i);
+                        if (!m2) return Promise.resolve([]);
+                        base = m2[1]; ext = m2[2];
+                    }
+                    // patrones a probar: ' 02', '02', '_02', '-02'
+                    const pads = function(n){ return n<10? '0'+n : String(n); };
+                    const tries = [];
+                    for (let i=2;i<=max;i++) {
+                        const p = pads(i);
+                        tries.push(base + ' ' + p + ext);
+                        tries.push(base + p + ext);
+                        tries.push(base + '_' + p + ext);
+                        tries.push(base + '-' + p + ext);
+                    }
+                    // probar secuencialmente y acumular los que existan
+                    return Promise.all(tries.map(u => loadImage(u).then(()=>u).catch(()=>null))).then(arr=>arr.filter(Boolean));
+                }
+
+                // Si aún no hay miniaturas, intentar detectar variantes automáticamente
+                (function autoDetect(){
+                    const gallery = item.querySelector('.image-gallery');
+                    if (gallery && gallery.querySelectorAll('img').length) return;
+                    if (!src) return;
+                    tryDetectNumberedVariants(src, 6).then(function(found){
+                        if (found && found.length) createGalleryFromUrls(found);
+                        // notificar que la galería cambió
+                        item.dispatchEvent(new CustomEvent('gallery:imagesUpdated'));
+                    }).catch(()=>{});
+                })();
+
+                // click en miniatura para establecer imagen principal
+                function attachThumbnailHandlers() {
+                    const gallery = item.querySelector('.image-gallery');
+                    if (!gallery) return;
+                    const thumbs = gallery.querySelectorAll('img');
+                    thumbs.forEach(function(th, index){
+                        th.style.cursor = 'pointer';
+                        th.addEventListener('click', function(){
+                            if (img) {
+                                img.src = th.src;
+                                // si se hace click, actualizar primary index en el scope del listener mediante evento
+                                item.dispatchEvent(new CustomEvent('gallery:thumbnailClicked', { detail: { src: th.src } }));
+                            }
+                        });
+                    });
+                }
+
+                // re-attach handlers tras actualización
+                item.addEventListener('gallery:imagesUpdated', function(){ attachThumbnailHandlers(); });
+                // attach ahora si ya existen
+                attachThumbnailHandlers();
+
+                // Preparar comportamiento de imágenes: hover muestra segunda imagen (si existe), click/tap cambia imagen principal
+                if (img) {
+                    const originalSrc = img.src;
+                    let currentPrimaryIndex = 0; // índice en images[] que está actualmente en la vista principal
+                    let images = [originalSrc];
+
+                    function getGalleryUrls() {
+                        const gallery = item.querySelector('.image-gallery');
+                        if (!gallery) return [];
+                        return Array.from(gallery.querySelectorAll('img')).map(i => i.src);
+                    }
+
+                    // actualizar images[] cuando cambie la galería
+                    item.addEventListener('gallery:imagesUpdated', function(){
+                        images = [originalSrc].concat(getGalleryUrls());
+                        currentPrimaryIndex = 0;
+                    });
+
+                    // hover: mostrar segunda imagen si existe
+                    img.addEventListener('mouseenter', function(){
+                        if (images.length > 1) {
+                            img.src = images[1];
+                        }
+                    });
+                    img.addEventListener('mouseleave', function(){
+                        img.src = images[currentPrimaryIndex];
+                    });
+
+                    const clickTarget = item.querySelector('.position-relative') || img;
+
+                    // Función para refrescar imágenes desde galería
+                    function refreshImages() {
+                        images = [originalSrc].concat(getGalleryUrls());
+                    }
+
+                    // avanzar a siguiente imagen (clic en flecha derecha)
+                    function advancePrimary() {
+                        refreshImages();
+                        if (images.length <= 1) return;
+                        currentPrimaryIndex = (currentPrimaryIndex + 1) % images.length;
+                        img.src = images[currentPrimaryIndex];
+                    }
+
+                    // permitir retroceder (clic en flecha izquierda)
+                    function retreatPrimary() {
+                        refreshImages();
+                        if (images.length <= 1) return;
+                        currentPrimaryIndex = (currentPrimaryIndex - 1 + images.length) % images.length;
+                        img.src = images[currentPrimaryIndex];
+                    }
+
+                    // click/tap: abrir imagen grande en modal
+                    clickTarget.addEventListener('click', function(e){
+                        if (e.target.closest('.product-overlay a, .product-overlay button')) return;
+                        e.stopPropagation();
+                        refreshImages();
+                        if (images.length <= 0) return;
+
+                        const modal = document.createElement('div');
+                        modal.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.95);display:flex;align-items:center;justify-content:center;z-index:11000;overflow:hidden;padding:16px;';
+                        modal.addEventListener('click', function() { document.body.removeChild(modal); });
+
+                        const content = document.createElement('div');
+                        content.style.cssText = 'position:relative;max-width:100%;max-height:100%;display:flex;align-items:center;justify-content:center;gap:16px;';
+                        content.addEventListener('click', function(e){ e.stopPropagation(); });
+
+                        const modalImg = document.createElement('img');
+                        modalImg.src = images[currentPrimaryIndex];
+                        modalImg.style.cssText = 'max-width:100%;max-height:100%;object-fit:contain;cursor:default;';
+
+                        const createNavButton = function(symbol, position) {
+                            const btn = document.createElement('button');
+                            btn.innerHTML = symbol;
+                            btn.style.cssText = 'position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.85);border:none;color:#000;font-size:32px;line-height:1;width:48px;height:48px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.25);';
+                            btn.addEventListener('click', function(event){
+                                event.stopPropagation();
+                                if (position === 'left') {
+                                    currentPrimaryIndex = (currentPrimaryIndex - 1 + images.length) % images.length;
+                                } else {
+                                    currentPrimaryIndex = (currentPrimaryIndex + 1) % images.length;
+                                }
+                                modalImg.src = images[currentPrimaryIndex];
+                            });
+                            return btn;
+                        };
+
+                        const leftControl = createNavButton('&#8249;', 'left');
+                        const rightControl = createNavButton('&#8250;', 'right');
+                        leftControl.style.left = '10px';
+                        rightControl.style.right = '10px';
+
+                        const closeBtn = document.createElement('button');
+                        closeBtn.innerHTML = '✕';
+                        closeBtn.style.cssText = 'position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.9);border:none;color:#000;font-size:24px;line-height:1;width:40px;height:40px;border-radius:50%;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.25);';
+                        closeBtn.addEventListener('click', function(event){ event.stopPropagation(); document.body.removeChild(modal); });
+
+                        content.appendChild(leftControl);
+                        content.appendChild(modalImg);
+                        content.appendChild(rightControl);
+                        modal.appendChild(content);
+                        modal.appendChild(closeBtn);
+                        document.body.appendChild(modal);
+                    });
+
+                    // crear flechas si no existen y asignar eventos
+                    try {
+                        const pos = item.querySelector('.position-relative') || item;
+                        let leftBtn = pos.querySelector('.gallery-arrow.left');
+                        let rightBtn = pos.querySelector('.gallery-arrow.right');
+                        if (!leftBtn) {
+                            leftBtn = document.createElement('button');
+                            leftBtn.className = 'gallery-arrow left';
+                            leftBtn.innerHTML = '&#8249;';
+                            pos.appendChild(leftBtn);
+                        }
+                        if (!rightBtn) {
+                            rightBtn = document.createElement('button');
+                            rightBtn.className = 'gallery-arrow right';
+                            rightBtn.innerHTML = '&#8250;';
+                            pos.appendChild(rightBtn);
+                        }
+                        leftBtn.addEventListener('click', function(e){ e.stopPropagation(); retreatPrimary(); });
+                        rightBtn.addEventListener('click', function(e){ e.stopPropagation(); advancePrimary(); });
+                    } catch (err) {}
+
+                    // actualizar desde miniatura click
+                    item.addEventListener('gallery:thumbnailClicked', function(e){
+                        try { refreshImages(); const src = e && e.detail && e.detail.src; if (src) { const idx = images.indexOf(src); if (idx>=0) currentPrimaryIndex = idx; } } catch(err){}
+                    });
+                }
+            });
+
+            // Construir mapa código -> marca para fallback en filtrado
+            const codeToBrand = {};
+            Object.keys(brands).forEach(function(b){ (brands[b]||[]).forEach(function(code){ if(code) codeToBrand[String(code).toUpperCase().replace(/[^A-Z0-9\-]/g,'')] = normalize(b); }); });
+
+            // Filtrado por select con fallback por codigo ONT
+            brandFilter.addEventListener('change', function () {
+                const val = this.value;
+                const normVal = normalize(val);
+                document.querySelectorAll('.product-item').forEach(function (item) {
+                    const col = item.closest('.col-md-6, .col-lg-4, .col-xl-3');
+                    if (!col) return;
+                    if (val === 'all') { col.style.display = ''; return; }
+                    const itemNorm = item.dataset.brandNormalized || '';
+                    const itemCode = (item.dataset.code || '').toUpperCase();
+                    let show = false;
+                    if (itemNorm && itemNorm === normVal) show = true;
+                    // fallback: si el codigo ONT pertenece a la marca
+                    if (!show && itemCode) {
+                        const mapped = codeToBrand[itemCode] || '';
+                        if (mapped && mapped === normVal) show = true;
+                    }
+                    // ultimo recurso: buscar coincidencia textual en carpeta/brand
+                    if (!show && (item.dataset.brand||'').toUpperCase().indexOf(val.toUpperCase()) !== -1) show = true;
+                    col.style.display = show ? '' : 'none';
+                });
+                // tras filtrar, forzar reflow para que las cards queden alineadas (en móvil y escritorio)
+                setTimeout(function(){ document.querySelectorAll('.row.gx-4').forEach(r=>r.offsetHeight); }, 50);
             });
         });
     </script>

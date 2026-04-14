@@ -4826,19 +4826,64 @@
                         img.src = images[currentPrimaryIndex] || originalSrc;
                     });
 
-                    // click / tap: avanzar a la siguiente imagen y convertirla en principal
-                    function advancePrimary() {
+                    // click/tap: abrir imagen grande en modal
+                    const clickTarget = item.querySelector('.position-relative') || img;
+
+                    function openImageModal() {
                         refreshImages();
-                        if (images.length <= 1) return;
-                        currentPrimaryIndex = (currentPrimaryIndex + 1) % images.length;
-                        img.src = images[currentPrimaryIndex];
-                        // actualizar originalSrc para que futuras restauraciones usen la nueva principal
-                        // si currentPrimaryIndex == 0, originalSrc vuelve a la primera
-                        // (no necesitamos cambiar the DOM src besides img.src)
+                        if (images.length <= 0) return;
+
+                        const modal = document.createElement('div');
+                        modal.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.95);display:flex;align-items:center;justify-content:center;z-index:11000;overflow:hidden;padding:16px;';
+                        modal.addEventListener('click', function() { document.body.removeChild(modal); });
+
+                        const content = document.createElement('div');
+                        content.style.cssText = 'position:relative;max-width:100%;max-height:100%;display:flex;align-items:center;justify-content:center;gap:16px;';
+                        content.addEventListener('click', function(e){ e.stopPropagation(); });
+
+                        const modalImg = document.createElement('img');
+                        modalImg.src = images[currentPrimaryIndex];
+                        modalImg.style.cssText = 'max-width:100%;max-height:100%;object-fit:contain;cursor:default;';
+
+                        const createNavButton = function(symbol, position) {
+                            const btn = document.createElement('button');
+                            btn.innerHTML = symbol;
+                            btn.style.cssText = 'position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.85);border:none;color:#000;font-size:32px;line-height:1;width:48px;height:48px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.25);';
+                            btn.addEventListener('click', function(event){
+                                event.stopPropagation();
+                                if (position === 'left') {
+                                    currentPrimaryIndex = (currentPrimaryIndex - 1 + images.length) % images.length;
+                                } else {
+                                    currentPrimaryIndex = (currentPrimaryIndex + 1) % images.length;
+                                }
+                                modalImg.src = images[currentPrimaryIndex];
+                            });
+                            return btn;
+                        };
+
+                        const leftControl = createNavButton('&#8249;', 'left');
+                        const rightControl = createNavButton('&#8250;', 'right');
+                        leftControl.style.left = '10px';
+                        rightControl.style.right = '10px';
+
+                        const closeBtn = document.createElement('button');
+                        closeBtn.innerHTML = '✕';
+                        closeBtn.style.cssText = 'position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.9);border:none;color:#000;font-size:24px;line-height:1;width:40px;height:40px;border-radius:50%;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.25);';
+                        closeBtn.addEventListener('click', function(event){ event.stopPropagation(); document.body.removeChild(modal); });
+
+                        content.appendChild(leftControl);
+                        content.appendChild(modalImg);
+                        content.appendChild(rightControl);
+                        modal.appendChild(content);
+                        modal.appendChild(closeBtn);
+                        document.body.appendChild(modal);
                     }
 
-                    img.addEventListener('click', function (e) { advancePrimary(); });
-                    img.addEventListener('touchstart', function (e) { advancePrimary(); }, {passive:true});
+                    clickTarget.addEventListener('click', function (e) {
+                        if (e.target.closest('.product-overlay a, .product-overlay button')) return;
+                        e.stopPropagation();
+                        openImageModal();
+                    });
 
                     // permitir retroceder
                     function retreatPrimary() {
