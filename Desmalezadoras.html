@@ -4949,6 +4949,24 @@
             const codeToBrand = {};
             Object.keys(brands).forEach(function(b){ (brands[b]||[]).forEach(function(code){ if(code) codeToBrand[String(code).toUpperCase().replace(/[^A-Z0-9\-]/g,'')] = normalize(b); }); });
 
+            function setFilteredVisibility(col, item, show) {
+                if (!col) return;
+                if (show) {
+                    col.style.display = '';
+                    col.style.animation = 'none';
+                    col.style.transition = 'none';
+                    item.style.animation = 'none';
+                    item.style.transition = 'none';
+                    Array.from(col.querySelectorAll('.wow, .fadeInUp, .fadeIn')).forEach(function(el){
+                        el.classList.remove('wow','fadeInUp','fadeIn','animated');
+                        el.style.animation = 'none';
+                        el.style.transition = 'none';
+                    });
+                } else {
+                    col.style.display = 'none';
+                }
+            }
+
             // Filtrado por select con fallback por codigo OND
             brandFilter.addEventListener('change', function () {
                 const val = this.value;
@@ -4956,7 +4974,7 @@
                 document.querySelectorAll('.product-item').forEach(function (item) {
                     const col = item.closest('.col-md-6, .col-lg-4, .col-xl-3');
                     if (!col) return;
-                    if (val === 'all') { col.style.display = ''; return; }
+                    if (val === 'all') { setFilteredVisibility(col, item, true); return; }
                     const itemNorm = item.dataset.brandNormalized || '';
                     const itemCode = (item.dataset.code || '').toUpperCase();
                     let show = false;
@@ -4968,7 +4986,7 @@
                     }
                     // ultimo recurso: buscar coincidencia textual en carpeta/brand
                     if (!show && (item.dataset.brand||'').toUpperCase().indexOf(val.toUpperCase()) !== -1) show = true;
-                    col.style.display = show ? '' : 'none';
+                    setFilteredVisibility(col, item, show);
                 });
                 // tras filtrar, forzar reflow para que las cards queden alineadas (en móvil y escritorio)
                 setTimeout(function(){ document.querySelectorAll('.row.gx-4').forEach(r=>r.offsetHeight); }, 50);
