@@ -35,6 +35,26 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <style>
+    /* Filtro bar alineado */
+    .filter-bar { display:flex; justify-content:space-between; gap:12px; align-items:center; margin:18px 0; flex-wrap:wrap; }
+    .filter-bar > div { display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+    .filter-bar select { max-width:320px; min-width:200px; }
+    .filter-bar .btn { white-space:nowrap; }
+    
+    /* Transicion rapida para filtrado */
+    .col-md-6.col-lg-4.col-xl-3 { transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out; }
+    
+    /* Flechitas de navegación en overlay de imagen */
+    .gallery-arrow {
+        position:absolute; top:50%; transform:translateY(-50%); z-index:40; background:#ffffff00; color:#000000; border:0; width:36px; height:36px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; cursor:pointer; box-shadow:0 2px 6px rgba(0,0,0,0.18); font-size:20px; line-height:1;
+    }
+    .gallery-arrow.left { left:10px; }
+    .gallery-arrow.right { right:10px; }
+    .gallery-arrow:active { transform:translateY(-50%) scale(.98); }
+    .gallery-arrow:hover { background: rgba(255,255,255,0.1); }
+    @media (max-width:576px) { .gallery-arrow { width:30px; height:30px; font-size:16px; } }
+    </style>
 </head>
 
 <body>
@@ -165,34 +185,27 @@
             </div>
 
             <!-- FILTRO: combo por código/nombre de producto -->
-            <div class="row mb-4">
-                <div class="col-12 d-flex justify-content-center">
-                    <div class="input-group filter-panel" style="max-width:420px; width:100%;">
-                        <span class="input-group-text" id="filter-label">Mixer</span>
-
-                        <select id="filter-mixer" class="form-select" aria-label="Filtrar por codigo o nombre">
-                            <option value="all" selected>Mostrar todos</option>
-                            <option value="ONM5015">ONM5015</option>
-                            <option value="ONM5016">ONM5016</option>
-                            <option value="ONM5017">ONM5017</option>
-                            <option value="ONM5020">ONM5020</option>
-                            <option value="ONM5022C">ONM5022C</option>
-                            <option value="ONM5022T">ONM5022T</option>
-                            <option value="ONM5025C">ONM5025C</option>
-                            <option value="ONM5025T">ONM5025T</option>
-                            <option value="ONM5023">ONM5023</option>
-                            <option value="ONM5024">ONM5024</option>
-                            <option value="ONM5026">ONM5026</option>
-                            <option value="ONM5027">ONM5027</option>
-                        </select>
-
-                        <button id="clear-filter-mixer" class="btn btn--clear" type="button" title="Limpiar filtro">
-                            <i class="fas fa-eraser"></i>
-                        </button>
-
-                        <!-- <div id="filter-count" class="input-group-text filter-count">Mostrar: <span class="badge bg-primary ms-2">0</span></div> -->
-                    </div>
+            <div class="filter-bar">
+                <div>
+                    <label for="filter-mixer" class="mb-0">Filtrar por modelo:</label>
+                    <select id="filter-mixer" class="form-select" aria-label="Filtrar por codigo o nombre">
+                        <option value="all" selected>Mostrar todos</option>
+                        <option value="ONM5015">ONM5015</option>
+                        <option value="ONM5016">ONM5016</option>
+                        <option value="ONM5017">ONM5017</option>
+                        <option value="ONM5020">ONM5020</option>
+                        <option value="ONM5022C">ONM5022C</option>
+                        <option value="ONM5022T">ONM5022T</option>
+                        <option value="ONM5025C">ONM5025C</option>
+                        <option value="ONM5025T">ONM5025T</option>
+                        <option value="ONM5023">ONM5023</option>
+                        <option value="ONM5024">ONM5024</option>
+                        <option value="ONM5026">ONM5026</option>
+                        <option value="ONM5027">ONM5027</option>
+                    </select>
                 </div>
+                <a class="btn btn-warning" href="img/pdf/Mixer/Catalogo Mixer.pdf"
+                    target="_blank" role="button">Descargar Lista PDF</a>
             </div>
 
             <div class="row gx-4 gy-4" id="mixer-row">
@@ -202,7 +215,8 @@
                         <div class="position-relative product-gallery">
                             <img class="img-fluid product-main" src="img/02. NO REDONDOS/Mixer/5015 Transparente.png" alt="ONM5015">
                             <div class="product-overlay">
-                                <a class="btn btn-warning" href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank" role="button">Descargar Lista PDF</a>
+                                <button class="gallery-arrow left" type="button" aria-label="Imagen anterior"><i class="fas fa-chevron-left"></i></button>
+                                <button class="gallery-arrow right" type="button" aria-label="Imagen siguiente"><i class="fas fa-chevron-right"></i></button>
                                 <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/2</div>
                             </div>
                         </div>
@@ -220,9 +234,7 @@
                     <div class="product-item h-100" data-images="img/02. NO REDONDOS/Mixer/ONM5016 Transparente.png">
                         <div class="position-relative product-gallery">
                             <img class="img-fluid product-main" src="img/02. NO REDONDOS/Mixer/ONM5016 Transparente.png" alt="ONM5016">
-                            <div class="product-overlay">
-                                <a class="btn btn-warning" href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank" role="button">Descargar Lista PDF</a>
-                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
+                            <div class="product-overlay"><button class="gallery-arrow left" type="button" aria-label="Imagen anterior"><i class="fas fa-chevron-left"></i></button><button class="gallery-arrow right" type="button" aria-label="Imagen siguiente"><i class="fas fa-chevron-right"></i></button><div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
                             </div>
                         </div>
                         <div class="text-center p-4">
@@ -239,9 +251,7 @@
                     <div class="product-item h-100" data-images="img/02. NO REDONDOS/Mixer/ONM5017 Transparente.png |img/02. NO REDONDOS/MIXER/ONM5017 Render.png">
                         <div class="position-relative product-gallery">
                             <img class="img-fluid product-main" src="img/02. NO REDONDOS/Mixer/ONM5017 Transparente.png" alt="ONM5017">
-                            <div class="product-overlay">
-                                <a class="btn btn-warning" href="img/pdf/Mixer/Lista Nueva de Aplicaciones.pdf" target="_blank" role="button">Descargar Lista PDF</a>
-                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
+                            <div class="product-overlay"><button class="gallery-arrow left" type="button" aria-label="Imagen anterior"><i class="fas fa-chevron-left"></i></button><button class="gallery-arrow right" type="button" aria-label="Imagen siguiente"><i class="fas fa-chevron-right"></i></button><div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
                             </div>
                         </div>
                         <div class="text-center p-4">
@@ -258,9 +268,7 @@
                     <div class="product-item h-100" data-images="img/02. NO REDONDOS/Mixer/ONM5020 Transparente.png">
                         <div class="position-relative product-gallery">
                             <img class="img-fluid product-main" src="img/02. NO REDONDOS/Mixer/ONM5020 Transparente.png" alt="ONM5020">
-                            <div class="product-overlay">
-                                <a class="btn btn-warning" href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank" role="button">Descargar Lista PDF</a>
-                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
+                            <div class="product-overlay"><button class="gallery-arrow left" type="button" aria-label="Imagen anterior"><i class="fas fa-chevron-left"></i></button><button class="gallery-arrow right" type="button" aria-label="Imagen siguiente"><i class="fas fa-chevron-right"></i></button><div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
                             </div>
                         </div>
                         <div class="text-center p-4">
@@ -277,9 +285,7 @@
                     <div class="product-item h-100" data-images="img/02. NO REDONDOS/Mixer/ONM5022C Sin Fondo.png">
                         <div class="position-relative product-gallery">
                             <img class="img-fluid product-main" src="img/02. NO REDONDOS/Mixer/ONM5022C Sin Fondo.png" alt="ONM5022C">
-                            <div class="product-overlay">
-                                <a class="btn btn-warning" href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank" role="button">Descargar Lista PDF</a>
-                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
+                            <div class="product-overlay"><button class="gallery-arrow left" type="button" aria-label="Imagen anterior"><i class="fas fa-chevron-left"></i></button><button class="gallery-arrow right" type="button" aria-label="Imagen siguiente"><i class="fas fa-chevron-right"></i></button><div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
                             </div>
                         </div>
                         <div class="text-center p-4">
@@ -296,9 +302,7 @@
                     <div class="product-item h-100" data-images="img/02. NO REDONDOS/Mixer/ONM5022T Sin Fondo.png">
                         <div class="position-relative product-gallery">
                             <img class="img-fluid product-main" src="img/02. NO REDONDOS/Mixer/ONM5022T Sin Fondo.png" alt="ONM5022T">
-                            <div class="product-overlay">
-                                <a class="btn btn-warning" href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank" role="button">Descargar Lista PDF</a>
-                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
+                            <div class="product-overlay"><button class="gallery-arrow left" type="button" aria-label="Imagen anterior"><i class="fas fa-chevron-left"></i></button><button class="gallery-arrow right" type="button" aria-label="Imagen siguiente"><i class="fas fa-chevron-right"></i></button><div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
                             </div>
                         </div>
                         <div class="text-center p-4">
@@ -315,9 +319,7 @@
                     <div class="product-item h-100" data-images="img/02. NO REDONDOS/Mixer/ONM5025C Sin Fondo.png">
                         <div class="position-relative product-gallery">
                             <img class="img-fluid product-main" src="img/02. NO REDONDOS/Mixer/ONM5025C Sin Fondo.png" alt="ONM5025C">
-                            <div class="product-overlay">
-                                <a class="btn btn-warning" href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank" role="button">Descargar Lista PDF</a>
-                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
+                            <div class="product-overlay"><button class="gallery-arrow left" type="button" aria-label="Imagen anterior"><i class="fas fa-chevron-left"></i></button><button class="gallery-arrow right" type="button" aria-label="Imagen siguiente"><i class="fas fa-chevron-right"></i></button><div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
                             </div>
                         </div>
                         <div class="text-center p-4">
@@ -334,9 +336,7 @@
                     <div class="product-item h-100" data-images="img/02. NO REDONDOS/Mixer/ONM5025T Sin Fondo.png">
                         <div class="position-relative product-gallery">
                             <img class="img-fluid product-main" src="img/02. NO REDONDOS/Mixer/ONM5025T Sin Fondo.png" alt="ONM5025T">
-                            <div class="product-overlay">
-                                <a class="btn btn-warning" href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank" role="button">Descargar Lista PDF</a>
-                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
+                            <div class="product-overlay"><button class="gallery-arrow left" type="button" aria-label="Imagen anterior"><i class="fas fa-chevron-left"></i></button><button class="gallery-arrow right" type="button" aria-label="Imagen siguiente"><i class="fas fa-chevron-right"></i></button><div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
                             </div>
                         </div>
                         <div class="text-center p-4">
@@ -353,9 +353,7 @@
                     <div class="product-item h-100" data-images="img/02. NO REDONDOS/Mixer/ONM5023 Sin Fondo.png">
                         <div class="position-relative product-gallery">
                             <img class="img-fluid product-main" src="img/02. NO REDONDOS/Mixer/ONM5023 Sin Fondo.png" alt="ONM5023">
-                            <div class="product-overlay">
-                                <a class="btn btn-warning" href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank" role="button">Descargar Lista PDF</a>
-                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
+                            <div class="product-overlay"><button class="gallery-arrow left" type="button" aria-label="Imagen anterior"><i class="fas fa-chevron-left"></i></button><button class="gallery-arrow right" type="button" aria-label="Imagen siguiente"><i class="fas fa-chevron-right"></i></button><div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
                             </div>
                         </div>
                         <div class="text-center p-4">
@@ -372,9 +370,7 @@
                     <div class="product-item h-100" data-images="img/02. NO REDONDOS/Mixer/ONM5024 Sin Fondo.png">
                         <div class="position-relative product-gallery">
                             <img class="img-fluid product-main" src="img/02. NO REDONDOS/Mixer/ONM5024 Sin Fondo.png" alt="ONM5024">
-                            <div class="product-overlay">
-                                <a class="btn btn-warning" href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank" role="button">Descargar Lista PDF</a>
-                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
+                            <div class="product-overlay"><button class="gallery-arrow left" type="button" aria-label="Imagen anterior"><i class="fas fa-chevron-left"></i></button><button class="gallery-arrow right" type="button" aria-label="Imagen siguiente"><i class="fas fa-chevron-right"></i></button><div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
                             </div>
                         </div>
                         <div class="text-center p-4">
@@ -391,9 +387,7 @@
                     <div class="product-item h-100" data-images="img/02. NO REDONDOS/Mixer/ONM5026 Sin Fondo.png">
                         <div class="position-relative product-gallery">
                             <img class="img-fluid product-main" src="img/02. NO REDONDOS/Mixer/ONM5026 Sin Fondo.png" alt="ONM5026">
-                            <div class="product-overlay">
-                                <a class="btn btn-warning" href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank" role="button">Descargar Lista PDF</a>
-                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
+                            <div class="product-overlay"><button class="gallery-arrow left" type="button" aria-label="Imagen anterior"><i class="fas fa-chevron-left"></i></button><button class="gallery-arrow right" type="button" aria-label="Imagen siguiente"><i class="fas fa-chevron-right"></i></button><div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
                             </div>
                         </div>
                         <div class="text-center p-4">
@@ -410,9 +404,7 @@
                     <div class="product-item h-100" data-images="img/02. NO REDONDOS/Mixer/ONM5027 Sin Fondo.png">
                         <div class="position-relative product-gallery">
                             <img class="img-fluid product-main" src="img/02. NO REDONDOS/Mixer/ONM5027 Sin Fondo.png" alt="ONM5027">
-                            <div class="product-overlay">
-                                <a class="btn btn-warning" href="img/pdf/Mixer/Catalogo Mixer.pdf" target="_blank" role="button">Descargar Lista PDF</a>
-                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
+                            <div class="product-overlay"><button class="gallery-arrow left" type="button" aria-label="Imagen anterior"><i class="fas fa-chevron-left"></i></button><button class="gallery-arrow right" type="button" aria-label="Imagen siguiente"><i class="fas fa-chevron-right"></i></button><div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
                             </div>
                         </div>
                         <div class="text-center p-4">
@@ -945,7 +937,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     const code = (col.getAttribute('data-code')||'').toString();
                     const title = normalize(col.getAttribute('data-title') || col.textContent);
                     const matches = v === 'all' || code.toLowerCase() === v.toLowerCase() || title.indexOf(normalize(v)) !== -1;
-                    col.style.display = matches ? '' : 'none';
+                    if (matches) {
+                        col.style.display = '';
+                        col.style.opacity = '1';
+                        col.style.transition = 'opacity 0.3s ease-in-out';
+                    } else {
+                        col.style.display = 'none';
+                        col.style.opacity = '0';
+                    }
                     if (matches) visible++;
                 });
                 const noEl = ensureNoResults();
@@ -957,13 +956,15 @@ document.addEventListener('DOMContentLoaded', function() {
             applyFilter(select ? select.value : 'all');
         })();
 
-        // GALERIA por producto: click/swipe cicla imágenes
+        // GALERIA por producto: click en flechitas, click en imagen para modal, o swipe
         (function(){
             const items = document.querySelectorAll('.product-item[data-images]');
             items.forEach(item=>{
                 const images = item.getAttribute('data-images').split('|').map(s=>s.trim()).filter(Boolean);
                 const imgEl = item.querySelector('.product-main');
                 const counter = item.querySelector('.image-counter');
+                const leftArrow = item.querySelector('.gallery-arrow.left');
+                const rightArrow = item.querySelector('.gallery-arrow.right');
                 if (!images.length || !imgEl) return;
                 let idx = 0;
                 // precarga
@@ -973,14 +974,69 @@ document.addEventListener('DOMContentLoaded', function() {
                     imgEl.src = images[idx];
                     if (counter) counter.textContent = (idx+1) + '/' + images.length;
                 }
+                // Click en flechitas
+                if (leftArrow) leftArrow.addEventListener('click', function(e){ e.stopPropagation(); show(idx-1); });
+                if (rightArrow) rightArrow.addEventListener('click', function(e){ e.stopPropagation(); show(idx+1); });
+                
+                // Modal al hacer click en imagen
+                function openImageModal() {
+                    if (images.length <= 0) return;
+                    const modal = document.createElement('div');
+                    modal.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.95);display:flex;align-items:center;justify-content:center;z-index:11000;overflow:hidden;padding:16px;';
+                    modal.addEventListener('click', function() { document.body.removeChild(modal); });
+
+                    const content = document.createElement('div');
+                    content.style.cssText = 'position:relative;max-width:100%;max-height:100%;display:flex;align-items:center;justify-content:center;gap:16px;';
+                    content.addEventListener('click', function(e){ e.stopPropagation(); });
+
+                    let modalIdx = idx;
+                    const modalImg = document.createElement('img');
+                    modalImg.src = images[modalIdx];
+                    modalImg.style.cssText = 'max-width:100%;max-height:100%;object-fit:contain;cursor:default;';
+
+                    const createNavButton = function(symbol, direction) {
+                        const btn = document.createElement('button');
+                        btn.innerHTML = symbol;
+                        btn.style.cssText = 'position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.85);border:none;color:#000;font-size:32px;line-height:1;width:48px;height:48px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.25);';
+                        btn.addEventListener('click', function(event){
+                            event.stopPropagation();
+                            if (direction === 'left') {
+                                modalIdx = (modalIdx - 1 + images.length) % images.length;
+                            } else {
+                                modalIdx = (modalIdx + 1) % images.length;
+                            }
+                            modalImg.src = images[modalIdx];
+                        });
+                        return btn;
+                    };
+
+                    const leftControl = createNavButton('&#8249;', 'left');
+                    const rightControl = createNavButton('&#8250;', 'right');
+                    leftControl.style.left = '10px';
+                    rightControl.style.right = '10px';
+
+                    const closeBtn = document.createElement('button');
+                    closeBtn.innerHTML = '✕';
+                    closeBtn.style.cssText = 'position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.9);border:none;color:#000;font-size:24px;line-height:1;width:40px;height:40px;border-radius:50%;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.25);';
+                    closeBtn.addEventListener('click', function(event){ event.stopPropagation(); document.body.removeChild(modal); });
+
+                    content.appendChild(leftControl);
+                    content.appendChild(modalImg);
+                    content.appendChild(rightControl);
+                    modal.appendChild(content);
+                    modal.appendChild(closeBtn);
+                    document.body.appendChild(modal);
+                }
+                
+                // Click en imagen abre modal
                 const trigger = item.querySelector('.product-gallery') || imgEl;
                 if (trigger){
                     trigger.style.cursor = 'pointer';
                     trigger.addEventListener('click', function(e){
-                        if (e.target.closest('a')) return;
-                        show(idx+1);
+                        if (e.target.closest('a') || e.target.closest('button')) return;
+                        openImageModal();
                     });
-                    // swipe
+                    // Swipe para movil
                     let startX = null;
                     trigger.addEventListener('touchstart', function(e){ startX = e.touches && e.touches[0] && e.touches[0].clientX; }, {passive:true});
                     trigger.addEventListener('touchend', function(e){
@@ -1000,3 +1056,4 @@ document.addEventListener('DOMContentLoaded', function() {
 </body>
 
 </html>
+
