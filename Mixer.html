@@ -190,18 +190,13 @@
                     <label for="filter-mixer" class="mb-0">Filtrar por modelo:</label>
                     <select id="filter-mixer" class="form-select" aria-label="Filtrar por codigo o nombre">
                         <option value="all" selected>Mostrar todos</option>
-                        <option value="ONM5015">ONM5015</option>
-                        <option value="ONM5016">ONM5016</option>
-                        <option value="ONM5017">ONM5017</option>
-                        <option value="ONM5020">ONM5020</option>
-                        <option value="ONM5022C">ONM5022C</option>
-                        <option value="ONM5022T">ONM5022T</option>
-                        <option value="ONM5025C">ONM5025C</option>
-                        <option value="ONM5025T">ONM5025T</option>
-                        <option value="ONM5023">ONM5023</option>
-                        <option value="ONM5024">ONM5024</option>
-                        <option value="ONM5026">ONM5026</option>
-                        <option value="ONM5027">ONM5027</option>
+                        <option value="VARIOS">VARIOS</option>
+                        <option value="ASCANELLI">ASCANELLI</option>
+                        <option value="GEA DELAVAL">GEA DELAVAL</option>
+                        <option value="AGROMEC">AGROMEC</option>
+                        <option value="MICELI">MICELI</option>
+                        <option value="JAY-LOR">JAY-LOR</option>
+                        <option value="MAINERO">MAINERO</option>
                     </select>
                 </div>
                 <a class="btn btn-warning" href="img/pdf/Mixer/Lista de aplicaciones Mixer.pdf"
@@ -416,6 +411,23 @@
                     </div>
                 </div>
 
+                <!-- ONM5029 -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s" data-code="ONM5029" data-title="ONM5029 Cuchilla Mixer">
+                    <div class="product-item h-100" data-images="img/02. NO REDONDOS/Mixer/ONM5029/ONM5029 01.png|img/02. NO REDONDOS/Mixer/ONM5029/ONM5029 02.jpg">
+                        <div class="position-relative product-gallery">
+                            <img class="img-fluid product-main" src="img/02. NO REDONDOS/Mixer/ONM5029/ONM5029 01.png" alt="ONM5029">
+                            <div class="product-overlay"><button class="gallery-arrow left" type="button" aria-label="Imagen anterior"><i class="fas fa-chevron-left"></i></button><button class="gallery-arrow right" type="button" aria-label="Imagen siguiente"><i class="fas fa-chevron-right"></i></button><div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
+                            </div>
+                        </div>
+                        <div class="text-center p-4">
+                            <a class="d-block h5" href="">ONM5029 Cuchilla Mixer</a>
+                            <span class="text-primary me-1">Espesores</span><br>
+                            <span class="text-decoration-underline">6,35mm</span><br>
+                            <span class="text-decoration-underline">Largo 545 Alto 140 / 4 ■ de 14mm</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -571,6 +583,17 @@
                     <td>52</td>
                     <td>6,35 mm</td>
                     <!-- <td><a class="btn btn-outline-primary btn-sm" href="img/pdf/Mixer/ONM5027.jpg" role="button"
+                            target="_blank">Ver Plano</a> </td> -->
+                </tr>
+
+                  <!-- ONM5029 -->
+                <tr>
+                    <th scope="row"></th>
+                    <td>ONM5029</td>
+                    <td>545</td>
+                    <td>140</td>
+                    <td>6,35 mm</td>
+                    <!-- <td><a class="btn btn-outline-primary btn-sm" href="img/pdf/Mixer/ONM5029.jpg" role="button"
                             target="_blank">Ver Plano</a> </td> -->
                 </tr>
 
@@ -912,6 +935,15 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('DOMContentLoaded', function() {
         // FILTRO Mixer
         (function(){
+            const brands = {
+                'VARIOS': ['ONM5015'],
+                'ASCANELLI': ['ONM5016','ONM5017'],
+                'GEA DELAVAL': ['ONM5020','ONM5025C','ONM5025T'],
+                'AGROMEC': ['ONM5022C','ONM5022T'],
+                'MICELI': ['ONM5023','ONM5024'],
+                'JAY-LOR': ['ONM5026','ONM5027'],
+                'MAINERO': ['ONM5029']
+            };
             const select = document.getElementById('filter-mixer');
             const clearBtn = document.getElementById('clear-filter-mixer');
             const row = document.getElementById('mixer-row');
@@ -929,18 +961,28 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 return el;
             }
-            function normalize(s){ return (s||'').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim(); }
+            function normalize(s){ return (s||'').toString().toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim(); }
             function applyFilter(val){
-                const v = (val||'all').toString();
+                const v = normalize(val || 'all');
                 let visible = 0;
                 cols.forEach(col=>{
-                    const code = (col.getAttribute('data-code')||'').toString();
+                    const code = (col.getAttribute('data-code')||'').toString().toUpperCase();
                     const title = normalize(col.getAttribute('data-title') || col.textContent);
-                    const matches = v === 'all' || code.toLowerCase() === v.toLowerCase() || title.indexOf(normalize(v)) !== -1;
+                    let matches = v === 'ALL';
+                    if (!matches) {
+                        const group = brands[v] || [];
+                        if (group.includes(code)) {
+                            matches = true;
+                        } else if (code === v) {
+                            matches = true;
+                        } else if (title.indexOf(v) !== -1) {
+                            matches = true;
+                        }
+                    }
                     if (matches) {
                         col.style.display = '';
                         col.style.opacity = '1';
-                        col.style.transition = 'opacity 0.3s ease-in-out';
+                        col.style.transition = 'opacity 0.15s ease-in-out';
                     } else {
                         col.style.display = 'none';
                         col.style.opacity = '0';
