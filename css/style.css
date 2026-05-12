@@ -163,27 +163,42 @@ body {
 }
 
 
+/* Contenedor del submenú */
 .dropdown-submenu {
     position: relative;
+    width: 100%; /* Necesario para que left:100% salga del borde correcto */
 }
+
+/* Submenú: oculto por defecto, se muestra con clase .open */
 .dropdown-submenu > .dropdown-menu {
     top: 0;
     left: 100%;
-    margin-left: 24px; /* Espacio extra a la derecha */
-    min-width: 300px;  /* Más ancho para destacar */
-    display: none;
+    margin-left: 4px;
+    min-width: 240px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-6px);
+    transition: all 0.2s ease;
+    display: block;
     position: absolute;
-    background: #5B8C51; /* Verde principal destacado */
-    color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
-    z-index: 1000;
+    background: #e2e3e5;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    z-index: 1100;
     border: none;
-    text-align: left;
+    padding: 8px 0;
+    pointer-events: none;
 }
+
+/* Submenú visible al hacer click (clase .open) — mobile y base */
 .dropdown-submenu.open > .dropdown-menu {
     display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+    pointer-events: auto;
 }
+
 .submenu-toggle {
     font-size: 1em;
     margin-left: 8px;
@@ -192,141 +207,117 @@ body {
 
 /* Menú principal: color personalizado y sombra */
 .navbar .dropdown-menu {
-    background: #f8f9fa; /* Color claro combinado */
+    background: #f8f9fa;
     border-radius: 8px;
     box-shadow: 0 4px 16px rgba(0,0,0,0.10);
     min-width: 220px;
     border: none;
+    padding: 8px 0;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
 }
 
-/* Submenú: despliegue hacia la derecha y color */
-.dropdown-submenu {
-    position: relative;
-}
-.dropdown-submenu > .dropdown-menu {
-    top: 0;
-    left: 140%; /* Más separado hacia la derecha */
-    margin-top: 0;
-    min-width: 220px;
-    display: none;
-    position: absolute;
-    background: #e2e3e5;
-    border-radius: 8px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
-    z-index: 1000;
-    border: none;
-}
-
-/* Submenú: más separado hacia la derecha y animación */
 @media (min-width: 992px) {
-    .dropdown-submenu > .dropdown-menu {
-        top: 0;
-        left: 180%; /* Más separado del menú principal */
-        min-width: 220px;
-        opacity: 0;
-        transform: translateX(40px);
-        transition: opacity 0.3s ease, transform 0.3s ease;
-        display: none;
-        position: absolute;
-        background: #e2e3e5;
-        border-radius: 8px;
-        box-shadow: 0 4px 16px rgba(0,0,0,0.10);
-        z-index: 1000;
-        border: none;
-    }
-    .dropdown-submenu:hover > .dropdown-menu {
-        display: block;
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-/* Animación para el submenú */
-.dropdown-submenu > .dropdown-menu {
-    opacity: 0;
-    transform: translateX(40px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-/* Animación y despliegue del submenú */
-.dropdown-submenu > .dropdown-menu {
-    opacity: 0;
-    transform: translateX(40px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    left: 150%; /* Separado hacia la derecha */
-    top: 0;
-    min-width: 220px;
-    display: none;
-    position: absolute;
-    background: #e2e3e5;
-    border-radius: 8px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.10);
-    z-index: 1000;
-    border: none;
-}
-
-/* Mostrar submenú por hover en escritorio */
-@media (min-width: 992px) {
-    .dropdown-submenu:hover > .dropdown-menu {
-        display: block;
-        opacity: 1;
-        transform: translateX(0);
-    }
+    /* El dropdown principal (Nosotros, Productos) se abre por hover */
     .nav-item.dropdown:hover > .dropdown-menu {
         display: block;
+        opacity: 1;
+        visibility: visible;
     }
 }
 
-/* Mostrar submenú por clic en móviles */
+/* ── Móvil: menú desplegable en columna ── */
 @media (max-width: 991.98px) {
-    .dropdown-submenu.open > .dropdown-menu {
-        display: block;
-        opacity: 1;
-        transform: translateX(0);
-        position: static;
-        left: 0;
-        box-shadow: none;
-        background: #e2e3e5;
-    }
+    /* Dropdown principal: estático e inline */
     .navbar .dropdown-menu {
         position: static;
         min-width: 100%;
         box-shadow: none;
         background: #f8f9fa;
+        border-radius: 0;
+        padding: 0;
+    }
+
+    /* Submenú: oculto con display:none para no ocupar espacio */
+    .dropdown-submenu > .dropdown-menu {
+        display: none;
+        position: static;
+        left: 0;
+        margin-left: 0;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        background: #e8ebe8;
+        pointer-events: auto;
+        min-width: 100%;
+        border-radius: 0;
+        padding: 4px 0;
+        transition: none;
+    }
+
+    /* Submenú abierto */
+    .dropdown-submenu.open > .dropdown-menu {
+        display: block;
+    }
+
+    /* Ítem que tiene submenú: línea separadora y padding */
+    .dropdown-submenu > .submenu-toggle {
+        border-bottom: 1px solid #d8dbd8;
+        background: #eef1ee;
+    }
+
+    /* Items del submenú indentados */
+    .dropdown-submenu .dropdown-menu .dropdown-item {
+        padding-left: 32px;
+        font-size: 0.95em;
+        border-bottom: 1px solid #d0d4d0;
     }
 }
 
-@media (min-width: 992px) {
-    .dropdown-submenu:hover > .dropdown-menu {
-        opacity: 1;
-        transform: translateX(0);
-        display: block;
-    }
-}
-/* Mostrar submenú al pasar el mouse en escritorio */
-@media (min-width: 992px) {
-    .dropdown-submenu:hover > .dropdown-menu {
-        display: block;
-    }
-    /* Menú principal también por hover */
-    .nav-item.dropdown:hover > .dropdown-menu {
-        display: block;
-    }
-}
 
 /* Flecha del submenú */
 .submenu-toggle span {
     font-size: 1em;
     margin-left: 8px;
-    color: #5B8C51; /* Verde del logo */
+    color: #5B8C51;
+    display: inline-block;
+    transition: transform 0.2s ease;
 }
 
-/* Opcional: resaltar item activo */
+.dropdown-submenu.open > .submenu-toggle span {
+    transform: rotate(90deg);
+}
+}
+
+/* Estilos para items del dropdown - más cómodo y visible */
+.dropdown-menu .dropdown-item {
+    padding: 12px 20px;
+    transition: all 0.2s ease;
+    color: #212529;
+    font-weight: 500;
+}
+
 .dropdown-menu .dropdown-item:hover,
 .dropdown-menu .dropdown-item:focus {
     background: #88a981; /* Verde claro combinado */
+    color: #fff;
+    padding-left: 25px;
+    border-left: 4px solid var(--primary);
+}
+
+/* Estilos para submenú items */
+.dropdown-submenu .dropdown-menu .dropdown-item {
+    padding: 10px 18px;
     color: #212529;
 }
+
+.dropdown-submenu .dropdown-menu .dropdown-item:hover,
+.dropdown-submenu .dropdown-menu .dropdown-item:focus {
+    background: #5B8C51;
+    color: #fff;
+    padding-left: 23px;
+}
+
 
 
 @media (max-width: 991.98px) {
@@ -341,25 +332,34 @@ body {
 }
 
 @media (min-width: 992px) {
-    .navbar .nav-item .dropdown-menu {
+    /* Solo el dropdown de primer nivel (hijo directo de nav-item) */
+    .navbar .nav-item > .dropdown-menu {
         display: none;
-        opacity: 1;
-        visibility: visible;
+        opacity: 0;
+        visibility: hidden;
         position: absolute;
         top: 100%;
-        left: 0;
-        margin-top: 0;
+        left: 32px;
+        margin-top: 8px;
         border: none;
-        transition: none;
+        transition: opacity 0.25s ease, visibility 0.25s ease;
     }
-    .navbar .nav-item .dropdown-menu.show {
+
+    .navbar .nav-item > .dropdown-menu.show,
+    .navbar .nav-item:hover > .dropdown-menu {
         display: block;
+        opacity: 1;
+        visibility: visible;
     }
-}
-@media (min-width: 992px) {
-  .dropdown-submenu:hover > .dropdown-menu {
-    display: block;
-  }
+
+    /* Submenú abierto por click — debe venir después para ganar la cascada */
+    .dropdown-submenu.open > .dropdown-menu {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+        pointer-events: auto;
+    }
 }
 
 
