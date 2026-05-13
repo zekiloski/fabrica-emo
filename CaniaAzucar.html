@@ -843,18 +843,20 @@
                 });
             });
 
-            // Submenú por clic — funciona en escritorio y móvil
+            // Submenú por clic en móvil
             document.querySelectorAll('.submenu-toggle').forEach(function (toggle) {
                 toggle.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    var parent = this.closest('.dropdown-submenu');
-                    var isOpen = parent.classList.contains('open');
-                    parent.parentElement.querySelectorAll('.dropdown-submenu').forEach(function (sub) {
-                        sub.classList.remove('open');
-                    });
-                    if (!isOpen) {
-                        parent.classList.add('open');
+                    if (window.innerWidth < 992) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        var parent = this.closest('.dropdown-submenu');
+                        var isOpen = parent.classList.contains('open');
+                        parent.parentElement.querySelectorAll('.dropdown-submenu').forEach(function (sub) {
+                            sub.classList.remove('open');
+                        });
+                        if (!isOpen) {
+                            parent.classList.add('open');
+                        }
                     }
                 });
             });

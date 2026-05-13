@@ -223,6 +223,30 @@ body {
         opacity: 1;
         visibility: visible;
     }
+
+    /* Puente invisible de 8px para cruzar el gap sin que se cierre el submenú */
+    .dropdown-submenu::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 100%;
+        width: 8px;
+        height: 100%;
+    }
+
+    /* Submenú se abre al pasar el mouse por el ítem */
+    .dropdown-submenu:hover > .dropdown-menu {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0);
+        pointer-events: auto;
+    }
+
+    /* Flecha rota al hacer hover en desktop */
+    .dropdown-submenu:hover > .submenu-toggle span {
+        transform: rotate(90deg);
+    }
 }
 
 /* ── Móvil: menú desplegable en columna ── */
