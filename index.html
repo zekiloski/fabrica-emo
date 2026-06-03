@@ -40,6 +40,37 @@
 
 <body>
 
+    <!-- Popup Agroactiva 2026 - Visible del 3 al 6 de junio 2026 -->
+    <div id="popup-agroactiva" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.82); z-index:99999; align-items:center; justify-content:center;">
+        <div style="position:relative; max-width:820px; width:92%; background:#111; border-radius:12px; overflow:hidden; box-shadow:0 8px 40px rgba(0,0,0,0.7);">
+            <button onclick="cerrarPopupAgroactiva()" style="position:absolute; top:10px; right:14px; background:transparent; border:none; color:#fff; font-size:28px; cursor:pointer; z-index:10; line-height:1;">&times;</button>
+            <video id="video-agroactiva" src="img/Videos/Video Agroactiva.mp4" controls autoplay muted playsinline style="width:100%; display:block; max-height:80vh; object-fit:contain;"></video>
+            <div style="padding:14px 20px; text-align:center; background:#111;">
+                <span style="color:#f0a500; font-size:17px; font-weight:700; letter-spacing:1px;">AGROACTIVA 2026 &nbsp;|&nbsp; Stand Oncativo S.A. &nbsp;&nbsp;</span>
+                <span style="color:#ccc; font-size:14px;">3 al 6 de Junio &mdash; ¡Visitanos en el Stand N°174 D!</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            var hoy = new Date();
+            var inicio = new Date('2026-06-03T00:00:00');
+            var fin    = new Date('2026-06-06T23:59:59');
+            if (hoy >= inicio && hoy <= fin) {
+                var popup = document.getElementById('popup-agroactiva');
+                popup.style.display = 'flex';
+            }
+        })();
+        function cerrarPopupAgroactiva() {
+            var popup = document.getElementById('popup-agroactiva');
+            popup.style.display = 'none';
+            var video = document.getElementById('video-agroactiva');
+            video.pause();
+        }
+        document.getElementById('video-agroactiva').addEventListener('ended', cerrarPopupAgroactiva);
+    </script>
+
     <!-- Contenedor del botón flotante de WhatsApp -->
     <!-- <div class="whatsapp-btn-container">
     </div>     -->
