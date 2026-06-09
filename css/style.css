@@ -621,6 +621,89 @@ body {
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 0 45px rgba(0, 0, 0, .07);
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+.product-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 35px rgba(0, 0, 0, .16);
+}
+.product-item .position-relative {
+    min-height: 260px;
+}
+.product-item img.img-fluid {
+    width: 100%;
+    max-height: 260px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+.filter-bar {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: center;
+    margin: 18px 0;
+}
+.filter-bar select {
+    max-width: 320px;
+}
+.product-overlay {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: center;
+    justify-content: center;
+}
+.product-overlay .btn {
+    padding: .25rem .45rem;
+    font-size: .78rem;
+    line-height: 1;
+    border-radius: .25rem;
+}
+.product-overlay .btn.btn-sm {
+    padding: .18rem .35rem;
+    font-size: .72rem;
+}
+.product-overlay .btn.btn-warning {
+    padding: .28rem .5rem;
+    font-size: .8rem;
+}
+.product-overlay .btn.btn-square {
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.gallery-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 40;
+    background: rgba(255,255,255,0);
+    color: #000;
+    border: 0;
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,.18);
+    font-size: 20px;
+    line-height: 1;
+}
+.gallery-arrow.left { left: 10px; }
+.gallery-arrow.right { right: 10px; }
+.gallery-arrow:active { transform: translateY(-50%) scale(.98); }
+.gallery-arrow:hover { background: rgba(255,255,255,0.18); }
+@media (max-width:576px) {
+    .gallery-arrow { width: 30px; height: 30px; font-size: 16px; }
+    .product-item .position-relative { min-height: 200px; }
+    .product-item img.img-fluid { max-height: 200px; }
 }
 
 /*** Tabla de Medidas Pulgadas y espesores ***/

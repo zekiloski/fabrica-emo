@@ -35,17 +35,6 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-    <style>
-    /* Flechitas de navegación en overlay de imagen */
-    .gallery-arrow {
-        position:absolute; top:50%; transform:translateY(-50%); z-index:40; background:#ffffff00; color:#000000; border:0; width:36px; height:36px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; cursor:pointer; box-shadow:0 2px 6px rgba(0,0,0,0.18); font-size:20px; line-height:1;
-    }
-    .gallery-arrow.left { left:10px; }
-    .gallery-arrow.right { right:10px; }
-    .gallery-arrow:active { transform:translateY(-50%) scale(.98); }
-    .gallery-arrow:hover { background: rgba(255,255,255,0.1); }
-    @media (max-width:576px) { .gallery-arrow { width:30px; height:30px; font-size:16px; } }
-    </style>
 </head>
 
 <body>
@@ -180,39 +169,36 @@
                 <h1 class="mb-5">DISCOS CONCAVOS LISOS Y DENTADOS</h1>
             </div>
 
-            <!-- FILTRO: solo combo de pulgadas -->
-            <div class="row mb-4">
-                <div class="col-12 d-flex justify-content-center">
-                    <div class="input-group filter-panel" style="max-width:420px; width:100%;">
-                        <span class="input-group-text" id="filter-label">Pulgadas</span>
-
-                        <select id="filter-diameter" class="form-select" aria-label="Filtrar por pulgadas">
-                            <option value="all" selected>Mostrar todos</option>
-                            <option value="10">10"</option>
-                            <option value="12">12"</option>
-                            <option value="13">13"</option>
-                            <option value="14">14"</option>
-                            <option value="15">15"</option>
-                            <option value="16">16"</option>
-                            <option value="17">17"</option>
-                            <option value="18">18"</option>
-                            <option value="20">20"</option>
-                            <option value="22">22"</option>
-                            <option value="24">24"</option>
-                            <option value="26">26"</option>
-                            <option value="28">28"</option>
-                            <option value="30">30"</option>
-                        </select>
-
-                        <button id="clear-filter" class="btn btn--clear" type="button" title="Limpiar filtro">
-                            <i class="fas fa-eraser"></i>
-                        </button>
-                    </div>
+            <!-- FILTRO: combo de pulgadas a la izquierda y botón de descarga a la derecha -->
+            <div class="filter-bar">
+                <div>
+                    <label for="filter-diameter" class="mb-0">Pulgadas:</label>
+                    <select id="filter-diameter" class="form-select">
+                        <option value="all" selected>Mostrar todos</option>
+                        <option value="10">10"</option>
+                        <option value="12">12"</option>
+                        <option value="13">13"</option>
+                        <option value="14">14"</option>
+                        <option value="15">15"</option>
+                        <option value="16">16"</option>
+                        <option value="17">17"</option>
+                        <option value="18">18"</option>
+                        <option value="20">20"</option>
+                        <option value="22">22"</option>
+                        <option value="24">24"</option>
+                        <option value="26">26"</option>
+                        <option value="28">28"</option>
+                        <option value="30">30"</option>
+                    </select>
+                </div>
+                <div class="d-flex gap-2 align-items-center">
+                    <a id="download-list" class="btn btn-warning" href="img/pdf/Cuchilla Sembradora/Lista de Aplicaciones DG.pdf" target="_blank" role="button">Descargar Lista PDF</a>
+                    <button id="clear-filter" class="btn btn-secondary" type="button">Limpiar</button>
                 </div>
             </div>
 
             <!-- Segundo N°1 Grupo de Productos -->
-            <div class="row gx-4" id="discos-row">
+            <div class="row gx-4">
                 <!-- ITEM 10" -->
                 <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.1s" data-diameters="10">
                     <div class="product-item"
@@ -221,12 +207,9 @@
                             <img class="img-fluid product-main" src="img/Disco Grande/10/DD 10 01.png"
                                 alt="Discos 10&quot;">
                             <div class="product-overlay d-flex justify-content-between align-items-start p-2">
-                                <a class="btn btn-warning"
-                                    href="img/pdf/Cuchilla Sembradora/Lista de Aplicaciones DG.pdf" target="_blank"
-                                    role="button">Lista de Aplicacion PDF</a>
                                 <button class="gallery-arrow left" type="button" aria-label="Imagen anterior"><i class="fas fa-chevron-left"></i></button>
                                 <button class="gallery-arrow right" type="button" aria-label="Imagen siguiente"><i class="fas fa-chevron-right"></i></button>
-                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/2</div>
+                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
                             </div>
                         </div>
                         <div class="text-center p-4">
@@ -238,19 +221,16 @@
                 </div>
 
                 <!-- ITEM 12 / 12.5" -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.3s" data-diameters="12 13">
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.3s" data-diameters="12">
                     <div class="product-item"
                         data-images="img/Disco Grande/12/DD 012 065 02.png|img/Disco Grande/12/DD 012 152 01.png|img/Disco Grande/12/DD 071 01.png">
                         <div class="position-relative product-gallery">
                             <img class="img-fluid product-main" src="img/Disco Grande/12/DD 012 152 01.png"
                                 alt="Discos 12&quot;">
                             <div class="product-overlay d-flex justify-content-between align-items-start p-2">
-                                <a class="btn btn-warning"
-                                    href="img/pdf/Cuchilla Sembradora/Lista de Aplicaciones DG.pdf" target="_blank"
-                                    role="button">Lista de Aplicacion PDF</a>
                                 <button class="gallery-arrow left" type="button" aria-label="Imagen anterior"><i class="fas fa-chevron-left"></i></button>
                                 <button class="gallery-arrow right" type="button" aria-label="Imagen siguiente"><i class="fas fa-chevron-right"></i></button>
-                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/3</div>
+                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
                             </div>
                         </div>
                         <div class="text-center p-4">
@@ -269,43 +249,36 @@
                             <img class="img-fluid product-main" src="img/Disco Grande/13/DD 013 050 01.png"
                                 alt="Discos 13&quot;">
                             <div class="product-overlay d-flex justify-content-between align-items-start p-2">
-                                <a class="btn btn-warning"
-                                    href="img/pdf/Cuchilla Sembradora/Lista de Aplicaciones DG.pdf" target="_blank"
-                                    role="button">Lista de Aplicacion PDF</a>
                                 <button class="gallery-arrow left" type="button" aria-label="Imagen anterior"><i class="fas fa-chevron-left"></i></button>
                                 <button class="gallery-arrow right" type="button" aria-label="Imagen siguiente"><i class="fas fa-chevron-right"></i></button>
-                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/3</div>
+                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
                             </div>
                         </div>
                         <div class="text-center p-4">
-                            <a class="d-block h5" href="">Discos Cóncavos Dentados de 13 / 13,5″</a>
+                            <a class="d-block h5" href="">Discos Cóncavos Dentados de 13″</a>
                             <span class="text-primary me-1">Espesores</span><br>
                             <span class="text-decoration-underline">3mm</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- ITEM 14-30 (varios tamaños) -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s"
-                    data-diameters="14 15 16 17 18 20 22 24 26 28 30">
+                <!-- ITEM 14" -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s" data-diameters="14">
                     <div class="product-item"
                         data-images="img/Disco Grande/14/DD 014 T14 051.png|img/Disco Grande/14/DD 014 R15 430 01.png|img/Disco Grande/14/DD 014 031 01.png.png|img/Disco Grande/14,5/DD 145 01.png">
                         <div class="position-relative product-gallery">
                             <img class="img-fluid product-main" src="img/Disco Grande/14/DD 014 TPB 309 02.png"
-                                alt="Discos 14-30&quot;">
+                                alt="Discos 14&quot;">
                             <div class="product-overlay d-flex justify-content-between align-items-start p-2">
-                                <a class="btn btn-warning"
-                                    href="img/pdf/Cuchilla Sembradora/Lista de Aplicaciones DG.pdf" target="_blank"
-                                    role="button">Lista de Aplicacion PDF</a>
                                 <button class="gallery-arrow left" type="button" aria-label="Imagen anterior"><i class="fas fa-chevron-left"></i></button>
                                 <button class="gallery-arrow right" type="button" aria-label="Imagen siguiente"><i class="fas fa-chevron-right"></i></button>
-                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/3</div>
+                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
                             </div>
                         </div>
                         <div class="text-center p-4">
-                            <a class="d-block h5" href="">Discos Cóncavos Dentados y Lisos de 14 - 14,5″</a>
+                            <a class="d-block h5" href="">Discos Cóncavos Dentados y Lisos de 14″</a>
                             <span class="text-primary me-1">Espesores</span><br>
-                            <span class="text-decoration-underline">3,4 y 6mm</span>
+                            <span class="text-decoration-underline">3y 4mm</span>
                         </div>
                     </div>
                 </div>
@@ -314,33 +287,36 @@
             </div>
 
             <!-- Segundo N°2 Grupo de Productos -->
-            <div class="row gx-4" id="discos-row">
+            <div class="row gx-4">
                
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.1s" data-diameters="10">
+                <!-- ITEM 15" -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.1s" data-diameters="15">
                     <div class="product-item" data-images="img/Disco Grande/15/DD 015 FCO 354 01.png|img/Disco Grande/15/DD 015 030 317 02.png">
                         <div class="position-relative product-gallery">
-                            <img class="img-fluid product-main" src="img/Disco Grande/15/DD 015 FCO 354 01.png" alt="Discos 10&quot;">
+                            <img class="img-fluid product-main" src="img/Disco Grande/15/DD 015 FCO 354 01.png" alt="Discos 15&quot;">
                             <div class="product-overlay d-flex justify-content-between align-items-start p-2">
-                                <a class="btn btn-warning" href="img/pdf/Cuchilla Sembradora/Lista de Aplicaciones DG.pdf" target="_blank" role="button">Lista de Aplicacion PDF</a>
-                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/2</div>
+                                <button class="gallery-arrow left" type="button" aria-label="Imagen anterior"><i class="fas fa-chevron-left"></i></button>
+                                <button class="gallery-arrow right" type="button" aria-label="Imagen siguiente"><i class="fas fa-chevron-right"></i></button>
+                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
                             </div>
                         </div>
                         <div class="text-center p-4">
                             <a class="d-block h5" href="">Discos Cóncavos Dentados de 15″</a>
                             <span class="text-primary me-1">Espesores</span><br>
-                            <span class="text-decoration-underline">3mm</span>
+                            <span class="text-decoration-underline">3 y 4mm</span>
                         </div>
                     </div>
                 </div>
 
-                
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.3s" data-diameters="12 13">
-                    <div class="product-item" data-images="img/Disco Grande/12/DD 012 030 020 04.png|img/Disco Grande/12/ONDD2204 DD-012-030-015-152 IM02.png|img/Disco Grande/12/DD 125 040 927 R15 156.png">
+                <!-- ITEM 16" -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.3s" data-diameters="16">
+                    <div class="product-item" data-images="img/Disco Grande/16/DD 016 045 01.png|img/Disco Grande/16/DD 016 049 01.png|img/Disco Grande/16/DD 016 352 01.png|img/Disco Grande/16/DD 016 360 01.png">
                         <div class="position-relative product-gallery">
-                            <img class="img-fluid product-main" src="img/Disco Grande/12/DD 012 030 020 04.png" alt="Discos 12&quot;">
+                            <img class="img-fluid product-main" src="img/Disco Grande/16/DD 016 045 01.png" alt="Discos 16&quot;">
                             <div class="product-overlay d-flex justify-content-between align-items-start p-2">
-                                <a class="btn btn-warning" href="img/pdf/Cuchilla Sembradora/Lista de Aplicaciones DG.pdf" target="_blank" role="button">Lista de Aplicacion PDF</a>
-                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/3</div>
+                                <button class="gallery-arrow left" type="button" aria-label="Imagen anterior"><i class="fas fa-chevron-left"></i></button>
+                                <button class="gallery-arrow right" type="button" aria-label="Imagen siguiente"><i class="fas fa-chevron-right"></i></button>
+                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
                             </div>
                         </div>
                         <div class="text-center p-4">
@@ -351,37 +327,40 @@
                     </div>
                 </div>
 
-               
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.5s" data-diameters="13">
-                    <div class="product-item" data-images="img/Disco Grande/13/DD 013 027 916 202.png|img/Disco Grande/13/DD 013 027 024 050.jpg|img/Disco Grande/13/DD 135 030 000 409.png">
+               <!-- ITEM 18" -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.5s" data-diameters="18">
+                    <div class="product-item" data-images="img/Disco Grande/18/DL 018 074 01.png|img/Disco Grande/18/DL 018 074 02.png|img/Disco Grande/18/DL 018 179 01.png|img/Disco Grande/18/DD 018 075 01.png|img/Disco Grande/18/DD 018 075 02.png">
                         <div class="position-relative product-gallery">
-                            <img class="img-fluid product-main" src="img/Disco Grande/13/DD 013 027 916 202.png" alt="Discos 13&quot;">
+                            <img class="img-fluid product-main" src="img/Disco Grande/18/DL 018 074 01.png" alt="Discos 18&quot;">
                             <div class="product-overlay d-flex justify-content-between align-items-start p-2">
-                                <a class="btn btn-warning" href="img/pdf/Cuchilla Sembradora/Lista de Aplicaciones DG.pdf" target="_blank" role="button">Lista de Aplicacion PDF</a>
-                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/3</div>
-                            </div>
-                        </div>
-                        <div class="text-center p-4">
-                            <a class="d-block h5" href="">Discos Cóncavos Dentados y Lisos 17″</a>
-                            <span class="text-primary me-1">Espesores</span><br>
-                            <span class="text-decoration-underline">3mm</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s" data-diameters="14 15 16 17 18 20 22 24 26 28 30">
-                    <div class="product-item" data-images="img/Disco Grande/ONDD.png|img/Disco Grande/ONDD_alt1.png|img/Disco Grande/ONDD_alt2.png">
-                        <div class="position-relative product-gallery">
-                            <img class="img-fluid product-main" src="img/Disco Grande/ONDD.png" alt="Discos 14-30&quot;">
-                            <div class="product-overlay d-flex justify-content-between align-items-start p-2">
-                                <a class="btn btn-warning" href="img/pdf/Cuchilla Sembradora/Lista de Aplicaciones DG.pdf" target="_blank" role="button">Lista de Aplicacion PDF</a>
-                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/3</div>
+                                <button class="gallery-arrow left" type="button" aria-label="Imagen anterior"><i class="fas fa-chevron-left"></i></button>
+                                <button class="gallery-arrow right" type="button" aria-label="Imagen siguiente"><i class="fas fa-chevron-right"></i></button>
+                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
                             </div>
                         </div>
                         <div class="text-center p-4">
                             <a class="d-block h5" href="">Discos Cóncavos Dentados y Lisos 18″</a>
                             <span class="text-primary me-1">Espesores</span><br>
-                            <span class="text-decoration-underline">3,4 y 6mm</span>
+                            <span class="text-decoration-underline">4 y 5mm</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ITEM 20" -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s" data-diameters="20">
+                    <div class="product-item" data-images="img/Disco Grande/20/DD 020 050 471 CP.png|img/Disco Grande/20/DL 020 040 074.png">
+                        <div class="position-relative product-gallery">
+                            <img class="img-fluid product-main" src="img/Disco Grande/20/DD 020 050 471 CP.png" alt="Discos 20&quot;">
+                            <div class="product-overlay d-flex justify-content-between align-items-start p-2">
+                                <button class="gallery-arrow left" type="button" aria-label="Imagen anterior"><i class="fas fa-chevron-left"></i></button>
+                                <button class="gallery-arrow right" type="button" aria-label="Imagen siguiente"><i class="fas fa-chevron-right"></i></button>
+                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
+                            </div>
+                        </div>
+                        <div class="text-center p-4">
+                            <a class="d-block h5" href="">Discos Cóncavos Dentados y Lisos 20″</a>
+                            <span class="text-primary me-1">Espesores</span><br>
+                            <span class="text-decoration-underline">4 y 5mm</span>
                         </div>
                     </div>
                 </div>
@@ -390,102 +369,110 @@
             </div>
 
             <!-- Segundo N°3 Grupo de Productos -->
-            <!-- <div class="row gx-4" id="discos-row">
+            <div class="row gx-4">
                 
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.1s" data-diameters="10">
-                    <div class="product-item" data-images="img/Disco Grande/10/DD 010 030 013 071.png|img/Disco Grande/10/DD 010 030 013 071 IM01.png">
+                <!-- ITEM 22" -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.1s" data-diameters="22">
+                    <div class="product-item" data-images="img/Disco Grande/22/DD 022 040 075.png|img/Disco Grande/22/DL 022 040 075.png|img/Disco Grande/22/DD 022 040 CON 076.png|img/Disco Grande/22/DL 022 040 CON 076.png">
                         <div class="position-relative product-gallery">
-                            <img class="img-fluid product-main" src="img/Disco Grande/10/DD 010 030 013 071.png" alt="Discos 10&quot;">
+                            <img class="img-fluid product-main" src="img/Disco Grande/22/DD 022 040 075.png" alt="Discos 22&quot;">
                             <div class="product-overlay d-flex justify-content-between align-items-start p-2">
-                                <a class="btn btn-warning" href="img/pdf/Cuchilla Sembradora/Lista de Aplicaciones DG.pdf" target="_blank" role="button">Lista de Aplicacion PDF</a>
-                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/2</div>
+                                <button class="gallery-arrow left" type="button" aria-label="Imagen anterior"><i class="fas fa-chevron-left"></i></button>
+                                <button class="gallery-arrow right" type="button" aria-label="Imagen siguiente"><i class="fas fa-chevron-right"></i></button>
+                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
                             </div>
                         </div>
                         <div class="text-center p-4">
-                            <a class="d-block h5" href="">Discos Cóncavos Dentados de 20″</a>
+                            <a class="d-block h5" href="">Discos Cóncavos Dentados y Lisos de 22″</a>
                             <span class="text-primary me-1">Espesores</span><br>
                             <span class="text-decoration-underline">4 y 5mm</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.3s" data-diameters="12 13">
-                    <div class="product-item" data-images="img/Disco Grande/12/DD 012 030 020 04.png|img/Disco Grande/12/ONDD2204 DD-012-030-015-152 IM02.png|img/Disco Grande/12/DD 125 040 927 R15 156.png">
+                <!-- ITEM 24" -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.3s" data-diameters="24">
+                    <div class="product-item" data-images="img/Disco Grande/24/DL 024 050 076.png|img/Disco Grande/24/DD 024 060.png">
                         <div class="position-relative product-gallery">
-                            <img class="img-fluid product-main" src="img/Disco Grande/12/DD 012 030 020 04.png" alt="Discos 12&quot;">
+                            <img class="img-fluid product-main" src="img/Disco Grande/24/DL 024 050 076.png" alt="Discos 24&quot;">
                             <div class="product-overlay d-flex justify-content-between align-items-start p-2">
-                                <a class="btn btn-warning" href="img/pdf/Cuchilla Sembradora/Lista de Aplicaciones DG.pdf" target="_blank" role="button">Lista de Aplicacion PDF</a>
-                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/3</div>
+                                <button class="gallery-arrow left" type="button" aria-label="Imagen anterior"><i class="fas fa-chevron-left"></i></button>
+                                <button class="gallery-arrow right" type="button" aria-label="Imagen siguiente"><i class="fas fa-chevron-right"></i></button>
+                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
                             </div>
                         </div>
                         <div class="text-center p-4">
-                            <a class="d-block h5" href="">Discos Cóncavos Dentados de 22″</a>
+                            <a class="d-block h5" href="">Discos Cóncavos Dentados y Lisos de 24″</a>
                             <span class="text-primary me-1">Espesores</span><br>
-                            <span class="text-decoration-underline">4 y 5mm</span>
+                            <span class="text-decoration-underline">5 y 6mm</span>
                         </div>
                     </div>
                 </div>
 
-                
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.5s" data-diameters="13">
-                    <div class="product-item" data-images="img/Disco Grande/13/DD 013 027 916 202.png|img/Disco Grande/13/DD 013 027 024 050.jpg|img/Disco Grande/13/DD 135 030 000 409.png">
+                <!-- ITEM 26" -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.5s" data-diameters="26">
+                    <div class="product-item" data-images="img/Disco Grande/26/DD 026 060 076.png|img/Disco Grande/26/DL 026 050 076.png">
                         <div class="position-relative product-gallery">
-                            <img class="img-fluid product-main" src="img/Disco Grande/13/DD 013 027 916 202.png" alt="Discos 13&quot;">
+                            <img class="img-fluid product-main" src="img/Disco Grande/26/DD 026 060 076.png" alt="Discos 26&quot;">
                             <div class="product-overlay d-flex justify-content-between align-items-start p-2">
-                                <a class="btn btn-warning" href="img/pdf/Cuchilla Sembradora/Lista de Aplicaciones DG.pdf" target="_blank" role="button">Lista de Aplicacion PDF</a>
-                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/3</div>
-                            </div>
-                        </div>
-                        <div class="text-center p-4">
-                            <a class="d-block h5" href="">Discos Cóncavos Dentados y Lisos 24″</a>
-                            <span class="text-primary me-1">Espesores</span><br>
-                            <span class="text-decoration-underline">5 y 6,35mm</span>
-                        </div>
-                    </div>
-                </div>
-
-                
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s" data-diameters="14 15 16 17 18 20 22 24 26 28 30">
-                    <div class="product-item" data-images="img/Disco Grande/ONDD.png|img/Disco Grande/ONDD_alt1.png|img/Disco Grande/ONDD_alt2.png">
-                        <div class="position-relative product-gallery">
-                            <img class="img-fluid product-main" src="img/Disco Grande/ONDD.png" alt="Discos 14-30&quot;">
-                            <div class="product-overlay d-flex justify-content-between align-items-start p-2">
-                                <a class="btn btn-warning" href="img/pdf/Cuchilla Sembradora/Lista de Aplicaciones DG.pdf" target="_blank" role="button">Lista de Aplicacion PDF</a>
-                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/3</div>
+                                <button class="gallery-arrow left" type="button" aria-label="Imagen anterior"><i class="fas fa-chevron-left"></i></button>
+                                <button class="gallery-arrow right" type="button" aria-label="Imagen siguiente"><i class="fas fa-chevron-right"></i></button>
+                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
                             </div>
                         </div>
                         <div class="text-center p-4">
                             <a class="d-block h5" href="">Discos Cóncavos Dentados y Lisos 26″</a>
                             <span class="text-primary me-1">Espesores</span><br>
-                            <span class="text-decoration-underline">5 y 6,35mm</span>
+                            <span class="text-decoration-underline">5, 6 y 8mm</span>
                         </div>
                     </div>
                 </div>
 
-               
-            </div> -->
-
-            <!-- Segundo N°4 Grupo de Productos -->
-            <!-- <div class="row gx-4" id="discos-row">
-               
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.1s" data-diameters="10">
-                    <div class="product-item" data-images="img/Disco Grande/10/DD 010 030 013 071.png|img/Disco Grande/10/DD 010 030 013 071 IM01.png">
+                <!-- ITEM 28" -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s" data-diameters="28">
+                    <div class="product-item" data-images="img/Disco Grande/28/ONDD.png|img/Disco Grande/28/DL 028 080 076.png">
                         <div class="position-relative product-gallery">
-                            <img class="img-fluid product-main" src="img/Disco Grande/10/DD 010 030 013 071.png" alt="Discos 10&quot;">
+                            <img class="img-fluid product-main" src="img/Disco Grande/28/DL 028 080 076.png" alt="Discos 28&quot;">
                             <div class="product-overlay d-flex justify-content-between align-items-start p-2">
-                                <a class="btn btn-warning" href="img/pdf/Cuchilla Sembradora/Lista de Aplicaciones DG.pdf" target="_blank" role="button">Lista de Aplicacion PDF</a>
-                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/2</div>
+                                <button class="gallery-arrow left" type="button" aria-label="Imagen anterior"><i class="fas fa-chevron-left"></i></button>
+                                <button class="gallery-arrow right" type="button" aria-label="Imagen siguiente"><i class="fas fa-chevron-right"></i></button>
+                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
                             </div>
                         </div>
                         <div class="text-center p-4">
-                            <a class="d-block h5" href="">Discos Cóncavos Dentados de 28″</a>
+                            <a class="d-block h5" href="">Discos Cóncavos Dentados y Lisos 28″</a>
                             <span class="text-primary me-1">Espesores</span><br>
-                            <span class="text-decoration-underline">6, 8 10mm</span>
+                            <span class="text-decoration-underline">6, 8 y 10mm</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.3s" data-diameters="12 13">
+               
+            </div>
+
+            <!-- Segundo N°4 Grupo de Productos -->
+            <div class="row gx-4">
+               
+                <!-- ITEM 30" -->
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.1s" data-diameters="30">
+                    <div class="product-item" data-images="img/Disco Grande/30/ONDD.png|img/Disco Grande/30/ONDL.png">
+                        <div class="position-relative product-gallery">
+                            <img class="img-fluid product-main" src="img/Disco Grande/30/ONDD.png" alt="Discos 30&quot;">
+                            <div class="product-overlay d-flex justify-content-between align-items-start p-2">
+                                <button class="gallery-arrow left" type="button" aria-label="Imagen anterior"><i class="fas fa-chevron-left"></i></button>
+                                <button class="gallery-arrow right" type="button" aria-label="Imagen siguiente"><i class="fas fa-chevron-right"></i></button>
+                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
+                            </div>
+                        </div>
+                        <div class="text-center p-4">
+                            <a class="d-block h5" href="">Discos Cóncavos Dentados y Lisos de 30″</a>
+                            <span class="text-primary me-1">Espesores</span><br>
+                            <span class="text-decoration-underline">8 y  10mm</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.3s" data-diameters="12 13">
                     <div class="product-item" data-images="img/Disco Grande/12/DD 012 030 020 04.png|img/Disco Grande/12/ONDD2204 DD-012-030-015-152 IM02.png|img/Disco Grande/12/DD 125 040 927 R15 156.png">
                         <div class="position-relative product-gallery">
                             <img class="img-fluid product-main" src="img/Disco Grande/12/DD 012 030 020 04.png" alt="Discos 12&quot;">
@@ -500,9 +487,9 @@
                             <span class="text-decoration-underline">8 y 10mm</span>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 
-            </div> -->
+            </div>
             <!-- ------------------------SEMBRADORES----------------------------------------- -->
 
            
@@ -527,6 +514,45 @@
                 </tr>
             </thead>
             <tbody class="text-center">
+                <!-- DISCO DE 10" -->
+                <tr>
+                    <!-- <th scope="row"></th> -->
+                    <td>10"</td>
+                    <td>3 mm</td>
+                    <td>9,15</td>
+                </tr>
+
+                <!-- DISCO DE 12" -->
+                <tr>
+                    <!-- <th scope="row"></th> -->
+                    <td>12"</td>
+                    <td>3 mm</td>
+                    <td>0,15 - 0,20 - 9,12 - 9,16 - 9,20</td>
+                </tr>
+
+                <!-- DISCO DE 12,5" -->
+                <tr>
+                    <!-- <th scope="row"></th> -->
+                    <td>12,5"</td>
+                    <td>4 mm</td>
+                    <td>9,27</td>
+                </tr>
+
+                <!-- DISCO DE 13" -->
+                <tr>
+                    <!-- <th scope="row"></th> -->
+                    <td>13"</td>
+                    <td>3 mm</td>
+                    <td>0,13 - 0,24 - 7,20 - 9,16</td>
+                </tr>
+
+                 <!-- DISCO DE 14" -->
+                <tr>
+                    <!-- <th scope="row"></th> -->
+                    <td>14"</td>
+                    <td>3  y 4mm</td>
+                    <td>0,24 - 0,28 - 0,32 - 7,20 - 9,20</td>
+                </tr>
 
                 <!-- DISCO DE 16" -->
                 <tr>
@@ -890,6 +916,7 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script src="js/discos.js"></script>
     <!-- Cdn Translate -->
     <!-- <script>window.gtranslateSettings = { "default_language": "es", "languages": ["en", "es"], "wrapper_selector": ".gtranslate_wrapper", "switcher_horizontal_position": "inline" }</script> -->
 
@@ -1054,212 +1081,6 @@
                 });
             });
         });
-    </script>
-
-    <!-- ...existing code... -->
-    <script>
-        (function () {
-            const select = document.getElementById('filter-diameter');
-            const clearBtn = document.getElementById('clear-filter');
-            const productsRow = document.getElementById('discos-row');
-            // selecciona todas las columnas directas dentro del row
-            const productCols = productsRow ? Array.from(productsRow.querySelectorAll(':scope > [class*="col-"]')) : [];
-            const noResultsId = 'discos-no-results';
-
-            // normaliza cadena (quita tildes, comillas y espacios extras)
-            function normalizeStr(s) {
-                return (s || '').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
-            }
-
-            // convierte el atributo data-diameters en array de strings de números, soporta rangos
-            function parseDiameters(attr) {
-                if (!attr) return [];
-                const tokens = attr.split(/[\s,|\/]+/).map(t => t.trim()).filter(Boolean);
-                const values = new Set();
-                tokens.forEach(t => {
-                    // aceptar formatos como 12,5  12.5  16-30  16 a 30
-                    let token = t.replace(/["“”']/g, '').replace(/[^\d\-\u2013\u2014\.,]/g, ''); // conserva digits, guion y punto/coma
-                    token = token.replace(/a/gi, '-'); // por si usan 'a' como rango
-                    // rango con guion
-                    const rangeMatch = token.match(/^(\d+(?:[.,]\d+)?)\s*[\-–—]\s*(\d+(?:[.,]\d+)?)$/);
-                    if (rangeMatch) {
-                        let a = parseFloat(rangeMatch[1].replace(',', '.'));
-                        let b = parseFloat(rangeMatch[2].replace(',', '.'));
-                        if (!isNaN(a) && !isNaN(b)) {
-                            const start = Math.min(Math.round(a), Math.round(b));
-                            const end = Math.max(Math.round(a), Math.round(b));
-                            for (let n = start; n <= end; n++) values.add(String(n));
-                            return;
-                        }
-                    }
-                    // número simple (posible decimal)
-                    const numMatch = token.match(/(\d+(?:[.,]\d+)?)/);
-                    if (numMatch) {
-                        let num = parseFloat(numMatch[1].replace(',', '.'));
-                        if (!isNaN(num)) {
-                            values.add(String(Math.round(num))); // redondea para comparar con select entero
-                        }
-                    }
-                });
-                return Array.from(values);
-            }
-
-            // obtiene array parseado y cachea por columna para rendimiento
-            const colCache = new WeakMap();
-            function getColDiameters(col) {
-                if (colCache.has(col)) return colCache.get(col);
-                const attr = col.getAttribute('data-diameters') || '';
-                const parsed = parseDiameters(attr);
-                colCache.set(col, parsed);
-                return parsed;
-            }
-
-            // crea mensaje cuando no hay resultados
-            function ensureNoResults() {
-                let el = document.getElementById(noResultsId);
-                if (!el) {
-                    el = document.createElement('div');
-                    el.id = noResultsId;
-                    el.className = 'col-12 text-center py-4';
-                    el.innerHTML = '<p class="text-muted mb-0">No se encontraron productos para la categoría seleccionada.</p>';
-                    // insert after the products row
-                    if (productsRow && productsRow.parentElement) productsRow.parentElement.appendChild(el);
-                }
-                return el;
-            }
-
-            // función de filtrado precisa
-            function filterProducts(value) {
-                const showAll = value === 'all' || !value;
-                let visibleCount = 0;
-                productCols.forEach(col => {
-                    const diameters = getColDiameters(col); // array de strings
-                    // comparacion exacta: value debe coincidir con algún elemento del array
-                    const matches = showAll || diameters.includes(String(value));
-                    col.style.display = matches ? '' : 'none';
-                    if (matches) visibleCount++;
-                });
-                const noRes = ensureNoResults();
-                noRes.style.display = visibleCount === 0 ? '' : 'none';
-                // actualizar contador si existe
-                const badge = document.querySelector('#filter-count .badge');
-                if (badge) badge.textContent = visibleCount;
-            }
-
-            // eventos
-            if (select) {
-                select.addEventListener('change', function () {
-                    filterProducts(this.value);
-                });
-            }
-            if (clearBtn) {
-                clearBtn.addEventListener('click', function () {
-                    if (select) select.value = 'all';
-                    filterProducts('all');
-                });
-            }
-
-            // inicializar
-            filterProducts(select ? select.value : 'all');
-        })();
-    </script>
-    <!-- ...existing code... -->
-
-    <script>
-    // Galería por producto: click en flechitas, click en imagen para modal, o swipe
-    (function(){
-        const items = document.querySelectorAll('.product-item[data-images]');
-        items.forEach(item=>{
-            const images = item.getAttribute('data-images').split('|').map(s=>s.trim()).filter(Boolean);
-            const imgEl = item.querySelector('.product-main');
-            const counter = item.querySelector('.image-counter');
-            const leftArrow = item.querySelector('.gallery-arrow.left');
-            const rightArrow = item.querySelector('.gallery-arrow.right');
-            if (!images.length || !imgEl) return;
-            let idx = 0;
-            // precarga
-            images.forEach(src => { const i = new Image(); i.src = src; });
-            function show(i){
-                idx = (i + images.length) % images.length;
-                imgEl.src = images[idx];
-                if (counter) counter.textContent = (idx+1) + '/' + images.length;
-            }
-            // Click en flechitas
-            if (leftArrow) leftArrow.addEventListener('click', function(e){ e.stopPropagation(); show(idx-1); });
-            if (rightArrow) rightArrow.addEventListener('click', function(e){ e.stopPropagation(); show(idx+1); });
-            
-            // Modal al hacer click en imagen
-            function openImageModal() {
-                if (images.length <= 0) return;
-                const modal = document.createElement('div');
-                modal.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.95);display:flex;align-items:center;justify-content:center;z-index:11000;overflow:hidden;padding:4px;';
-                modal.addEventListener('click', function() { document.body.removeChild(modal); });
-
-                const content = document.createElement('div');
-                content.style.cssText = 'position:relative;max-width:100%;max-height:100%;display:flex;align-items:center;justify-content:center;gap:8px;';
-                content.addEventListener('click', function(e){ e.stopPropagation(); });
-
-                let modalIdx = idx;
-                const modalImg = document.createElement('img');
-                modalImg.src = images[modalIdx];
-                modalImg.style.cssText = 'max-width:100%;max-height:100%;object-fit:contain;cursor:default;';
-
-                const createNavButton = function(symbol, direction) {
-                    const btn = document.createElement('button');
-                    btn.innerHTML = symbol;
-                    btn.style.cssText = 'position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.85);border:none;color:#000;font-size:32px;line-height:1;width:48px;height:48px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.25);';
-                    btn.addEventListener('click', function(event){
-                        event.stopPropagation();
-                        if (direction === 'left') {
-                            modalIdx = (modalIdx - 1 + images.length) % images.length;
-                        } else {
-                            modalIdx = (modalIdx + 1) % images.length;
-                        }
-                        modalImg.src = images[modalIdx];
-                    });
-                    return btn;
-                };
-
-                const leftControl = createNavButton('&#8249;', 'left');
-                const rightControl = createNavButton('&#8250;', 'right');
-                leftControl.style.left = '10px';
-                rightControl.style.right = '10px';
-
-                const closeBtn = document.createElement('button');
-                closeBtn.innerHTML = '✕';
-                closeBtn.style.cssText = 'position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.9);border:none;color:#000;font-size:24px;line-height:1;width:40px;height:40px;border-radius:50%;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.25);';
-                closeBtn.addEventListener('click', function(event){ event.stopPropagation(); document.body.removeChild(modal); });
-
-                content.appendChild(leftControl);
-                content.appendChild(modalImg);
-                content.appendChild(rightControl);
-                modal.appendChild(content);
-                modal.appendChild(closeBtn);
-                document.body.appendChild(modal);
-            }
-            
-            // Click en imagen abre modal
-            const trigger = item.querySelector('.product-gallery') || imgEl;
-            if (trigger){
-                trigger.style.cursor = 'pointer';
-                trigger.addEventListener('click', function(e){
-                    if (e.target.closest('a') || e.target.closest('button')) return;
-                    openImageModal();
-                });
-                // Swipe para movil
-                let startX = null;
-                trigger.addEventListener('touchstart', function(e){ startX = e.touches && e.touches[0] && e.touches[0].clientX; }, {passive:true});
-                trigger.addEventListener('touchend', function(e){
-                    if (startX === null) return;
-                    const endX = e.changedTouches && e.changedTouches[0] && e.changedTouches[0].clientX;
-                    const diff = startX - endX;
-                    if (Math.abs(diff) > 30) show(diff > 0 ? idx+1 : idx-1);
-                    startX = null;
-                }, {passive:true});
-            }
-            show(0);
-        });
-    })();
     </script>
 
 </body>
