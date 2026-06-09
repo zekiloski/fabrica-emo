@@ -94,6 +94,8 @@ document.addEventListener('DOMContentLoaded', function () {
     filterProducts(filterSelect ? filterSelect.value : 'all');
 
     const items = document.querySelectorAll('.product-item[data-images]');
+    const fallbackImage = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600"><rect width="800" height="600" fill="#f3f4f6"/><rect x="120" y="140" width="560" height="320" rx="24" fill="#ffffff" stroke="#d1d5db" stroke-width="4"/><path d="M220 390 L360 270 L430 330 L520 220 L620 390" fill="none" stroke="#f59e0b" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/><circle cx="270" cy="240" r="44" fill="#f59e0b"/></svg>');
+
     items.forEach(item => {
         const images = item.getAttribute('data-images').split('|').map(s => s.trim()).filter(Boolean);
         const imgEl = item.querySelector('.product-main');
@@ -108,7 +110,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
         function show(index) {
             idx = (index + images.length) % images.length;
+            imgEl.onerror = null;
             imgEl.src = images[idx];
+            imgEl.onerror = function () {
+                imgEl.onerror = null;
+                imgEl.src = fallbackImage;
+                imgEl.alt = 'Imagen no disponible';
+            };
             if (counter) counter.textContent = (idx + 1) + '/' + images.length;
         }
 
