@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function () {
             modal.addEventListener('click', function () { document.body.removeChild(modal); });
 
             const content = document.createElement('div');
-            content.style.cssText = 'position:relative;max-width:100%;max-height:100%;display:flex;align-items:center;justify-content:center;gap:8px;';
+            content.style.cssText = 'position:relative;max-width:min(900px, calc(100vw - 8px));max-height:min(700px, calc(100vh - 8px));display:flex;align-items:center;justify-content:center;gap:8px;';
             content.addEventListener('click', function (e) { e.stopPropagation(); });
 
             let modalIdx = idx;
