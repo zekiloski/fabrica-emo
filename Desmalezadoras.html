@@ -228,6 +228,9 @@
                     <select id="brandFilter" class="form-select">
                         <option value="all">Todas</option>
                     </select>
+                    <button id="clear-filter-desm" class="btn btn--clear icon-only" type="button" title="Limpiar filtro" aria-label="Limpiar filtro">
+                        <i class="fas fa-eraser" aria-hidden="true"></i>
+                    </button>
                 </div>
                 <a class="btn btn-warning" href="img/pdf/Desmalesadoras/Lista 10-12-2025.pdf"
                     target="_blank" role="button">Descargar Lista PDF</a>
@@ -4561,6 +4564,17 @@
                 opt.textContent = b;
                 brandFilter.appendChild(opt);
             });
+
+            // Botón limpiar para desmalezadoras
+            const clearDesmBtn = document.getElementById('clear-filter-desm');
+            if (clearDesmBtn) {
+                clearDesmBtn.addEventListener('click', function () {
+                    if (brandFilter) {
+                        brandFilter.value = 'all';
+                        brandFilter.dispatchEvent(new Event('change'));
+                    }
+                });
+            }
 
             // Inferir marca desde la ruta de la imagen
             function inferBrandFromSrc(src) {

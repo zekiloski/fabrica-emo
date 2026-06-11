@@ -165,25 +165,23 @@
 
             <!-- FILTRO: combo por nombre/descripción de cuchillas -->
             <div class="row mb-5">
-                <div class="col-12 d-flex justify-content-center">
-                    <div class="input-group filter-panel" style="max-width:420px; width:100%;">
-                        <span class="input-group-text" id="filter-label">Discos</span>
-
-                        <select id="filter-cuchilla" class="form-select" aria-label="Filtrar por tipo de cuchilla">
-                            <option value="all" selected>Mostrar todos</option>
-                            <!-- <option value="action">Action 2000</option>
-                            <option value="33av">ON 33 AV</option>
-                            <option value="tango">Tango</option>
-                            <option value="c26">C26</option>
-                            <option value="veloce">Veloce</option> -->
-                            <option value="plano">Plano (Liso/Dentado)</option>
-                            <!-- <option value="c24">C24</option>
-                            <option value="c12">C12</option> -->
-                        </select>
-
-                        <button id="clear-filter-cuchilla" class="btn btn--clear" type="button" title="Limpiar filtro">
-                            <i class="fas fa-eraser"></i>
-                        </button>
+                <div class="col-12">
+                    <div class="filter-bar">
+                        <div>
+                            <label class="form-label mb-0 me-2" for="filter-cuchilla">Tipo de disco</label>
+                            <select id="filter-cuchilla" class="form-select" aria-label="Filtrar por tipo de disco">
+                                <option value="all" selected>Mostrar todos</option>
+                                <option value="plano-liso">Disco plano Liso</option>
+                                <option value="fertilizador-dentado">Disco Fertilizador Dentado</option>
+                            </select>
+                            <button id="clear-filter-cuchilla" class="btn btn--clear icon-only" type="button" title="Limpiar filtro" aria-label="Limpiar filtro">
+                                <i class="fas fa-eraser" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <div class="d-flex flex-wrap justify-content-end gap-2">
+                            <a id="download-pl" class="btn btn-warning" href="img/pdf/Cuchilla Sembradora/Lista de aplicaciones  PL EMO.pdf" download="PL Plano Liso.pdf">PL Plano Liso</a>
+                            <a id="download-pd" class="btn btn-warning" href="img/pdf/Cuchilla Sembradora/PD Plano Dentado.pdf" download="PD Plano Dentado.pdf">PD Plano Dentado</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -330,18 +328,18 @@
                 <!-- Fin Cuchilla Veloce -->
 
                 <!-- Cuchilla Plano Liso PL -->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.5s" data-cuchilla="plano">
-                    <div class="product-item h-100">
-                        <div class="position-relative">
-                            <img class="img-fluid" src="img/Discos y cuchillas/NUEVAS/ONPL Plano Liso.jpg" alt="">
-                            <div class="product-overlay">
-                                <a class="btn btn-warning"
-                                    href="img/pdf/Cuchilla Sembradora/Lista de aplicaciones  PL EMO.pdf" target="_blank"
-                                    role="button">Lista de Aplicacion PDF</a>
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.5s" data-cuchilla="plano-liso">
+                    <div class="product-item h-100" data-images="img/Discos y cuchillas/NUEVAS/ONPL Plano Liso.jpg">
+                        <div class="position-relative product-gallery">
+                            <img class="img-fluid product-main" src="img/Discos y cuchillas/NUEVAS/ONPL Plano Liso.jpg" alt="PL Plano Liso">
+                            <div class="product-overlay d-flex justify-content-between align-items-start p-2">
+                                <button class="gallery-arrow left" type="button" aria-label="Imagen anterior"><i class="fas fa-chevron-left"></i></button>
+                                <button class="gallery-arrow right" type="button" aria-label="Imagen siguiente"><i class="fas fa-chevron-right"></i></button>
+                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
                             </div>
                         </div>
                         <div class="text-center p-4">
-                            <a class="d-block h5" href="">Cuchilla Plana Lisa 12" a 20"</a>
+                            <a class="d-block h5" href="">Disco Plano Liso 12" a 20"</a>
                             <span class="text-primary me-1">Espesores</span>
                             <br>
                             <span class="text-decoration-underline">3mm hasta 6mm</span>
@@ -351,13 +349,14 @@
                 <!--Fin Cuchilla Plano Liso PL-->
 
                 <!-- Cuchilla Plano Dentado PD-->
-                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s" data-cuchilla="plano">
-                    <div class="product-item h-100">
-                        <div class="position-relative">
-                            <img class="img-fluid" src="img/Discos y cuchillas/NUEVAS/ONPD Plano Dentado.jpg" alt="">
-                            <div class="product-overlay">
-                                <a class="btn btn-warning" href="img/pdf/Cuchilla Sembradora/PD Plano Dentado.pdf"
-                                    target="_blank" role="button">Lista de Aplicacion PDF</a>
+                <div class="col-md-6 col-lg-4 col-xl-3 wow fadeInUp" data-wow-delay="0.7s" data-cuchilla="fertilizador-dentado">
+                    <div class="product-item h-100" data-images="img/Discos y cuchillas/NUEVAS/ONPD Plano Dentado.jpg">
+                        <div class="position-relative product-gallery">
+                            <img class="img-fluid product-main" src="img/Discos y cuchillas/NUEVAS/ONPD Plano Dentado.jpg" alt="PD Plano Dentado">
+                            <div class="product-overlay d-flex justify-content-between align-items-start p-2">
+                                <button class="gallery-arrow left" type="button" aria-label="Imagen anterior"><i class="fas fa-chevron-left"></i></button>
+                                <button class="gallery-arrow right" type="button" aria-label="Imagen siguiente"><i class="fas fa-chevron-right"></i></button>
+                                <div class="badge bg-dark text-white image-counter" style="opacity:.9;">1/1</div>
                             </div>
                         </div>
                         <div class="text-center p-4">
@@ -418,480 +417,6 @@
         </div>
     </div>
     <!-- Product End -->
-
-    <!-- Nomina de Cuchilla Action -->
-    <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-        <p class="section-title bg-white text-center text-primary px-3">Tabla de medidas</p>
-        <h1 class="mb-5">Nomina Cuchilla Action 2000</h1>
-    </div>
-    <!-- Tabla de Medidas de discos -->
-    <div class="container-xxl py-5">
-        <table class="table table-hover table-bordered border-primary">
-            <thead class="text-center">
-                <tr>
-                    <!-- <th scope="col"></th> -->
-                    <th scope="col">Diametro</th>
-                    <th scope="col">Espesor</th>
-                    <th scope="col">Abertura de Corte</th>
-                </tr>
-            </thead>
-            <tbody class="text-center">
-
-                <!-- DISCO DE 14" -->
-                <tr>
-                    <!-- <th scope="row"></th> -->
-                    <td>14"</td>
-                    <td>4 mm</td>
-                    <td>B12 - 12 mm</td>
-                </tr>
-
-                <!-- DISCO DE 15" -->
-                <tr>
-                    <!-- <th scope="row"></th> -->
-                    <td>15"</td>
-                    <td>4 mm</td>
-                    <td>B12 - 12 mm</td>
-                </tr>
-
-                <!-- DISCO DE 16" -->
-                <tr>
-                    <!-- <th scope="row"></th> -->
-                    <td>16"</td>
-                    <td>4 y 5 mm</td>
-                    <!-- <td colspan="2">4 mm</td> -->
-                    <td>B12 - 12 mm</td>
-                </tr>
-
-                <!-- DISCO DE 17" -->
-                <tr>
-                    <!-- <th scope="row"></th> -->
-                    <td>17"</td>
-                    <td>4 mm</td>
-                    <td>B12 - 12 mm</td>
-                </tr>
-
-                <!-- DISCO DE 18" -->
-                <tr>
-                    <!-- <th scope="row"></th> -->
-                    <td>18"</td>
-                    <td>4 y 5 mm</td>
-                    <td>B12/12 mm - B32/32 mm</td>
-                </tr>
-
-                <!-- DISCO DE 20" -->
-                <tr>
-                    <!-- <th scope="row"></th> -->
-                    <td>20"</td>
-                    <td>4 , 5 y 6 mm</td>
-                    <td>B12/12 mm - B32/32 mm</td>
-                </tr>
-
-                <!-- DISCO DE 22" -->
-                <tr>
-                    <!-- <th scope="row"></th> -->
-                    <td>22"</td>
-                    <td>6 mm</td>
-                    <td>B32 - 32 mm</td>
-                </tr>
-
-
-
-
-
-            </tbody>
-        </table>
-    </div>
-    <!-- Fin Nomica Cuchilla Afction -->
-
-    <!-- Nomina de C33 -->
-    <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-        <p class="section-title bg-white text-center text-primary px-3">Tabla de medidas</p>
-        <h1 class="mb-5">Nomina Cuchilla ON 33 AV</h1>
-    </div>
-    <!-- Tabla de Medidas de discos -->
-    <div class="container-xxl py-5">
-        <table class="table table-hover table-bordered border-primary">
-            <thead class="text-center">
-                <tr>
-                    <!-- <th scope="col"></th> -->
-                    <th scope="col">Diametro</th>
-                    <th scope="col">Espesor</th>
-                    <th scope="col">Abertura de Corte</th>
-                </tr>
-            </thead>
-            <tbody class="text-center">
-
-                <!-- DISCO DE 15" -->
-                <tr>
-                    <!-- <th scope="row"></th> -->
-                    <td>15"</td>
-                    <td>4 mm</td>
-                    <td>B07 - 7 mm</td>
-                </tr>
-
-                <!-- DISCO DE 16" -->
-                <tr>
-                    <!-- <th scope="row"></th> -->
-                    <td>16"</td>
-                    <td>4 y 5 mm</td>
-                    <td>B07 - 7 mm</td>
-                </tr>
-
-                <!-- DISCO DE 17" -->
-                <tr>
-                    <!-- <th scope="row"></th> -->
-                    <td>17"</td>
-                    <td>4 y 5 mm</td>
-                    <!-- <td colspan="2">4 mm</td> -->
-                    <td>B07 - 7 mm</td>
-                </tr>
-
-                <!-- DISCO DE 18" -->
-                <tr>
-                    <!-- <th scope="row"></th> -->
-                    <td>18"</td>
-                    <td>4 y 5 mm</td>
-                    <td>B07 - 7 mm</td>
-                </tr>
-
-                <!-- DISCO DE 19,5" -->
-                <tr>
-                    <!-- <th scope="row"></th> -->
-                    <td>19,5"</td>
-                    <td>4 mm</td>
-                    <td>B07 - 7 mm</td>
-                </tr>
-
-                <!-- DISCO DE 20" -->
-                <tr>
-                    <!-- <th scope="row"></th> -->
-                    <td>20"</td>
-                    <td>4 y 5 mm</td>
-                    <td>B07 - 7 mm</td>
-                </tr>
-
-
-
-            </tbody>
-        </table>
-    </div>
-    <!-- Fin Nomina C33 -->
-
-    <!-- Nomina de Cuchilla Tango Filo Liso COFL -->
-    <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-        <p class="section-title bg-white text-center text-primary px-3">Tabla de medidas</p>
-        <h1 class="mb-5">Nomina Cuchilla Tango Filo Liso</h1>
-    </div>
-    <!-- Tabla de Medidas de discos -->
-    <div class="container-xxl py-5">
-        <table class="table table-hover table-bordered border-primary">
-            <thead class="text-center">
-                <tr>
-                    <!-- <th scope="col"></th> -->
-                    <th scope="col">Diametro</th>
-                    <th scope="col">Espesor</th>
-                    <th scope="col">Abertura de Corte</th>
-                </tr>
-            </thead>
-            <tbody class="text-center">
-
-                <!-- DISCO DE 16" -->
-                <tr>
-                    <!-- <th scope="row"></th> -->
-                    <td>16"</td>
-                    <td>4 mm</td>
-                    <td>F09 - 9 mm</td>
-                </tr>
-
-                <!-- DISCO DE 17" -->
-                <tr>
-                    <!-- <th scope="row"></th> -->
-                    <td>17"</td>
-                    <td>4 y 5 mm</td>
-                    <td>F09 - 9 mm</td>
-                </tr>
-
-                <!-- DISCO DE 18" -->
-                <tr>
-                    <!-- <th scope="row"></th> -->
-                    <td>18"</td>
-                    <td>4 y 5 mm</td>
-                    <!-- <td colspan="2">4 mm</td> -->
-                    <td>F09 - 9 mm</td>
-                </tr>
-
-                <!-- DISCO DE 19" -->
-                <tr>
-                    <!-- <th scope="row"></th> -->
-                    <td>19"</td>
-                    <td>4 mm</td>
-                    <td>F09 - 9 mm</td>
-                </tr>
-
-                <!-- DISCO DE 20" -->
-                <tr>
-                    <!-- <th scope="row"></th> -->
-                    <td>20"</td>
-                    <td>4 y 5 mm</td>
-                    <td>F09 - 9 mm</td>
-                </tr>
-
-                <!-- DISCO DE 22" -->
-                <tr>
-                    <!-- <th scope="row"></th> -->
-                    <td>22"</td>
-                    <td>5 mm</td>
-                    <td>F09 - 9 mm</td>
-                </tr>
-
-            </tbody>
-        </table>
-    </div>
-    <!-- Fin Nomina Cuchilla Tango Filo Liso COFL -->
-
-    <!-- Nomina de Cuchilla Tango Filo Ondulado COFO -->
-    <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-        <p class="section-title bg-white text-center text-primary px-3">Tabla de medidas</p>
-        <h1 class="mb-5">Nomina Cuchilla Tango Filo Ondulado</h1>
-    </div>
-    <!-- Tabla de Medidas de discos -->
-    <div class="container-xxl py-5">
-        <table class="table table-hover table-bordered border-primary">
-            <thead class="text-center">
-                <tr>
-                    <!-- <th scope="col"></th> -->
-                    <th scope="col">Diametro</th>
-                    <th scope="col">Espesor</th>
-                    <th scope="col">Abertura de Corte</th>
-                </tr>
-            </thead>
-            <tbody class="text-center">
-
-                <!-- DISCO DE 16" -->
-                <tr>
-                    <!-- <th scope="row"></th> -->
-                    <td>16"</td>
-                    <td>4 mm</td>
-                    <td>B09 - 9 mm</td>
-                </tr>
-
-                <!-- DISCO DE 17" -->
-                <tr>
-                    <!-- <th scope="row"></th> -->
-                    <td>17"</td>
-                    <td>4 mm</td>
-                    <td>B09 - 9 mm</td>
-                </tr>
-
-                <!-- DISCO DE 18" -->
-                <tr>
-                    <!-- <th scope="row"></th> -->
-                    <td>18"</td>
-                    <td>4 y 5 mm</td>
-                    <!-- <td colspan="2">4 mm</td> -->
-                    <td>B09 - 9 mm</td>
-                </tr>
-
-                <!-- DISCO DE 20" -->
-                <tr>
-                    <!-- <th scope="row"></th> -->
-                    <td>20"</td>
-                    <td>5 mm</td>
-                    <td>B09 - 9 mm</td>
-                </tr>
-
-
-            </tbody>
-        </table>
-    </div>
-    <!-- Fin Nomina Cuchilla Tango Filo Ondulado COFO -->
-
-    <!-- Nomina de Cuchilla C26 -->
-    <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-        <p class="section-title bg-white text-center text-primary px-3">Tabla de medidas</p>
-        <h1 class="mb-5">Nomina Cuchilla C26</h1>
-    </div>
-    <!-- Tabla de Medidas de discos -->
-    <div class="container-xxl py-5">
-        <table class="table table-hover table-bordered border-primary">
-            <thead class="text-center">
-                <tr>
-                    <!-- <th scope="col"></th> -->
-                    <th scope="col">Diametro</th>
-                    <th scope="col">Espesor</th>
-                    <th scope="col">Abertura de Corte</th>
-                </tr>
-            </thead>
-            <tbody class="text-center">
-
-                <!-- DISCO DE 16" -->
-                <tr>
-                    <!-- <th scope="row"></th> -->
-                    <td>16"</td>
-                    <td>4 mm</td>
-                    <td>B09 - 9,5 mm</td>
-                </tr>
-
-                <!-- DISCO DE 17" -->
-                <tr>
-                    <!-- <th scope="row"></th> -->
-                    <td>17"</td>
-                    <td>4 mm</td>
-                    <td>B09 - 9,5 mm</td>
-                </tr>
-
-                <!-- DISCO DE 18" -->
-                <tr>
-                    <!-- <th scope="row"></th> -->
-                    <td>18"</td>
-                    <td>4 mm</td>
-                    <!-- <td colspan="2">4 mm</td> -->
-                    <td>B09 - 9,5 mm</td>
-                </tr>
-
-                <!-- DISCO DE 20" -->
-                <tr>
-                    <!-- <th scope="row"></th> -->
-                    <td>20"</td>
-                    <td>4 mm</td>
-                    <td>B09 - 9,5 mm</td>
-                </tr>
-
-
-            </tbody>
-        </table>
-    </div>
-    <!-- Fin Nomina Cuchilla C26 -->
-
-
-    <!-- Nomina de Cuchilla Veloce -->
-    <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-        <p class="section-title bg-white text-center text-primary px-3">Tabla de medidas</p>
-        <h1 class="mb-5">Nomina Cuchilla Veloce 33 Ondulaciones</h1>
-    </div>
-    <!-- Tabla de Medidas de discos -->
-    <div class="container-xxl py-5">
-        <table class="table table-hover table-bordered border-primary">
-            <thead class="text-center">
-                <tr>
-                    <!-- <th scope="col"></th> -->
-                    <th scope="col">Diametro</th>
-                    <th scope="col">Espesor</th>
-                    <th scope="col">Abertura de Corte</th>
-                </tr>
-            </thead>
-            <tbody class="text-center">
-
-                <!-- DISCO DE 17" -->
-                <tr>
-                    <!-- <th scope="row"></th> -->
-                    <td>17"</td>
-                    <td>4 mm</td>
-                    <td>B07 - 7,5 mm</td>
-                </tr>
-
-                <!-- DISCO DE 18" -->
-                <tr>
-                    <!-- <th scope="row"></th> -->
-                    <td>18"</td>
-                    <td>4 mm</td>
-                    <td>B07 - 7,5 mm</td>
-                </tr>
-
-            </tbody>
-        </table>
-    </div>
-    <!-- Fin Nomina Cuchilla Veloce -->
-
-
-    <!-- Nomina de Cuchilla C24 -->
-    <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-        <p class="section-title bg-white text-center text-primary px-3">Tabla de medidas</p>
-        <h1 class="mb-5">Nomina Cuchilla C24</h1>
-    </div>
-    <!-- Tabla de Medidas de discos -->
-    <div class="container-xxl py-5">
-        <table class="table table-hover table-bordered border-primary">
-            <thead class="text-center">
-                <tr>
-                    <!-- <th scope="col"></th> -->
-                    <th scope="col">Diametro</th>
-                    <th scope="col">Espesor</th>
-                    <th scope="col">Abertura de Corte</th>
-                </tr>
-            </thead>
-            <tbody class="text-center">
-
-                <!-- DISCO DE 18" -->
-                <tr>
-                    <!-- <th scope="row"></th> -->
-                    <td>18"</td>
-                    <td>5 mm</td>
-                    <td>B17 - 17 mm</td>
-                </tr>
-
-                <!-- DISCO DE 20" -->
-                <tr>
-                    <!-- <th scope="row"></th> -->
-                    <td>20"</td>
-                    <td>5 mm</td>
-                    <td>B17 - 17 mm</td>
-                </tr>
-
-                <!-- DISCO DE 22" -->
-                <tr>
-                    <!-- <th scope="row"></th> -->
-                    <td>22"</td>
-                    <td>6 mm</td>
-                    <td>B17 - 17 mm</td>
-                </tr>
-
-            </tbody>
-        </table>
-    </div>
-    <!-- Fin Nomina Cuchilla C24 -->
-
-
-    <!-- Nomina de Cuchilla C12 -->
-    <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-        <p class="section-title bg-white text-center text-primary px-3">Tabla de medidas</p>
-        <h1 class="mb-5">Nomina Cuchilla C12</h1>
-    </div>
-    <!-- Tabla de Medidas de discos -->
-    <div class="container-xxl py-5">
-        <table class="table table-hover table-bordered border-primary">
-            <thead class="text-center">
-                <tr>
-                    <!-- <th scope="col"></th> -->
-                    <th scope="col">Diametro</th>
-                    <th scope="col">Espesor</th>
-                    <th scope="col">Abertura de Corte</th>
-                </tr>
-            </thead>
-            <tbody class="text-center">
-
-                <!-- DISCO DE 18" -->
-                <tr>
-                    <!-- <th scope="row"></th> -->
-                    <td>18"</td>
-                    <td>4 mm</td>
-                    <td>B32 - 32 mm</td>
-                </tr>
-
-                <!-- DISCO DE 22" -->
-                <tr>
-                    <!-- <th scope="row"></th> -->
-                    <td>22"</td>
-                    <td>6 mm</td>
-                    <td>B32 - 32 mm</td>
-                </tr>
-
-
-            </tbody>
-        </table>
-    </div>
-    <!-- Fin Nomina Cuchilla C12 -->
-
 
     <!-- Nomina de Plano Liso -->
     <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
@@ -1305,6 +830,7 @@
     <script src="lib/counterup/counterup.min.js"></script>
     <script src="lib/parallax/parallax.min.js"></script>
     <script src="lib/lightbox/js/lightbox.min.js"></script>
+    <script src="js/discos.js"></script>
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
@@ -1526,3 +1052,4 @@ document.addEventListener('DOMContentLoaded', function() {
 </body>
 
 </html>
+

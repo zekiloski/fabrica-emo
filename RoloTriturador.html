@@ -229,6 +229,9 @@
                     <select id="brandFilter" class="form-select">
                         <option value="all">Todas</option>
                     </select>
+                    <button id="clear-filter-rolo" class="btn btn--clear icon-only" type="button" title="Limpiar filtro" aria-label="Limpiar filtro">
+                        <i class="fas fa-eraser" aria-hidden="true"></i>
+                    </button>
                 </div>
                 <a class="btn btn-warning" href="img/pdf/Rolo Triturador/Rolo Triturador.pdf"
                     target="_blank" role="button">Descargar Lista PDF</a>
@@ -1150,6 +1153,17 @@
                 opt.textContent = b;
                 brandFilter.appendChild(opt);
             });
+
+            // Botón limpiar para rolo trituradores
+            const clearRoloBtn = document.getElementById('clear-filter-rolo');
+            if (clearRoloBtn) {
+                clearRoloBtn.addEventListener('click', function () {
+                    if (brandFilter) {
+                        brandFilter.value = 'all';
+                        brandFilter.dispatchEvent(new Event('change'));
+                    }
+                });
+            }
 
             // Inferir marca desde la ruta de la imagen
             function inferBrandFromSrc(src) {

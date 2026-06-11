@@ -685,6 +685,37 @@ body {
 .filter-bar .btn {
     white-space: nowrap;
 }
+.btn--clear {
+    min-width: 44px;
+    padding: 0.45rem 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f9fa; /* mismo gris que la barra */
+    border: 1px solid #e9ecef;
+    color: #495057; /* tono gris texto */
+    border-radius: 6px;
+    transition: background .15s ease, color .15s ease, border-color .15s ease;
+}
+
+.btn--clear:hover,
+.btn--clear:focus {
+    background: #f59e0b; /* color acorde al sitio (amarillo/oro) */
+    border-color: #d87a00;
+    color: #fff;
+}
+
+/* Icon-only variant for compact clear button */
+.btn--clear.icon-only {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-size: 18px;
+}
 @media (max-width: 576px) {
     .filter-bar {
         align-items: stretch;
@@ -695,6 +726,23 @@ body {
     .filter-bar .btn,
     .filter-bar .form-select {
         width: 100%;
+    }
+}
+
+/* En pantallas >= 576px colocar el select y el botón en la misma línea */
+@media (min-width: 576px) {
+    .filter-bar > div {
+        flex-wrap: nowrap;
+        gap: 8px;
+    }
+    .filter-bar > div .form-select {
+        width: auto; /* no ocupar 100% */
+        min-width: 160px;
+        max-width: 320px;
+        flex: 0 0 auto;
+    }
+    .filter-bar > div .btn--clear {
+        flex: 0 0 auto;
     }
 }
 .product-overlay {

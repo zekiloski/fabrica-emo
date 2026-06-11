@@ -171,7 +171,7 @@
 
             <!-- FILTRO: combo de pulgadas a la izquierda y botón de descarga a la derecha -->
             <div class="filter-bar">
-                <div>
+                <div class="d-flex align-items-center gap-2 flex-wrap">
                     <label for="filter-diameter" class="mb-0">Pulgadas:</label>
                     <select id="filter-diameter" class="form-select">
                         <option value="all" selected>Mostrar todos</option>
@@ -190,10 +190,12 @@
                         <option value="28">28"</option>
                         <option value="30">30"</option>
                     </select>
+                    <button id="clear-filter" class="btn btn--clear icon-only" type="button" title="Limpiar filtro" aria-label="Limpiar filtro">
+                        <i class="fas fa-eraser" aria-hidden="true"></i>
+                    </button>
                 </div>
                 <div class="d-flex gap-2 align-items-center">
                     <a id="download-list" class="btn btn-warning" href="img/pdf/Cuchilla Sembradora/Lista de Aplicaciones DG.pdf" target="_blank" role="button">Descargar Lista PDF</a>
-                    <button id="clear-filter" class="btn btn-secondary" type="button">Limpiar</button>
                 </div>
             </div>
 

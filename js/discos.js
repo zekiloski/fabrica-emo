@@ -2,6 +2,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const filterSelect = document.getElementById('filter-diameter');
     const clearBtn = document.getElementById('clear-filter');
     const productCards = Array.from(document.querySelectorAll('[data-diameters]'));
+    const filterCuchilla = document.getElementById('filter-cuchilla');
+    const clearCuchillaBtn = document.getElementById('clear-filter-cuchilla');
+    const categoryItems = Array.from(document.querySelectorAll('.product-item[data-cuchilla]'));
     const noResultsId = 'discos-no-results';
     const firstRow = productCards.length ? productCards[0].closest('.row') : null;
 
@@ -78,6 +81,16 @@ document.addEventListener('DOMContentLoaded', function () {
         noRes.style.display = visibleCount === 0 ? '' : 'none';
     }
 
+    function filterCuchillaItems(value) {
+        const showAll = value === 'all' || !value;
+        categoryItems.forEach(item => {
+            const category = (item.getAttribute('data-cuchilla') || '').trim();
+            const container = item.closest('[class*="col-"]') || item;
+            const matches = showAll || category === value;
+            container.style.display = matches ? '' : 'none';
+        });
+    }
+
     if (filterSelect) {
         filterSelect.addEventListener('change', function () {
             filterProducts(this.value);
@@ -91,7 +104,21 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    if (filterCuchilla) {
+        filterCuchilla.addEventListener('change', function () {
+            filterCuchillaItems(this.value);
+        });
+    }
+
+    if (clearCuchillaBtn) {
+        clearCuchillaBtn.addEventListener('click', function () {
+            if (filterCuchilla) filterCuchilla.value = 'all';
+            filterCuchillaItems('all');
+        });
+    }
+
     filterProducts(filterSelect ? filterSelect.value : 'all');
+    filterCuchillaItems(filterCuchilla ? filterCuchilla.value : 'all');
 
     const items = document.querySelectorAll('.product-item[data-images]');
     const fallbackImage = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600"><rect width="800" height="600" fill="#f3f4f6"/><rect x="120" y="140" width="560" height="320" rx="24" fill="#ffffff" stroke="#d1d5db" stroke-width="4"/><path d="M220 390 L360 270 L430 330 L520 220 L620 390" fill="none" stroke="#f59e0b" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/><circle cx="270" cy="240" r="44" fill="#f59e0b"/></svg>');
