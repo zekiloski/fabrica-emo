@@ -52,16 +52,18 @@
 
     .overlay-upload-btn { margin-top:6px; display:flex; gap:6px; align-items:center; }
 
-    /* Galería dentro de la imagen (overlay) */
+    /* Galería dentro de la imagen (overlay) — oculta, navegación solo con flechas */
     .position-relative { position:relative; }
-    /* fondo transparente para miniaturas: imagen limpia */
-    .position-relative > .image-gallery { position:absolute; left:10px; right:10px; bottom:8px; background: transparent; padding:4px; border-radius:6px; display:flex; gap:6px; overflow-x:auto; align-items:center; }
-    .position-relative > .image-gallery img { width:56px; height:56px; object-fit:cover; border-radius:4px; border:1px solid rgba(255,255,255,0.85); box-shadow:0 1px 4px rgba(0,0,0,0.12); }
-    .position-relative > .image-gallery img:hover { transform:scale(1.04); box-shadow:0 4px 10px rgba(0,0,0,0.18); }
+    .position-relative > .image-gallery { display:none !important; }
 
-    /* En pantallas pequeñas, miniaturas más chicas */
+    /* Contador siempre visible en esquina superior izquierda */
+    .position-relative > .image-counter {
+        position:absolute; top:8px; left:8px; z-index:30;
+        font-size:.75rem; padding:.2rem .45rem;
+    }
+
+    /* En pantallas pequeñas, reducir altura de imagen */
     @media (max-width:576px) {
-        .position-relative > .image-gallery img { width:44px; height:44px; }
         .product-item img.img-fluid { height:160px; }
     }
 
@@ -71,10 +73,9 @@
     .product-item .position-relative { flex: 0 0 auto; }
     .product-item .text-center.p-4 { margin-top:auto; }
 
-    /* Móvil: reducir altura de imagen para mejor visual */
+    /* Móvil: reducir altura de imagen */
     @media (max-width:576px) {
         .product-item img.img-fluid { height:180px; }
-        .image-gallery img { width:64px; height:64px; }
     }
     
     /* Flechas de navegación (carrusel) dentro del overlay */
@@ -4713,106 +4714,59 @@
                 // attach ahora si ya existen
                 attachThumbnailHandlers();
 
-                // Preparar comportamiento de imágenes: hover muestra segunda imagen (si existe), click/tap cambia imagen principal
+                // mover contador fuera del overlay para que sea siempre visible
+                const counterEl = item.querySelector('.image-counter');
+                if (counterEl) {
+                    const overlay = counterEl.closest('.product-overlay');
+                    if (overlay) {
+                        const container = overlay.closest('.position-relative');
+                        if (container) container.appendChild(counterEl);
+                    }
+                }
+
                 if (img) {
                     const originalSrc = img.src;
-                    let currentPrimaryIndex = 0; // índice en images[] que está actualmente en la vista principal
+                    let currentPrimaryIndex = 0;
                     let images = [originalSrc];
 
                     function getGalleryUrls() {
                         const gallery = item.querySelector('.image-gallery');
                         if (!gallery) return [];
-                        return Array.from(gallery.querySelectorAll('img')).map(i => i.src).filter(Boolean);
+                        return Array.from(gallery.querySelectorAll('img')).map(function(i){ return i.src; }).filter(Boolean);
                     }
 
                     function refreshImages() {
-                        const galleryUrls = getGalleryUrls();
-                        images = [originalSrc].concat(galleryUrls);
-                        // si currentPrimaryIndex fuera mayor al largo, resetear
+                        images = [originalSrc].concat(getGalleryUrls());
                         if (currentPrimaryIndex >= images.length) currentPrimaryIndex = 0;
                     }
 
-                    // iniciar lista
-                    refreshImages();
-
-                    // hover: mostrar la segunda imagen temporalmente (si existe)
-                    img.addEventListener('mouseenter', function () {
-                        refreshImages();
-                        if (images.length > 1) {
-                            img.src = images[1];
-                        }
-                    });
-                    img.addEventListener('mouseleave', function () {
-                        // restaurar la imagen actualmente primaria
-                        refreshImages();
-                        img.src = images[currentPrimaryIndex] || originalSrc;
-                    });
-
-                    // click/tap: abrir imagen grande en modal
-                    const clickTarget = item.querySelector('.position-relative') || img;
-
-                    function openImageModal() {
-                        refreshImages();
-                        if (images.length <= 0) return;
-
-                        const modal = document.createElement('div');
-                        modal.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.95);display:flex;align-items:center;justify-content:center;z-index:11000;overflow:hidden;padding:4px;';
-                        modal.addEventListener('click', function() { document.body.removeChild(modal); });
-
-                        const content = document.createElement('div');
-                        content.style.cssText = 'position:relative;max-width:min(900px, calc(100vw - 8px));max-height:min(700px, calc(100vh - 8px));display:flex;align-items:center;justify-content:center;gap:8px;';
-                        content.addEventListener('click', function(e){ e.stopPropagation(); });
-
-                        const modalImg = document.createElement('img');
-                        modalImg.src = images[currentPrimaryIndex];
-                        modalImg.style.cssText = 'max-width:100%;max-height:100%;object-fit:contain;cursor:default;';
-
-                        const createNavButton = function(symbol, position) {
-                            const btn = document.createElement('button');
-                            btn.innerHTML = symbol;
-                            btn.style.cssText = 'position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.85);border:none;color:#000;font-size:32px;line-height:1;width:48px;height:48px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.25);';
-                            btn.addEventListener('click', function(event){
-                                event.stopPropagation();
-                                if (position === 'left') {
-                                    currentPrimaryIndex = (currentPrimaryIndex - 1 + images.length) % images.length;
-                                } else {
-                                    currentPrimaryIndex = (currentPrimaryIndex + 1) % images.length;
-                                }
-                                modalImg.src = images[currentPrimaryIndex];
-                            });
-                            return btn;
-                        };
-
-                        const leftControl = createNavButton('&#8249;', 'left');
-                        const rightControl = createNavButton('&#8250;', 'right');
-                        leftControl.style.left = '10px';
-                        rightControl.style.right = '10px';
-
-                        const closeBtn = document.createElement('button');
-                        closeBtn.innerHTML = '✕';
-                        closeBtn.style.cssText = 'position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.9);border:none;color:#000;font-size:24px;line-height:1;width:40px;height:40px;border-radius:50%;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.25);';
-                        closeBtn.addEventListener('click', function(event){ event.stopPropagation(); document.body.removeChild(modal); });
-
-                        content.appendChild(leftControl);
-                        content.appendChild(modalImg);
-                        content.appendChild(rightControl);
-                        modal.appendChild(content);
-                        modal.appendChild(closeBtn);
-                        document.body.appendChild(modal);
+                    function updateCounter() {
+                        if (counterEl) counterEl.textContent = (currentPrimaryIndex + 1) + '/' + images.length;
                     }
 
-                    clickTarget.addEventListener('click', function (e) {
-                        if (e.target.closest('.product-overlay a, .product-overlay button')) return;
-                        e.stopPropagation();
-                        openImageModal();
+                    // actualizar contador cuando la auto-detección carga más imágenes
+                    item.addEventListener('gallery:imagesUpdated', function(){
+                        refreshImages();
+                        updateCounter();
                     });
 
-                    // permitir retroceder
+                    refreshImages();
+                    updateCounter();
+
                     function retreatPrimary() {
                         refreshImages();
                         if (images.length <= 1) return;
                         currentPrimaryIndex = (currentPrimaryIndex - 1 + images.length) % images.length;
                         img.src = images[currentPrimaryIndex];
+                        updateCounter();
+                    }
+
+                    function advancePrimary() {
+                        refreshImages();
+                        if (images.length <= 1) return;
+                        currentPrimaryIndex = (currentPrimaryIndex + 1) % images.length;
+                        img.src = images[currentPrimaryIndex];
+                        updateCounter();
                     }
 
                     // crear flechas si no existen y asignar eventos
@@ -4836,9 +4790,39 @@
                         rightBtn.addEventListener('click', function(e){ e.stopPropagation(); advancePrimary(); });
                     } catch (err) {}
 
-                    // cuando un thumbnail es clickeado, actualizar el índice primario
-                    item.addEventListener('gallery:thumbnailClicked', function(e){
-                        try { refreshImages(); const src = e && e.detail && e.detail.src; if (src) { const idx = images.indexOf(src); if (idx>=0) currentPrimaryIndex = idx; } } catch(err){}
+                    // click/tap: abrir imagen grande en modal
+                    const clickTarget = item.querySelector('.position-relative') || img;
+                    clickTarget.addEventListener('click', function(e){
+                        if (e.target.closest('.product-overlay a, .product-overlay button')) return;
+                        e.stopPropagation();
+                        refreshImages();
+                        if (!images.length) return;
+                        var modal = document.createElement('div');
+                        modal.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.95);display:flex;align-items:center;justify-content:center;z-index:11000;overflow:hidden;padding:4px;';
+                        modal.addEventListener('click', function(){ document.body.removeChild(modal); });
+                        var content = document.createElement('div');
+                        content.style.cssText = 'position:relative;max-width:min(900px,calc(100vw - 8px));max-height:min(700px,calc(100vh - 8px));display:flex;align-items:center;justify-content:center;gap:8px;';
+                        content.addEventListener('click', function(e){ e.stopPropagation(); });
+                        var modalIdx = currentPrimaryIndex;
+                        var modalImg = document.createElement('img');
+                        modalImg.src = images[modalIdx];
+                        modalImg.style.cssText = 'max-width:100%;max-height:100%;object-fit:contain;cursor:default;';
+                        var createNavBtn = function(symbol, dir) {
+                            var btn = document.createElement('button');
+                            btn.innerHTML = symbol;
+                            btn.style.cssText = 'position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.85);border:none;color:#000;font-size:32px;line-height:1;width:48px;height:48px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,0.25);';
+                            btn.addEventListener('click', function(ev){ ev.stopPropagation(); modalIdx = dir === 'left' ? (modalIdx - 1 + images.length) % images.length : (modalIdx + 1) % images.length; modalImg.src = images[modalIdx]; });
+                            return btn;
+                        };
+                        var lc = createNavBtn('&#8249;', 'left'); lc.style.left = '10px';
+                        var rc = createNavBtn('&#8250;', 'right'); rc.style.right = '10px';
+                        var closeBtn = document.createElement('button');
+                        closeBtn.innerHTML = '✕';
+                        closeBtn.style.cssText = 'position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.9);border:none;color:#000;font-size:24px;line-height:1;width:40px;height:40px;border-radius:50%;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.25);';
+                        closeBtn.addEventListener('click', function(ev){ ev.stopPropagation(); document.body.removeChild(modal); });
+                        content.appendChild(lc); content.appendChild(modalImg); content.appendChild(rc);
+                        modal.appendChild(content); modal.appendChild(closeBtn);
+                        document.body.appendChild(modal);
                     });
                 }
 
