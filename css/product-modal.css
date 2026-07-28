@@ -1,0 +1,165 @@
+/* ================================================================
+   product-modal.css — Modal de detalle de producto
+   ================================================================ */
+
+/* ─── Header del modal ─────────────────────────────────────────── */
+#productInfoModal .modal-header {
+    background: #5B8C51;
+    color: #fff;
+    border: none;
+    padding: 1rem 1.25rem;
+    border-radius: 8px 8px 0 0;
+}
+#productInfoModal .modal-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+}
+#productInfoModal .btn-close {
+    filter: invert(1) brightness(2);
+    opacity: .85;
+}
+
+/* ─── Body: panel info (izquierda) ────────────────────────────── */
+#productInfoModal .pim-info-panel {
+    padding: 1.25rem 1.1rem;
+    border-right: 1px solid #eee;
+}
+#productInfoModal .pim-info-panel table {
+    width: 100%;
+    font-size: .88rem;
+}
+#productInfoModal .pim-info-panel td:first-child {
+    color: #888;
+    white-space: nowrap;
+    padding-right: 10px;
+    vertical-align: top;
+    width: 90px;
+}
+#productInfoModal .pim-info-panel td:last-child {
+    font-weight: 600;
+    color: #222;
+    line-height: 1.5;
+}
+#productInfoModal .pim-info-panel .pim-desc {
+    font-size: .83rem;
+    color: #555;
+    margin-top: .5rem;
+    font-style: italic;
+}
+
+/* ─── Body: panel imagen (derecha) ────────────────────────────── */
+#productInfoModal .pim-img-panel {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f7f9f6;
+    min-height: 260px;
+    padding: 1rem;
+}
+#productInfoModal #pim-img {
+    max-width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+/* Flechas de navegación dentro del panel de imagen */
+.pim-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,.85);
+    border: none;
+    color: #333;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,.2);
+    font-size: 1rem;
+    z-index: 5;
+    transition: background .15s;
+}
+.pim-arrow:hover { background: #5B8C51; color: #fff; }
+.pim-arrow.left  { left:  8px; }
+.pim-arrow.right { right: 8px; }
+
+#pim-counter {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: .73rem;
+    background: rgba(0,0,0,.5);
+    color: #fff;
+    padding: .15rem .45rem;
+    border-radius: 3px;
+    pointer-events: none;
+}
+
+/* ─── Footer: botón WhatsApp ───────────────────────────────────── */
+#productInfoModal .modal-footer {
+    justify-content: center;
+    padding: .85rem 1rem;
+    border-top: 1px solid #eee;
+}
+#pim-wa-btn {
+    background: #25d366;
+    border-color: #25d366;
+    color: #fff;
+    font-weight: 700;
+    font-size: .95rem;
+    padding: .55rem 2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    transition: background .15s, transform .1s;
+}
+#pim-wa-btn:hover {
+    background: #1ebe5d;
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+/* ─── Badge de Marca / Modelo en la tarjeta ───────────────────── */
+.product-brand-label {
+    display: inline-block;
+    color: #5B8C51;
+    font-weight: 700;
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    background: rgba(91, 140, 81, .10);
+    border: 1.5px solid #5B8C51;
+    border-radius: 3px;
+    padding: .12rem .45rem;
+    margin-top: .4rem;
+    line-height: 1.4;
+}
+
+/* ─── Hover / cursor sobre el card ────────────────────────────── */
+.product-item .position-relative,
+.product-item .product-gallery {
+    cursor: pointer;
+}
+
+/* ─── Mobile adjustments ───────────────────────────────────────── */
+@media (max-width: 767.98px) {
+    #productInfoModal .pim-info-panel {
+        border-right: none;
+        border-bottom: 1px solid #eee;
+    }
+    #productInfoModal .pim-img-panel {
+        min-height: 200px;
+    }
+    #productInfoModal #pim-img {
+        max-height: 220px;
+    }
+}
