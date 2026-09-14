@@ -78,7 +78,7 @@ $mensaje = $_GET['msg'] ?? '';
                     <tr>
                         <td>
                             <?php if ($p['imagen']): ?>
-                                <img src="../img/redondos/<?= htmlspecialchars($p['imagen']) ?>" class="miniatura" alt="">
+                                <img src="<?= htmlspecialchars(urlImagen($p['imagen'])) ?>" class="miniatura" alt="">
                             <?php else: ?>
                                 <div class="miniatura d-flex align-items-center justify-content-center text-muted">
                                     <i class="fas fa-image"></i>

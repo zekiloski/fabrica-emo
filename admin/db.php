@@ -1,6 +1,14 @@
 <?php
 require_once __DIR__ . '/config.php';
 
+function urlImagen(string $nombreArchivo): string
+{
+    if ($nombreArchivo === '') return '';
+    $ruta = __DIR__ . '/../img/redondos/' . $nombreArchivo;
+    $version = is_file($ruta) ? filemtime($ruta) : time();
+    return '../img/redondos/' . $nombreArchivo . '?v=' . $version;
+}
+
 function obtenerConexion(): PDO
 {
     static $pdo = null;

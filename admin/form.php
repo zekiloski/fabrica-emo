@@ -83,7 +83,7 @@ $estadosRotacion = ['Rotación Normal', 'Baja Rotación - Requiere Autorización
             <label class="form-label">Imagen general del producto</label>
             <?php if ($producto['imagen']): ?>
                 <div class="mb-2">
-                    <img src="../img/redondos/<?= htmlspecialchars($producto['imagen']) ?>" class="miniatura" style="width:90px;height:90px;" alt="">
+                    <img src="<?= htmlspecialchars(urlImagen($producto['imagen'])) ?>" class="miniatura" style="width:90px;height:90px;" alt="">
                     <div class="form-check form-check-inline ms-2">
                         <input class="form-check-input" type="checkbox" name="quitar_imagen" id="quitarImagen" value="1">
                         <label class="form-check-label small" for="quitarImagen">Quitar imagen actual</label>
@@ -97,7 +97,7 @@ $estadosRotacion = ['Rotación Normal', 'Baja Rotación - Requiere Autorización
             <label class="form-label">Esquema / imagen del código de centro</label>
             <?php if ($producto['imagen_centro']): ?>
                 <div class="mb-2">
-                    <img src="../img/redondos/<?= htmlspecialchars($producto['imagen_centro']) ?>" class="miniatura" style="width:90px;height:90px;" alt="">
+                    <img src="<?= htmlspecialchars(urlImagen($producto['imagen_centro'])) ?>" class="miniatura" style="width:90px;height:90px;" alt="">
                     <div class="form-check form-check-inline ms-2">
                         <input class="form-check-input" type="checkbox" name="quitar_imagen_centro" id="quitarImagenCentro" value="1">
                         <label class="form-check-label small" for="quitarImagenCentro">Quitar imagen actual</label>
