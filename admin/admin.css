@@ -1,0 +1,95 @@
+:root {
+    --primary: #5B8C51;
+    --secondary: #EDDD5E;
+    --light: #F7F7F7;
+    --dark: #404A3D;
+}
+
+body {
+    background: var(--light);
+    font-family: 'Open Sans', Arial, sans-serif;
+}
+
+/* Login */
+.admin-login-body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--dark);
+}
+
+.admin-login-card {
+    background: #fff;
+    padding: 2.5rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, .3);
+    width: 100%;
+    max-width: 380px;
+    text-align: center;
+}
+
+/* Layout */
+.admin-navbar {
+    background: var(--dark);
+}
+
+.admin-navbar .navbar-brand {
+    color: #fff;
+}
+
+.btn-primary,
+.page-link {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-primary:hover {
+    background-color: #4a7342;
+    border-color: #4a7342;
+}
+
+.text-primary {
+    color: var(--primary) !important;
+}
+
+.card-panel {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1.25rem;
+    box-shadow: 0 .125rem .5rem rgba(0, 0, 0, .08);
+}
+
+table.tabla-admin th {
+    white-space: nowrap;
+    font-size: .78rem;
+    text-transform: uppercase;
+    color: var(--dark);
+    background: var(--light);
+}
+
+table.tabla-admin td {
+    vertical-align: middle;
+    font-size: .88rem;
+}
+
+.miniatura {
+    width: 46px;
+    height: 46px;
+    object-fit: contain;
+    border: 1px solid #e3e6e1;
+    border-radius: 4px;
+    background: #fff;
+}
+
+.form-section-title {
+    background: rgba(91, 140, 81, .12);
+    color: var(--primary);
+    text-transform: uppercase;
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+    padding: .5rem .9rem;
+    border-radius: 4px;
+    margin: 1.5rem 0 1rem;
+}

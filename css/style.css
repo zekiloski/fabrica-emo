@@ -615,6 +615,162 @@ body {
 }
 
 
+/*** Buscador de Codigos ***/
+#buscador-texto:focus,
+.filtros-panel select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 .2rem rgba(91, 140, 81, .2);
+}
+
+.filtros-panel {
+    position: sticky;
+    top: 90px;
+    border-top: 3px solid var(--primary) !important;
+}
+
+.filtros-panel .filter-field {
+    margin-bottom: .85rem;
+    padding: .3rem .5rem;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    transition: background-color .15s ease, border-color .15s ease;
+}
+
+.filtros-panel .filter-field label {
+    display: block;
+    font-size: .78rem;
+    color: var(--bs-secondary-color, #6c757d);
+    margin-bottom: .2rem;
+    transition: color .15s ease;
+}
+
+.filtros-panel .filter-field select {
+    font-size: .85rem;
+}
+
+/* Filtro con una opción seleccionada: se marca con el verde de la marca */
+.filtros-panel .filter-field.filtro-activo {
+    background-color: rgba(91, 140, 81, .08);
+    border-color: rgba(91, 140, 81, .35);
+}
+
+.filtros-panel .filter-field.filtro-activo label {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.filtros-panel .filter-field.filtro-activo select {
+    border-color: var(--primary);
+    color: var(--dark);
+    font-weight: 600;
+}
+
+.filtros-panel summary {
+    cursor: pointer;
+    user-select: none;
+}
+
+#limpiar-filtros:disabled {
+    opacity: .5;
+}
+
+#tabla-resultados thead .tabla-grupo th {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+}
+
+#tabla-resultados thead .tabla-sub th {
+    background: var(--light);
+    color: var(--dark);
+    border-color: #e3e6e1;
+}
+
+#tabla-resultados th {
+    white-space: nowrap;
+    font-size: .78rem;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+}
+
+#tabla-resultados td {
+    white-space: nowrap;
+}
+
+#tabla-resultados tbody tr {
+    cursor: pointer;
+}
+
+#tabla-resultados tbody tr:hover {
+    background-color: rgba(91, 140, 81, .08);
+}
+
+#tabla-resultados .celda-vacia {
+    color: #adb5bd;
+}
+
+@media (max-width: 991.98px) {
+    .filtros-panel {
+        position: static;
+    }
+}
+
+/* Panel lateral de ficha tecnica */
+#fichaOffcanvas {
+    width: 460px;
+    max-width: 100vw;
+}
+
+@media (max-width: 576px) {
+    #fichaOffcanvas {
+        width: 100vw;
+    }
+}
+
+.ficha-grupo-titulo {
+    background: rgba(91, 140, 81, .12);
+    color: var(--primary);
+    text-transform: uppercase;
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+    padding: .4rem .75rem;
+    border-radius: 4px;
+    margin: 1.25rem 0 .75rem;
+}
+
+.ficha-esquema {
+    border: 1px dashed #ced4da;
+    border-radius: 8px;
+    background: var(--light);
+    color: #adb5bd;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    margin-bottom: .5rem;
+}
+
+.ficha-esquema i {
+    font-size: 2rem;
+    margin-bottom: .5rem;
+}
+
+.btn-whatsapp {
+    background-color: #25D366;
+    border-color: #25D366;
+    color: #fff;
+}
+
+.btn-whatsapp:hover,
+.btn-whatsapp:focus {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+}
+
+
 /*** Product ***/
 .product-item {
     position: relative;

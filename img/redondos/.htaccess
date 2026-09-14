@@ -1,0 +1,5 @@
+# Esta carpeta solo debe servir imágenes subidas desde el panel.
+# Se bloquea la ejecución de scripts como capa extra de seguridad.
+<FilesMatch "\.(php|php\d|phtml|pl|py|cgi|sh)$">
+    Require all denied
+</FilesMatch>

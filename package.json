@@ -1,0 +1,11 @@
+{
+  "name": "fabrica-emo-catalogo",
+  "private": true,
+  "description": "Herramientas para mantener el catálogo de códigos del sitio (buscador de discos redondos).",
+  "scripts": {
+    "generar-catalogo": "node scripts/generar-redondos-json.js"
+  },
+  "devDependencies": {
+    "xlsx": "^0.18.5"
+  }
+}
