@@ -311,7 +311,6 @@ body {
 .dropdown-submenu.open > .submenu-toggle span {
     transform: rotate(90deg);
 }
-}
 
 /* Estilos para items del dropdown - más cómodo y visible */
 .dropdown-menu .dropdown-item {

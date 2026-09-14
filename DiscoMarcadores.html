@@ -1060,7 +1060,6 @@ document.addEventListener('DOMContentLoaded', function() {
         toggle.addEventListener('click', function(e) {
             if (window.innerWidth < 992) {
                 var href = this.getAttribute('href');
-                if (href && href !== '#') return;
                 e.preventDefault();
                 e.stopPropagation();
                 var parent = this.parentElement;
@@ -1081,7 +1080,6 @@ document.addEventListener('DOMContentLoaded', function() {
         toggle.addEventListener('click', function(e) {
             if (window.innerWidth < 992) {
                 var href = this.getAttribute('href');
-                if (href && href !== '#') return;
                 e.preventDefault();
                 e.stopPropagation();
                 var parent = this.closest('.dropdown-submenu');

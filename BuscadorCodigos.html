@@ -366,8 +366,7 @@
                 toggle.addEventListener('click', function (e) {
                     if (window.innerWidth < 992) {
                         var href = this.getAttribute('href');
-                        if (href && href !== '#') return;
-                        e.preventDefault();
+                                                e.preventDefault();
                         e.stopPropagation();
                         var parent = this.parentElement;
                         var menu = parent.querySelector('.dropdown-menu');
@@ -386,8 +385,7 @@
                 toggle.addEventListener('click', function (e) {
                     if (window.innerWidth < 992) {
                         var href = this.getAttribute('href');
-                        if (href && href !== '#') return;
-                        e.preventDefault();
+                                                e.preventDefault();
                         e.stopPropagation();
                         var parent = this.closest('.dropdown-submenu');
                         var isOpen = parent.classList.contains('open');
