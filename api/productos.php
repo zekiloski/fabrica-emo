@@ -21,21 +21,27 @@ try {
         cant_l2 AS cantL2, forma_l2 AS formaL2, medida_l2 AS medidaL2, fresado_l2 AS fresadoL2, diam_l2 AS diamL2,
         cant_muescas AS cantMuescas,
         filo, ancho_labor AS anchoLabor, planos, observaciones, maquina,
-        imagen, imagen_centro AS imagenCentro,
-        UNIX_TIMESTAMP(actualizado_en) AS v
+        imagen, imagen_centro AS imagenCentro
     FROM redondos
     ORDER BY codigo ASC';
 
     $stmt = $pdo->query($sql);
     $filas = $stmt->fetchAll();
+    $carpetaImagenes = __DIR__ . '/../img/redondos/';
 
     foreach ($filas as &$fila) {
         $fila['diametroPulg'] = $fila['diametroPulg'] !== null ? (float) $fila['diametroPulg'] : null;
-        // Cache-buster: las imágenes se sirven con caché larga (CDN del hosting),
-        // así que se versionan con la fecha de última edición del producto.
-        if ($fila['imagen']) $fila['imagen'] .= '?v=' . $fila['v'];
-        if ($fila['imagenCentro']) $fila['imagenCentro'] .= '?v=' . $fila['v'];
-        unset($fila['v']);
+        // Cache-buster basado en la fecha real del archivo (no en la fila de la
+        // base): el nombre de archivo no cambia al reemplazar una imagen, así
+        // que la fecha de la fila tampoco cambia si ningún otro campo se editó.
+        if ($fila['imagen']) {
+            $ruta = $carpetaImagenes . $fila['imagen'];
+            $fila['imagen'] .= '?v=' . (is_file($ruta) ? filemtime($ruta) : time());
+        }
+        if ($fila['imagenCentro']) {
+            $ruta = $carpetaImagenes . $fila['imagenCentro'];
+            $fila['imagenCentro'] .= '?v=' . (is_file($ruta) ? filemtime($ruta) : time());
+        }
     }
     unset($fila);
 
