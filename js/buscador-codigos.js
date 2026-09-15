@@ -202,8 +202,8 @@ document.addEventListener('DOMContentLoaded', function () {
         var tr = document.createElement('tr');
         tr.innerHTML =
             '<td class="fw-semi-bold text-primary">' + escapeHtml(item.codigo) + '</td>' +
-            '<td class="text-muted">' + celda(item.descripcion) + '</td>' +
-            '<td>' + celda(item.tipo) + '</td>' +
+            '<td class="text-muted td-wrap">' + celda(item.descripcion) + '</td>' +
+            '<td class="td-wrap">' + celda(item.tipo) + '</td>' +
             '<td>' + celda(diametroTxt) + '</td>' +
             '<td>' + celda(item.espesor) + '</td>' +
             '<td>' + celda(item.codCentro) + '</td>' +
@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', function () {
             '<td>' + celda(item.cantL1) + '</td>' +
             '<td>' + celda(item.formaL1) + '</td>' +
             '<td>' + celda(item.medidaL1) + '</td>' +
-            '<td><button type="button" class="btn btn-sm btn-warning">Ver ficha</button></td>';
+            '<td><button type="button" class="btn btn-sm btn-warning">Ver</button></td>';
         tr.addEventListener('click', function () { mostrarFicha(item); });
         return tr;
     }

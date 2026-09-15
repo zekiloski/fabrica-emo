@@ -673,6 +673,10 @@ body {
     opacity: .5;
 }
 
+#tabla-resultados {
+    font-size: .8rem;
+}
+
 #tabla-resultados thead .tabla-grupo th {
     background: var(--primary);
     color: #fff;
@@ -687,12 +691,32 @@ body {
 
 #tabla-resultados th {
     white-space: nowrap;
-    font-size: .78rem;
+    font-size: .7rem;
     text-transform: uppercase;
     letter-spacing: .02em;
 }
 
+#tabla-resultados th,
 #tabla-resultados td {
+    padding: .35rem .35rem;
+}
+
+#tabla-resultados td {
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+/* Descripción y Tipo: valores largos, se ajustan en 2 líneas en vez de
+   estirar la tabla entera a lo ancho */
+#tabla-resultados td.td-wrap {
+    white-space: normal;
+    max-width: 145px;
+    line-height: 1.25;
+}
+
+#tabla-resultados .btn-warning {
+    font-size: .72rem;
+    padding: .2rem .5rem;
     white-space: nowrap;
 }
 
