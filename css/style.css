@@ -743,6 +743,33 @@ body {
     transform: translateX(4px);
 }
 
+/* Link "Ver más" dentro de cada card individual de producto */
+.card-ver-mas {
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+    margin-top: .5rem;
+    font-size: .8rem;
+    font-weight: 600;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.card-ver-mas i {
+    transition: transform .2s ease;
+}
+
+.card-ver-mas:hover,
+.card-ver-mas:focus {
+    color: #3d6e35;
+    text-decoration: underline;
+}
+
+.card-ver-mas:hover i,
+.card-ver-mas:focus i {
+    transform: translateX(3px);
+}
+
 /* Panel lateral de ficha tecnica */
 #fichaOffcanvas {
     width: 460px;
