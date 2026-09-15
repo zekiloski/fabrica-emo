@@ -401,6 +401,7 @@
                                         (brand ? '<span class="product-brand-label">' + escHtml(brand) + '</span>' : '') +
                                         (espesor ? '<span class="text-decoration-underline d-none">' + escHtml(espesor) + '</span>' : '') +
                                         (medidas  ? '<span class="text-decoration-underline d-none">' + escHtml(medidas)  + '</span>' : '') +
+                                        (catRoot === 'discos' ? '<a href="BuscadorCodigos.html" class="card-ver-mas">Ver más <i class="bi bi-arrow-right"></i></a>' : '') +
                                     '</div>' +
                                 '</div>' +
                             '</div>';
