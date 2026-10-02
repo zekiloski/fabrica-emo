@@ -82,7 +82,12 @@ function procesarImagen(string $campoArchivo, string $sufijo, string $codigoBase
 
         $nombreFinal = $baseNombre . $sufijo . '.' . $ext;
         if (!is_dir($carpeta)) mkdir($carpeta, 0755, true);
-        move_uploaded_file($tmp, $carpeta . $nombreFinal);
+        if (!is_writable($carpeta)) {
+            die('No se pudo guardar la imagen: la carpeta img/redondos no tiene permisos de escritura en el servidor. Avisá al administrador del hosting. <a href="javascript:history.back()">Volver</a>');
+        }
+        if (!move_uploaded_file($tmp, $carpeta . $nombreFinal)) {
+            die('No se pudo guardar la imagen en el servidor (fallo al mover el archivo subido). <a href="javascript:history.back()">Volver</a>');
+        }
         return $nombreFinal;
     }
 

@@ -33,7 +33,10 @@ $mensaje = $_GET['msg'] ?? '';
 
 <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
     <h1 class="h4 mb-0">Productos del catálogo</h1>
-    <a href="form.php" class="btn btn-primary"><i class="fas fa-plus me-1"></i>Agregar producto</a>
+    <div class="d-flex gap-2">
+        <a href="diagnostico-imagenes.php" class="btn btn-outline-secondary"><i class="fas fa-image me-1"></i>Diagnóstico de imágenes</a>
+        <a href="form.php" class="btn btn-primary"><i class="fas fa-plus me-1"></i>Agregar producto</a>
+    </div>
 </div>
 
 <?php if ($mensaje === 'creado'): ?>
