@@ -22,7 +22,10 @@ foreach ($productos as $p) {
 
 <div class="d-flex flex-wrap justify-content-between align-items-center mb-3 gap-2">
     <h1 class="h4 mb-0">Diagnóstico de imágenes</h1>
-    <a href="index.php" class="btn btn-outline-secondary btn-sm"><i class="fas fa-arrow-left me-1"></i>Volver</a>
+    <div class="d-flex gap-2">
+        <a href="subir-imagenes.php" class="btn btn-primary btn-sm"><i class="fas fa-upload me-1"></i>Carga masiva</a>
+        <a href="index.php" class="btn btn-outline-secondary btn-sm"><i class="fas fa-arrow-left me-1"></i>Volver</a>
+    </div>
 </div>
 
 <div class="card-panel mb-3">

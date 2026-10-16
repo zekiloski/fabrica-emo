@@ -35,6 +35,7 @@ $mensaje = $_GET['msg'] ?? '';
     <h1 class="h4 mb-0">Productos del catálogo</h1>
     <div class="d-flex gap-2">
         <a href="diagnostico-imagenes.php" class="btn btn-outline-secondary"><i class="fas fa-image me-1"></i>Diagnóstico de imágenes</a>
+        <a href="subir-imagenes.php" class="btn btn-outline-secondary"><i class="fas fa-upload me-1"></i>Carga masiva de imágenes</a>
         <a href="form.php" class="btn btn-primary"><i class="fas fa-plus me-1"></i>Agregar producto</a>
     </div>
 </div>

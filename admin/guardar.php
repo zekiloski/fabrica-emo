@@ -2,6 +2,7 @@
 require_once __DIR__ . '/auth.php';
 requerirLogin();
 require_once __DIR__ . '/db.php';
+require_once __DIR__ . '/imagenes.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: index.php');
@@ -57,38 +58,19 @@ if ($id > 0) {
 function procesarImagen(string $campoArchivo, string $sufijo, string $codigoBase, string $actual, string $campoQuitar): string
 {
     $carpeta = __DIR__ . '/../img/redondos/';
-    $baseNombre = preg_replace('/[^A-Za-z0-9_-]/', '', $codigoBase);
 
     if (!empty($_FILES[$campoArchivo]['name']) && $_FILES[$campoArchivo]['error'] === UPLOAD_ERR_OK) {
-        $tmp = $_FILES[$campoArchivo]['tmp_name'];
-        $tamano = $_FILES[$campoArchivo]['size'];
-
-        if ($tamano > 5 * 1024 * 1024) {
-            die('La imagen supera los 5 MB permitidos. <a href="javascript:history.back()">Volver</a>');
+        $resultado = validarYGuardarImagen(
+            $_FILES[$campoArchivo]['tmp_name'],
+            (int) $_FILES[$campoArchivo]['size'],
+            $codigoBase,
+            $sufijo,
+            $actual
+        );
+        if (!$resultado['ok']) {
+            die(htmlspecialchars($resultado['error']) . ' <a href="javascript:history.back()">Volver</a>');
         }
-
-        $info = @getimagesize($tmp);
-        $extensionesPermitidas = ['image/jpeg' => 'jpg', 'image/png' => 'png', 'image/webp' => 'webp'];
-        if (!$info || !isset($extensionesPermitidas[$info['mime']])) {
-            die('El archivo de imagen no es válido (solo JPG, PNG o WEBP). <a href="javascript:history.back()">Volver</a>');
-        }
-        $ext = $extensionesPermitidas[$info['mime']];
-
-        // Si habia una imagen previa con otra extension, se elimina para no dejar huerfanos.
-        if ($actual && $actual !== $baseNombre . $sufijo . '.' . $ext) {
-            $viejo = $carpeta . $actual;
-            if (is_file($viejo)) @unlink($viejo);
-        }
-
-        $nombreFinal = $baseNombre . $sufijo . '.' . $ext;
-        if (!is_dir($carpeta)) mkdir($carpeta, 0755, true);
-        if (!is_writable($carpeta)) {
-            die('No se pudo guardar la imagen: la carpeta img/redondos no tiene permisos de escritura en el servidor. Avisá al administrador del hosting. <a href="javascript:history.back()">Volver</a>');
-        }
-        if (!move_uploaded_file($tmp, $carpeta . $nombreFinal)) {
-            die('No se pudo guardar la imagen en el servidor (fallo al mover el archivo subido). <a href="javascript:history.back()">Volver</a>');
-        }
-        return $nombreFinal;
+        return $resultado['archivo'];
     }
 
     if (!empty($_POST[$campoQuitar])) {
