@@ -31,7 +31,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css?v=20260916" rel="stylesheet">
+    <link href="css/style.css?v=20261016" rel="stylesheet">
 
 </head>
 
@@ -195,6 +195,7 @@
 
                 <!-- Resultados -->
                 <div class="col-lg-9">
+                    <div class="resultados-panel border rounded-3 p-2 bg-white shadow-sm">
                     <div class="mb-2">
                         <span id="contador-resultados" class="text-muted"></span>
                     </div>
@@ -205,29 +206,43 @@
                     </div>
 
                     <div id="tabla-wrapper" class="table-responsive" style="display:none;">
-                        <table class="table table-hover align-middle small mb-3" id="tabla-resultados">
+                        <table class="table table-hover align-middle small mb-0" id="tabla-resultados">
+                            <colgroup>
+                                <col class="col-codigo">
+                                <col class="col-desc">
+                                <col class="col-tipo">
+                                <col class="col-diametro">
+                                <col class="col-espesor">
+                                <col class="col-codcentro">
+                                <col class="col-forma">
+                                <col class="col-medida">
+                                <col class="col-cant">
+                                <col class="col-forma">
+                                <col class="col-medida">
+                                <col class="col-ficha">
+                            </colgroup>
                             <thead>
                                 <tr class="tabla-grupo">
                                     <th colspan="2">Codificación</th>
-                                    <th colspan="3">Características</th>
-                                    <th>Cód. de centro</th>
-                                    <th colspan="2">Centro</th>
-                                    <th colspan="3">Agujeros laterales</th>
+                                    <th colspan="3" class="text-center">Características</th>
+                                    <th class="text-center">Cód. centro</th>
+                                    <th colspan="2" class="text-center">Centro</th>
+                                    <th colspan="3" class="text-center">Agujeros laterales</th>
                                     <th></th>
                                 </tr>
                                 <tr class="tabla-sub">
                                     <th>Código</th>
                                     <th>Descripción</th>
                                     <th>Tipo</th>
-                                    <th>Diámetro</th>
-                                    <th>Espesor</th>
-                                    <th>Código</th>
-                                    <th>Forma</th>
-                                    <th>Medida</th>
-                                    <th>Cant.</th>
-                                    <th>Forma</th>
-                                    <th>Medida</th>
-                                    <th>Ficha</th>
+                                    <th class="text-center">Diám.</th>
+                                    <th class="text-center">Espesor</th>
+                                    <th class="text-center">Código</th>
+                                    <th class="text-center">Forma</th>
+                                    <th class="text-center">Medida</th>
+                                    <th class="text-center">Cant.</th>
+                                    <th class="text-center">Forma</th>
+                                    <th class="text-center">Medida</th>
+                                    <th class="text-center">Ficha</th>
                                 </tr>
                             </thead>
                             <tbody id="tabla-body"></tbody>
@@ -247,6 +262,7 @@
                         <button id="pag-siguiente" class="btn btn-outline-primary btn-sm" type="button">Siguiente
                             <i class="fas fa-chevron-right ms-1"></i></button>
                     </nav>
+                    </div>
                 </div>
             </div>
         </div>
@@ -358,7 +374,7 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-    <script src="js/buscador-codigos.js?v=20260916"></script>
+    <script src="js/buscador-codigos.js?v=20261016"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {

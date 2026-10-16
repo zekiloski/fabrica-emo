@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             var placeholder = document.createElement('option');
             placeholder.value = '';
-            placeholder.textContent = 'Cualquiera';
+            placeholder.textContent = 'Todos';
             select.appendChild(placeholder);
 
             select.addEventListener('change', function () {
@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function () {
             select.innerHTML = '';
             var placeholder = document.createElement('option');
             placeholder.value = '';
-            placeholder.textContent = 'Cualquiera';
+            placeholder.textContent = 'Todos';
             select.appendChild(placeholder);
 
             valoresUnicos.forEach(function (v) {
@@ -201,18 +201,18 @@ document.addEventListener('DOMContentLoaded', function () {
         var diametroTxt = (item.diametroPulg !== null && item.diametroPulg !== undefined) ? (item.diametroPulg + '"') : '';
         var tr = document.createElement('tr');
         tr.innerHTML =
-            '<td class="fw-semi-bold text-primary">' + escapeHtml(item.codigo) + '</td>' +
+            '<td><span class="codigo-pill">' + escapeHtml(item.codigo) + '</span></td>' +
             '<td class="text-muted td-wrap">' + celda(item.descripcion) + '</td>' +
             '<td class="td-wrap">' + celda(item.tipo) + '</td>' +
-            '<td>' + celda(diametroTxt) + '</td>' +
-            '<td>' + celda(item.espesor) + '</td>' +
-            '<td>' + celda(item.codCentro) + '</td>' +
-            '<td>' + celda(item.formaCentral) + '</td>' +
-            '<td>' + celda(item.medidaCentro) + '</td>' +
-            '<td>' + celda(item.cantL1) + '</td>' +
-            '<td>' + celda(item.formaL1) + '</td>' +
-            '<td>' + celda(item.medidaL1) + '</td>' +
-            '<td><button type="button" class="btn btn-sm btn-warning">Ver</button></td>';
+            '<td class="text-center">' + celda(diametroTxt) + '</td>' +
+            '<td class="text-center">' + celda(item.espesor) + '</td>' +
+            '<td class="text-center">' + celda(item.codCentro) + '</td>' +
+            '<td class="text-center">' + celda(item.formaCentral) + '</td>' +
+            '<td class="text-center">' + celda(item.medidaCentro) + '</td>' +
+            '<td class="text-center">' + celda(item.cantL1) + '</td>' +
+            '<td class="text-center">' + celda(item.formaL1) + '</td>' +
+            '<td class="text-center">' + celda(item.medidaL1) + '</td>' +
+            '<td class="text-center"><button type="button" class="btn btn-sm btn-warning">Ver</button></td>';
         tr.addEventListener('click', function () { mostrarFicha(item); });
         return tr;
     }
