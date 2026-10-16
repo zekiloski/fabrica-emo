@@ -1,2 +1,7 @@
 node_modules/
 admin/config.php
+
+# Las imágenes de productos se suben desde el panel admin y viven solo en el
+# servidor; no deben ir al repo ni borrarse en cada despliegue de Git.
+img/redondos/*
+!img/redondos/.htaccess
