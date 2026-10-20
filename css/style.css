@@ -637,10 +637,38 @@ body {
 
 .filtros-panel .filter-field label {
     display: block;
-    font-size: .78rem;
-    color: var(--bs-secondary-color, #6c757d);
-    margin-bottom: .2rem;
+    font-size: .86rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: .3rem;
     transition: color .15s ease;
+}
+
+/* "Tipo" es el filtro por el que casi siempre arranca la búsqueda: se
+   destaca con el color de marca para que sea el primero que se note */
+.filtros-panel .filter-field.filter-destacado {
+    border-color: rgba(91, 140, 81, .3);
+    background-color: rgba(91, 140, 81, .05);
+}
+
+.filtros-panel .filter-field.filter-destacado label {
+    color: var(--primary);
+    font-size: .92rem;
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+}
+
+.filtros-panel .filter-field.filter-destacado label::after {
+    content: "Empezá por acá";
+    font-size: .65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+    color: #fff;
+    background: var(--primary);
+    padding: .15rem .5rem;
+    border-radius: 50px;
 }
 
 .filtros-panel .filter-field select {
@@ -708,24 +736,9 @@ body {
 }
 
 #tabla-resultados {
-    font-size: .8rem;
+    font-size: .82rem;
     margin-bottom: 0;
-    table-layout: fixed;
-    width: 100%;
 }
-
-/* Anchos fijos por columna (en %) para que la tabla nunca exceda el ancho
-   disponible, sin importar lo largo del contenido de cada fila */
-#tabla-resultados col.col-codigo { width: 10%; }
-#tabla-resultados col.col-desc { width: 15%; }
-#tabla-resultados col.col-tipo { width: 15%; }
-#tabla-resultados col.col-diametro { width: 7%; }
-#tabla-resultados col.col-espesor { width: 7%; }
-#tabla-resultados col.col-codcentro { width: 6%; }
-#tabla-resultados col.col-forma { width: 7%; }
-#tabla-resultados col.col-medida { width: 7%; }
-#tabla-resultados col.col-cant { width: 5%; }
-#tabla-resultados col.col-ficha { width: 7%; }
 
 #tabla-resultados thead .tabla-grupo th {
     background: var(--primary);
@@ -740,24 +753,24 @@ body {
 }
 
 #tabla-resultados th {
-    white-space: normal;
-    font-size: .7rem;
+    white-space: nowrap;
+    font-size: .72rem;
     text-transform: uppercase;
     letter-spacing: .03em;
     line-height: 1.2;
-    overflow: hidden;
 }
 
 #tabla-resultados th,
 #tabla-resultados td {
-    padding: .4rem .3rem;
+    padding: .5rem .55rem;
 }
 
+/* Texto completo en una sola línea: la tabla puede ser más ancha que la
+   pantalla, para eso está el scroll horizontal del contenedor */
 #tabla-resultados td {
-    white-space: normal;
+    white-space: nowrap;
     vertical-align: middle;
     border-color: #f0f1ef;
-    overflow-wrap: break-word;
 }
 
 #tabla-resultados tbody tr:nth-child(even) {
@@ -770,23 +783,15 @@ body {
     background: rgba(91, 140, 81, .1);
     color: var(--primary);
     font-weight: 700;
-    font-size: .72rem;
-    padding: .2rem .45rem;
+    font-size: .78rem;
+    padding: .3rem .6rem;
     border-radius: 50px;
     white-space: nowrap;
 }
 
-/* Descripción y Tipo: valores largos, se ajustan en 2 líneas en vez de
-   estirar la tabla entera a lo ancho */
-#tabla-resultados td.td-wrap {
-    white-space: normal;
-    max-width: 120px;
-    line-height: 1.25;
-}
-
 #tabla-resultados .btn-warning {
-    font-size: .7rem;
-    padding: .2rem .55rem;
+    font-size: .76rem;
+    padding: .3rem .7rem;
     border-radius: 50px;
     white-space: nowrap;
 }
@@ -807,12 +812,6 @@ body {
 @media (max-width: 991.98px) {
     .filtros-panel {
         position: static;
-    }
-
-    /* En pantallas angostas el ancho fijo por % deja todo ilegible; se
-       vuelve a un ancho mínimo con scroll horizontal, como antes */
-    #tabla-resultados {
-        width: 760px;
     }
 }
 

@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function () {
         FILTER_FIELDS.forEach(function (f) {
             var contenedor = f.group === 'primary' ? elFiltrosPrimarios : elFiltrosAvanzados;
             var wrap = document.createElement('div');
-            wrap.className = 'filter-field';
+            wrap.className = 'filter-field' + (f.key === 'tipo' ? ' filter-destacado' : '');
 
             var label = document.createElement('label');
             label.setAttribute('for', 'filtro-' + f.key);
@@ -202,8 +202,8 @@ document.addEventListener('DOMContentLoaded', function () {
         var tr = document.createElement('tr');
         tr.innerHTML =
             '<td><span class="codigo-pill">' + escapeHtml(item.codigo) + '</span></td>' +
-            '<td class="text-muted td-wrap">' + celda(item.descripcion) + '</td>' +
-            '<td class="td-wrap">' + celda(item.tipo) + '</td>' +
+            '<td class="text-muted">' + celda(item.descripcion) + '</td>' +
+            '<td>' + celda(item.tipo) + '</td>' +
             '<td class="text-center">' + celda(diametroTxt) + '</td>' +
             '<td class="text-center">' + celda(item.espesor) + '</td>' +
             '<td class="text-center">' + celda(item.codCentro) + '</td>' +
@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', function () {
             '<td class="text-center">' + celda(item.cantL1) + '</td>' +
             '<td class="text-center">' + celda(item.formaL1) + '</td>' +
             '<td class="text-center">' + celda(item.medidaL1) + '</td>' +
-            '<td class="text-center"><button type="button" class="btn btn-sm btn-warning">Ver</button></td>';
+            '<td class="text-center"><button type="button" class="btn btn-sm btn-warning">Ver ficha</button></td>';
         tr.addEventListener('click', function () { mostrarFicha(item); });
         return tr;
     }
