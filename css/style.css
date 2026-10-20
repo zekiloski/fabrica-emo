@@ -701,7 +701,9 @@ body {
 
 #tabla-wrapper {
     border-radius: 8px;
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
     border: 1px solid #edeeec;
 }
 
