@@ -398,6 +398,17 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         var textoParam = params.get('q');
         if (textoParam) elTexto.value = textoParam;
+
+        var codigosParam = params.get('codigos');
+        if (codigosParam) {
+            var listaCodigos = codigosParam.split(',')
+                .map(function (c) { return c.trim().toUpperCase(); })
+                .filter(Boolean);
+            if (listaCodigos.length) {
+                var setCodigos = new Set(listaCodigos);
+                datos = datos.filter(function (item) { return setCodigos.has(String(item.codigo).toUpperCase()); });
+            }
+        }
     }
 
     // Fuente principal: base de datos (vía panel de administración).
