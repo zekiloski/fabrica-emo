@@ -388,6 +388,18 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // Permite llegar desde otra página con un filtro ya aplicado, ej.
+    // BuscadorCodigos.html?tipo=CA%20-%2018%20ONDAS
+    function aplicarFiltrosDesdeUrl() {
+        var params = new URLSearchParams(window.location.search);
+        FILTER_FIELDS.forEach(function (f) {
+            var valor = params.get(f.key);
+            if (valor) filtroState[f.key] = valor;
+        });
+        var textoParam = params.get('q');
+        if (textoParam) elTexto.value = textoParam;
+    }
+
     // Fuente principal: base de datos (vía panel de administración).
     // Si falla (mantenimiento, sin conexión al servidor, etc.) se usa el
     // último catálogo generado como respaldo para que el buscador no quede vacío.
@@ -398,6 +410,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(function (json) {
             datos = json;
             elCargando.style.display = 'none';
+            aplicarFiltrosDesdeUrl();
             actualizarTodo();
         })
         .catch(function (err) {
